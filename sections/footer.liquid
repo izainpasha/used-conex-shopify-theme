@@ -1,0 +1,700 @@
+{%- comment -%} Used Conex — custom footer (pixel-matched to Figma) {%- endcomment -%}
+{%- render 'uc-section-style', section: section -%}
+
+<footer class="uc-footer uc-font" role="contentinfo">
+  <div class="uc-footer__inner">
+    <div class="uc-footer__col1">
+    <div class="uc-footer__brand">
+      <a href="{{ routes.root_url }}" class="uc-footer__brand-logo-link" aria-label="{{ shop.name }}">
+        {%- if section.settings.logo != blank -%}
+          {{ section.settings.logo | image_url: width: 710 | image_tag: class: 'uc-footer__brand-logo', alt: shop.name, loading: 'lazy' }}
+        {%- else -%}
+          <img class="uc-footer__brand-logo" src="https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-logo.png" alt="{{ shop.name }}" width="308" height="40" loading="lazy">
+        {%- endif -%}
+      </a>
+      <p class="uc-footer__tagline">{{ section.settings.tagline }}</p>
+
+      <div class="uc-footer__contact">
+        {%- if section.settings.phone != blank -%}
+          <div class="uc-footer__contact-row">
+            <span class="uc-footer__contact-ico">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4.36 3.33333C4.4 3.92667 4.5 4.50667 4.66 5.06L3.86 5.86C3.58667 5.06 3.41333 4.21333 3.35333 3.33333H4.36ZM10.9333 11.3467C11.5 11.5067 12.08 11.6067 12.6667 11.6467V12.64C11.7867 12.58 10.94 12.4067 10.1333 12.14L10.9333 11.3467ZM5 2H2.66667C2.3 2 2 2.3 2 2.66667C2 8.92667 7.07333 14 13.3333 14C13.7 14 14 13.7 14 13.3333V11.0067C14 10.64 13.7 10.34 13.3333 10.34C12.5067 10.34 11.7 10.2067 10.9533 9.96C10.8873 9.93535 10.8171 9.92402 10.7467 9.92667C10.5733 9.92667 10.4067 9.99333 10.2733 10.12L8.80667 11.5867C6.91698 10.6202 5.37978 9.08302 4.41333 7.19333L5.88 5.72667C6.06667 5.54 6.12 5.28 6.04667 5.04667C5.79421 4.2786 5.66593 3.47516 5.66667 2.66667C5.66667 2.3 5.36667 2 5 2Z" fill="#000"/></svg>
+            </span>
+            <span>
+              <span class="uc-footer__contact-label">{{ section.settings.phone_label }}</span>
+              <a class="uc-footer__contact-value" href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '-', '' }}">{{ section.settings.phone }}</a>
+            </span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.email != blank -%}
+          <div class="uc-footer__contact-row">
+            <span class="uc-footer__contact-ico">
+              <svg viewBox="0 0 13.3333 12.3333" fill="none" aria-hidden="true"><path d="M10.1667 0.5H3.16667C1.69391 0.5 0.5 1.69391 0.5 3.16667V9.16667C0.5 10.6394 1.69391 11.8333 3.16667 11.8333H10.1667C11.6394 11.8333 12.8333 10.6394 12.8333 9.16667V3.16667C12.8333 1.69391 11.6394 0.5 10.1667 0.5Z" stroke="#000"/><path d="M0.531333 3.22667L5.33467 5.98C5.73718 6.21357 6.19429 6.33659 6.65967 6.33659C7.12504 6.33659 7.58215 6.21357 7.98467 5.98L12.8013 3.22667" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>
+              <span class="uc-footer__contact-label">{{ section.settings.email_label }}</span>
+              <a class="uc-footer__contact-value" href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.address != blank -%}
+          <div class="uc-footer__contact-row">
+            <span class="uc-footer__contact-ico">{%- render 'uc-icon', name: 'map-pin' -%}</span>
+            <span>
+              <span class="uc-footer__contact-label">{{ section.settings.address_label }}</span>
+              <a class="uc-footer__contact-value" href="https://www.google.com/maps/search/?api=1&query={{ section.settings.address | url_encode }}" target="_blank" rel="noopener">{{ section.settings.address }}</a>
+            </span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.hours != blank -%}
+          <div class="uc-footer__contact-row">
+            <span class="uc-footer__contact-ico">{%- render 'uc-icon', name: 'clock' -%}</span>
+            <span>
+              <span class="uc-footer__contact-label">{{ section.settings.hours_label }}</span>
+              <span class="uc-footer__contact-value">{{ section.settings.hours }}</span>
+            </span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'menu_column' -%}
+        <div class="uc-footer__col" {{ block.shopify_attributes }}>
+          <div class="uc-footer__heading">{{ block.settings.heading }}</div>
+          <ul>
+            {%- for link in block.settings.menu.links -%}
+              <li><a href="{{ link.url }}"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    <div class="uc-footer__socials">
+        {% if section.settings.instagram != blank %}
+          <a href="{{ section.settings.instagram }}" aria-label="Instagram"><svg viewBox="0 0 32 33" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.95333 1.46575C11.5173 1.3915 12.016 1.375 16 1.375C19.984 1.375 20.4827 1.39287 22.0453 1.46575C23.608 1.53862 24.6747 1.79575 25.608 2.16837C26.5853 2.54925 27.472 3.14462 28.2053 3.91462C28.952 4.6695 29.528 5.5825 29.896 6.59175C30.2587 7.55425 30.5067 8.65425 30.5787 10.263C30.6507 11.8786 30.6667 12.3929 30.6667 16.5C30.6667 20.6071 30.6493 21.1228 30.5787 22.7356C30.508 24.3444 30.2587 25.4444 29.896 26.4069C29.5278 27.4162 28.9509 28.3307 28.2053 29.0868C27.472 29.8568 26.5853 30.4508 25.608 30.8303C24.6747 31.2043 23.608 31.46 22.048 31.5343C20.4827 31.6085 19.984 31.625 16 31.625C12.016 31.625 11.5173 31.6071 9.95333 31.5343C8.39333 31.4614 7.32667 31.2043 6.39333 30.8303C5.41462 30.4506 4.52784 29.8556 3.79467 29.0868C3.04877 28.3312 2.47139 27.4172 2.10267 26.4083C1.74133 25.4458 1.49333 24.3458 1.42133 22.737C1.34933 21.1214 1.33333 20.6071 1.33333 16.5C1.33333 12.3929 1.35067 11.8773 1.42133 10.2658C1.492 8.65425 1.74133 7.55425 2.10267 6.59175C2.47178 5.58269 3.04962 4.66867 3.796 3.91325C4.52827 3.14421 5.41412 2.5488 6.392 2.16837C7.32533 1.79575 8.39333 1.54 9.95333 1.46575ZM21.9253 4.18825C20.3787 4.11537 19.9147 4.10025 15.9987 4.10025C12.0827 4.10025 11.6187 4.11537 10.072 4.18825C8.64133 4.25562 7.86533 4.50175 7.348 4.70937C6.664 4.98437 6.17467 5.31025 5.66133 5.83963C5.1743 6.32746 4.79975 6.92189 4.56533 7.579C4.364 8.1125 4.12533 8.91275 4.06 10.3881C3.98933 11.9831 3.97467 12.4616 3.97467 16.5C3.97467 20.5384 3.98933 21.0169 4.06 22.6119C4.12533 24.0873 4.364 24.8875 4.56533 25.421C4.8 26.0769 5.17467 26.6723 5.66133 27.1604C6.13467 27.6623 6.712 28.0486 7.348 28.2906C7.86533 28.4983 8.64133 28.7444 10.072 28.8118C11.6187 28.8846 12.0813 28.8998 15.9987 28.8998C19.916 28.8998 20.3787 28.8846 21.9253 28.8118C23.356 28.7444 24.132 28.4983 24.6493 28.2906C25.3333 28.0156 25.8227 27.6898 26.336 27.1604C26.8227 26.6723 27.1973 26.0769 27.432 25.421C27.6333 24.8875 27.872 24.0873 27.9373 22.6119C28.008 21.0169 28.0227 20.5384 28.0227 16.5C28.0227 12.4616 28.008 11.9831 27.9373 10.3881C27.872 8.91275 27.6333 8.1125 27.432 7.579C27.1653 6.87363 26.8493 6.369 26.336 5.83963C25.8629 5.33738 25.2865 4.95112 24.6493 4.70937C24.132 4.50175 23.356 4.25562 21.9253 4.18825ZM14.1253 21.1626C15.1715 21.6117 16.3365 21.6724 17.4212 21.3341C18.506 20.9959 19.4432 20.2798 20.0728 19.3081C20.7024 18.3364 20.9854 17.1694 20.8734 16.0065C20.7614 14.8436 20.2613 13.7568 19.4587 12.9319C18.947 12.4045 18.3283 12.0007 17.6471 11.7496C16.9659 11.4984 16.2392 11.4061 15.5193 11.4793C14.7994 11.5526 14.1042 11.7895 13.4837 12.1731C12.8633 12.5566 12.333 13.0773 11.9311 13.6975C11.5291 14.3178 11.2656 15.0223 11.1594 15.7602C11.0531 16.4981 11.1069 17.2512 11.3167 17.9651C11.5266 18.679 11.8873 19.3361 12.373 19.889C12.8586 20.4419 13.4571 20.8769 14.1253 21.1626ZM10.6693 11.0028C11.3694 10.2808 12.2004 9.70819 13.1151 9.3175C14.0297 8.9268 15.01 8.72571 16 8.72571C16.99 8.72571 17.9703 8.9268 18.8849 9.3175C19.7996 9.70819 20.6306 10.2808 21.3307 11.0028C22.0307 11.7247 22.586 12.5817 22.9649 13.5249C23.3437 14.4681 23.5387 15.4791 23.5387 16.5C23.5387 17.5209 23.3437 18.5319 22.9649 19.4751C22.586 20.4183 22.0307 21.2753 21.3307 21.9973C19.9169 23.4552 17.9994 24.2743 16 24.2743C14.0006 24.2743 12.0831 23.4552 10.6693 21.9973C9.25555 20.5393 8.4613 18.5619 8.4613 16.5C8.4613 14.4381 9.25555 12.4607 10.6693 11.0028ZM25.2107 9.8835C25.3841 9.71475 25.523 9.51181 25.6191 9.28671C25.7151 9.06162 25.7664 8.81893 25.7699 8.57303C25.7734 8.32713 25.729 8.083 25.6393 7.85511C25.5497 7.62722 25.4166 7.4202 25.2479 7.2463C25.0793 7.07241 24.8786 6.93517 24.6576 6.84271C24.4366 6.75026 24.1999 6.70447 23.9614 6.70805C23.723 6.71164 23.4876 6.76452 23.2694 6.86358C23.0511 6.96264 22.8543 7.10586 22.6907 7.28475C22.3724 7.63267 22.1982 8.09479 22.2049 8.57303C22.2117 9.05127 22.3989 9.50796 22.7269 9.84616C23.0548 10.1844 23.4977 10.3774 23.9614 10.3844C24.4252 10.3914 24.8733 10.2117 25.2107 9.8835Z" fill="white"/></svg></a>
+        {% endif %}
+        {% if section.settings.facebook != blank %}
+          <a href="{{ section.settings.facebook }}" aria-label="Facebook"><svg viewBox="0 0 32 33" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 16.5921C0 24.7968 5.77733 31.6167 13.3333 33V21.0829H9.33333V16.5H13.3333V12.8329C13.3333 8.70788 15.9107 6.41712 19.556 6.41712C20.7107 6.41712 21.956 6.6 23.1107 6.78288V11H21.0667C19.1107 11 18.6667 12.0079 18.6667 13.2921V16.5H22.9333L22.2227 21.0829H18.6667V33C26.2227 31.6167 32 24.7968 32 16.5921C32 7.46625 24.8 0 16 0C7.2 0 0 7.46625 0 16.5921Z" fill="white"/></svg></a>
+        {% endif %}
+        {% if section.settings.linkedin != blank %}
+          <a href="{{ section.settings.linkedin }}" aria-label="LinkedIn"><svg viewBox="0 0 33 33" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.9649 12.3324H18.0716V14.8761C18.8072 13.4131 20.6937 12.0986 23.5276 12.0986C28.9602 12.0986 30.25 15.0109 30.25 20.3541V30.25H24.75V21.571C24.75 18.5281 24.0144 16.8121 22.1416 16.8121C19.5442 16.8121 18.4649 18.6615 18.4649 21.5696V30.25H12.9649V12.3324ZM3.53375 30.0162H9.03375V12.0986H3.53375V30.0162ZM9.82163 6.25625C9.82183 6.71725 9.7304 7.1737 9.55266 7.59906C9.37491 8.02442 9.1144 8.41021 8.78625 8.734C8.45713 9.06141 8.06672 9.32076 7.63733 9.49724C7.20794 9.67371 6.74799 9.76385 6.28375 9.7625C5.3482 9.7604 4.45076 9.39164 3.784 8.73538C3.45716 8.41039 3.19761 8.02415 3.02018 7.59876C2.84276 7.17336 2.75095 6.71716 2.75 6.25625C2.75 5.32538 3.12125 4.43438 3.78538 3.77713C4.45047 3.11834 5.34899 2.74914 6.28513 2.75C7.22288 2.75 8.12212 3.11988 8.78625 3.77713C9.45037 4.43438 9.82163 5.32538 9.82163 6.25625Z" fill="white"/></svg></a>
+        {% endif %}
+        {% if section.settings.youtube != blank %}
+          <a href="{{ section.settings.youtube }}" aria-label="YouTube"><svg viewBox="0 0 32 33" fill="none" aria-hidden="true"><path d="M29.4156 9.54229C29.2562 8.9301 28.9437 8.37183 28.5094 7.92334C28.075 7.47485 27.5341 7.15186 26.9406 6.98672C24.7562 6.38086 16 6.38086 16 6.38086C16 6.38086 7.24375 6.38086 5.05937 6.9835C4.46569 7.14811 3.92445 7.47091 3.49002 7.91948C3.05558 8.36806 2.74325 8.92662 2.58437 9.53906C2 11.7949 2 16.5 2 16.5C2 16.5 2 21.2051 2.58437 23.4577C2.90625 24.7017 3.85625 25.6813 5.05937 26.0133C7.24375 26.6191 16 26.6191 16 26.6191C16 26.6191 24.7562 26.6191 26.9406 26.0133C28.1469 25.6813 29.0937 24.7017 29.4156 23.4577C30 21.2051 30 16.5 30 16.5C30 16.5 30 11.7949 29.4156 9.54229ZM13.2188 20.8184V12.1816L20.4688 16.4678L13.2188 20.8184Z" fill="white"/></svg></a>
+        {% endif %}
+        {% if section.settings.twitter != blank %}
+          <a href="{{ section.settings.twitter }}" aria-label="Twitter"><svg viewBox="0 0 32 33" fill="none" aria-hidden="true"><path d="M31.5237 6.78842C30.4104 7.29717 29.2144 7.64092 27.957 7.79629C29.2544 6.99576 30.2249 5.73581 30.6877 4.25154C29.4688 4.99816 28.1348 5.52369 26.7437 5.8053C25.8082 4.77523 24.5691 4.09249 23.2188 3.86307C21.8685 3.63365 20.4825 3.87038 19.276 4.53652C18.0695 5.20265 17.1101 6.26092 16.5466 7.54701C15.9831 8.83311 15.8471 10.2751 16.1597 11.649C13.69 11.5211 11.2739 10.8591 9.06831 9.70592C6.86272 8.55279 4.91687 6.93433 3.35702 4.95554C2.82369 5.90429 2.51702 7.00429 2.51702 8.17579C2.51643 9.23041 2.76827 10.2689 3.25019 11.1991C3.73212 12.1292 4.42924 12.9223 5.27969 13.508C4.29342 13.4755 3.32891 13.2007 2.46636 12.7064V12.7889C2.46626 14.2681 2.9624 15.7017 3.8706 16.8465C4.7788 17.9914 6.04312 18.7769 7.44902 19.0699C6.53401 19.3249 5.57484 19.3625 4.64369 19.1799C5.04018 20.4527 5.8128 21.5658 6.85333 22.3632C7.89386 23.1606 9.1502 23.6024 10.4464 23.6267C8.24603 25.4077 5.52884 26.3738 2.73169 26.3698C2.23624 26.3684 1.74125 26.3386 1.24902 26.2804C4.08911 28.1613 7.39375 29.1602 10.769 29.1583C22.1957 29.1583 28.4424 19.3985 28.4424 10.934C28.4424 10.6581 28.4361 10.3822 28.4237 10.1063C29.6382 9.19947 30.6869 8.07747 31.521 6.79254L31.5237 6.78842Z" fill="white"/></svg></a>
+        {% endif %}
+    </div>
+    {%- assign pay_types = section.settings.payment_types | remove: ' ' | split: ',' -%}
+    {%- if pay_types.size > 0 -%}
+      <div class="uc-footer__payments">
+        <span class="uc-footer__payments-label">{{ section.settings.payments_label }}</span>
+        <ul class="uc-footer__payments-list" role="list">
+          {%- for type in pay_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'uc-payment-icon' }}</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="uc-footer__bottom">
+    <span>&copy; {{ section.settings.copyright | default: shop.name }} {{ section.settings.rights_text }}</span>
+
+    {%- if section.settings.policy_links != blank -%}
+      <span>
+        {%- for link in section.settings.policy_links.links -%}
+          <a href="{{ link.url }}"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>{% unless forloop.last %} &middot; {% endunless %}
+        {%- endfor -%}
+      </span>
+    {%- endif -%}
+  </div>
+</footer>
+<style>
+  .uc-footer__tagline {
+    font-weight: 600;
+  }
+</style>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Containers for storage, business, construction, and everything in between."
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+1-800-230-7764"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@usedconex.com"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Business address",
+      "default": "5401 West Kennedy Blvd, Suite 100, Tampa, FL 33609"
+    },
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Business hours",
+      "default": "8am – 6pm EST"
+    },
+    {
+      "type": "header",
+      "content": "Payment logos"
+    },
+    {
+      "type": "text",
+      "id": "payments_label",
+      "label": "Label",
+      "default": "We accept"
+    },
+    {
+      "type": "text",
+      "id": "payment_types",
+      "label": "Cards shown",
+      "info": "Comma-separated Shopify card names, e.g. visa, master, discover, american_express.",
+      "default": "visa, master, discover, american_express"
+    },
+    {
+      "type": "header",
+      "content": "Social links"
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram"
+    },
+    {
+      "type": "url",
+      "id": "facebook",
+      "label": "Facebook"
+    },
+    {
+      "type": "url",
+      "id": "linkedin",
+      "label": "LinkedIn"
+    },
+    {
+      "type": "url",
+      "id": "youtube",
+      "label": "YouTube"
+    },
+    {
+      "type": "url",
+      "id": "twitter",
+      "label": "Twitter"
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright name",
+      "default": "Used Conex"
+    },
+    {
+      "type": "link_list",
+      "id": "policy_links",
+      "label": "Policy links menu"
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "PHONE"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "EMAIL"
+    },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "Address label",
+      "default": "ADDRESS"
+    },
+    {
+      "type": "text",
+      "id": "hours_label",
+      "label": "Hours label",
+      "default": "BUSINESS HOURS"
+    },
+    {
+      "type": "text",
+      "id": "rights_text",
+      "label": "Text after copyright name",
+      "default": "All rights reserved."
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Menu column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Footer",
+      "blocks": [
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Shop"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Services"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Resources"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Company"
+          }
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": [
+      "footer"
+    ]
+  }
+}
+{% endschema %}

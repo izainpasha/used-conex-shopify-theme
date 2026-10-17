@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Answers to the questions we hear most about buying, receiving, and owning a shipping container.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg"
+      }
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "Am I able to pick a color?", "answer": "<p>Most customers want to choose their container color, and sometimes this is possible, but not always. You get the first container off of the stack at the intermodal depot. If you order multiple containers, it is often possible to get the color of your choice. Also, one-trip containers are generally tan or beige.</p>" } },
+        "f2": { "type": "faq", "settings": { "question": "Can I see the container before purchasing?", "answer": "<p>Unfortunately, customers don't have access to the depots for liability reasons. All containers are inspected before delivery, and we always recommend our customers check the container at delivery. If you want to pick up your container, you will be given a release number and the depot information.</p>" } },
+        "f3": { "type": "faq", "settings": { "question": "How much room do I need for my container delivery?", "answer": "<p>We encourage our customers to measure their property before ordering. Our most common deliveries are done by pick-up trucks and 40ft tilt bed trailers, so we require at least 100-120ft of space for a 40ft container and 80-100ft for a 20ft container. Please make sure you have a 10ft width going down the driveway and 14ft height clearance (we can work with 13ft).</p>" } },
+        "f4": { "type": "faq", "settings": { "question": "Can I use a cargo-worthy shipping container for export purposes?", "answer": "<p>Although you can use a cargo worthy container for export purposes, the container needs to have a valid CSC Survey in order to be exportable. If you buy your shipping container from Used Conex, we will provide your container with a CSC survey per your request. Depending on the previous shipping line or leasing company, you might need to go through a neutralization process.</p>" } },
+        "f5": { "type": "faq", "settings": { "question": "What does it mean to neutralize a shipping container?", "answer": "<p>The previous owner of the container does not want to be associated with any activities involving that container after it's sold, since they no longer have ownership over it. To neutralize a container, elements like logos, side prefix codes, CSC prefix codes, and corner casting stamps should be removed or covered by paint so the container is no longer identifiable by those signs.</p>" } },
+        "f6": { "type": "faq", "settings": { "question": "What if I have a hard time opening the container doors?", "answer": "<p>Prepare the ground before we deliver — uneven ground can affect the container's structure and make doors hard to open or close. We recommend industrial lubricants (available at most hardware stores), since these are used containers. Placing wood blocks under the door frame at the corner post also helps.</p>" } },
+        "f7": { "type": "faq", "settings": { "question": "What if my container smells?", "answer": "<p>It's not uncommon for a container to have an odor. The easiest fix is to leave the doors open overnight — the smell should go away. Your local hardware store should also carry industrial-strength odor neutralizers.</p>" } },
+        "f8": { "type": "faq", "settings": { "question": "What sectors use these containers?", "answer": "<p>Most industries need storage units for storage space, residence space, or office room. Sectors that commonly use steel containers include retail, education, military, government, gas, and construction, among many others. WWT containers in particular are popular across sectors thanks to their portability and low prices.</p>" } },
+        "f9": { "type": "faq", "settings": { "question": "What's the best container for my needs — new or used?", "answer": "<p>The choice is yours. There are many excellent used containers on the market that can save you money — just do a little research and inspect the container personally to confirm there are no leaks, rust, holes, or other defects before buying.</p>" } },
+        "f10": { "type": "faq", "settings": { "question": "How can I be sure I'm going with a legit company?", "answer": "<p>Check the company's reviews and customer service, call and speak to a live agent, and research the company to confirm they're legitimate. Membership in the NPSA (National Portable Storage Association) and reviews on the Better Business Bureau are good signs. Also ask about payment methods — be cautious of companies that only accept cash.</p>" } },
+        "f11": { "type": "faq", "settings": { "question": "Do I require a permit to keep the container on my property?", "answer": "<p>In most cases you won't need a permit, unless you're in a residential area with stricter city rules. It's advisable to check with your city before purchasing a container to avoid any hassle later.</p>" } },
+        "f12": { "type": "faq", "settings": { "question": "Why choose a steel container over other structures?", "answer": "<p>Cost — it's relatively cheap compared to building brick-and-mortar storage. Speed — containers are much faster to load and transport than other options. Solid floors — containers provide solid wood flooring that can hold heavy weight and equipment, unlike most sheds and carports.</p>" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9", "f10", "f11", "f12"],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "intro": "We've answered the most common questions about buying and receiving shipping containers from Used Conex. From site prep to delivery timing, you'll find everything you need to know here."
+      }
+    },
+    "cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "faq", "cta"]
+}

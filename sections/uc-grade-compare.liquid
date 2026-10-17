@@ -1,0 +1,454 @@
+{%- render 'uc-section-style', section: section -%}
+<section class="uc-grade-compare uc-font"><div class="uc-wrap"><h2 class="uc-grade-compare__title">{{ section.settings.heading }}</h2><div class="uc-grade-compare__intro">{{ section.settings.intro }}</div><div class="uc-grade-compare__grid"><figure class="uc-grade-compare__figure">{% if section.settings.left_image != blank %}{{ section.settings.left_image | image_url: width: 948 | image_tag: alt: section.settings.left_label, loading: 'lazy' }}{% else %}{% render 'uc-img', src: section.settings.left_fallback_url, alt: section.settings.left_label, width: 474, height: 474, widths: '360,474,711,948', sizes: '(min-width: 750px) 40vw, 100vw' %}{% endif %}<figcaption>{{ section.settings.left_label }}</figcaption></figure><div class="uc-grade-compare__vs" aria-hidden="true">{% if section.settings.vs_image != blank %}{{ section.settings.vs_image | image_url: width: 256 | image_tag: alt: '', loading: 'lazy' }}{% else %}{% render 'uc-img', src: section.settings.vs_fallback_url, decorative: true, width: 128, height: 128, widths: '128,256', sizes: '128px' %}{% endif %}</div><figure class="uc-grade-compare__figure">{% if section.settings.right_image != blank %}{{ section.settings.right_image | image_url: width: 948 | image_tag: alt: section.settings.right_label, loading: 'lazy' }}{% else %}{% render 'uc-img', src: section.settings.right_fallback_url, alt: section.settings.right_label, width: 474, height: 474, widths: '360,474,711,948', sizes: '(min-width: 750px) 40vw, 100vw' %}{% endif %}<figcaption>{{ section.settings.right_label }}</figcaption></figure></div></div></section>
+{% schema %}
+{
+  "name": "UC Grade Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Cargo-Worthy vs Wind & Watertight"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left image"
+    },
+    {
+      "type": "text",
+      "id": "left_fallback_url",
+      "label": "Left fallback image URL"
+    },
+    {
+      "type": "text",
+      "id": "left_label",
+      "label": "Left label",
+      "default": "CW Shipping Container"
+    },
+    {
+      "type": "image_picker",
+      "id": "vs_image",
+      "label": "VS graphic"
+    },
+    {
+      "type": "text",
+      "id": "vs_fallback_url",
+      "label": "VS fallback image URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right image"
+    },
+    {
+      "type": "text",
+      "id": "right_fallback_url",
+      "label": "Right fallback image URL"
+    },
+    {
+      "type": "text",
+      "id": "right_label",
+      "label": "Right label",
+      "default": "WWT Shipping Container"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "UC Grade Comparison"
+    }
+  ]
+}
+{% endschema %}

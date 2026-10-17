@@ -1,0 +1,164 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-specialty-hero",
+      "settings": {
+        "heading": "New Open Side Containers",
+        "text": "<p>Looking for maximum accessibility and premium quality in a shipping container? Our New Open Side Containers—available in 20ft, 40ft, and 40ft High Cube sizes—feature full side access doors in addition to standard end doors. This design makes loading and unloading large or awkward items faster, easier, and more efficient.</p><p>Each unit is a new one trip open side container, meaning it has only made a single cargo journey from the factory before reaching you.</p>",
+        "tagline": "Nationwide Delivery – Request Your Free Quote Today!",
+        "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-07.jpg?v=1788981685"
+      }
+    },
+    "intro": {
+      "type": "uc-specialty-intro",
+      "settings": {
+        "heading": "What Is a New Open Side Container?",
+        "text": "<p>A new open side shipping container, also called a full side access container or side opening container, is built with heavy-duty doors that span the entire length of one side. These premium one trip units give you unmatched flexibility for loading, unloading, and organizing cargo. Whether you’re storing oversized equipment, creating a mobile showroom, or streamlining logistics, a shipping container with side doors offers convenience standard containers can’t match.</p>"
+      }
+    },
+    "gallery": {
+      "type": "uc-specialty-gallery",
+      "blocks": {
+        "g1": {
+          "type": "image",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-14.png?v=1788981683",
+            "image_alt": "New open side container exterior"
+          }
+        },
+        "g2": {
+          "type": "image",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-27.png?v=1788981683",
+            "image_alt": "Open side container doors"
+          }
+        },
+        "g3": {
+          "type": "image",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-18.png?v=1788981683",
+            "image_alt": "Open side container interior"
+          }
+        },
+        "g4": {
+          "type": "image",
+          "settings": {
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-33.png?v=1788981682",
+            "image_alt": "New full side access container"
+          }
+        }
+      },
+      "block_order": [
+        "g1",
+        "g2",
+        "g3",
+        "g4"
+      ],
+      "settings": {
+        "heading": "New Open Side Containers"
+      }
+    },
+    "cards": {
+      "type": "uc-specialty-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "heading": "Key Benefits of Open Side Shipping Containers",
+            "text": "<ul><li><strong>Full-Length Access:</strong> Quickly load and unload from the side without relying only on end doors.</li><li><strong>Ideal for Oversized Cargo:</strong> Perfect for machinery, vehicles, long pipes, or irregularly shaped goods.</li><li><strong>Versatile for Events & Retail:</strong> Great for pop-up shops, exhibitions, and portable showrooms.</li><li><strong>Premium Condition:</strong> Every unit is a new one trip open side container—minimal wear and ready for immediate use.</li><li><strong>Secure & Weatherproof:</strong> Built from CORTEN steel to ISO standards, with rubber-sealed doors for protection.</li></ul>",
+            "accent": false
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "heading": "Common Uses",
+            "intro": "New open side containers are popular in many industries:",
+            "text": "<ul><li><strong>Construction:</strong> Store scaffolding, long steel beams, and oversized tools.</li><li><strong>Retail & Exhibitions:</strong> Set up accessible and secure product displays.</li><li><strong>Agriculture:</strong> Keep large equipment, hay bales, or seasonal supplies protected.</li><li><strong>Industrial Applications:</strong> Load heavy or irregular cargo with side-access forklifts.</li><li><strong>Events:</strong> Convert into walk-in vending spaces, workshops, or demonstration areas.</li></ul>",
+            "accent": true
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {}
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "question": "How long do shipping containers last?",
+            "answer": "<p>With proper care, a shipping container can last 20-30 years or more, thanks to its durable steel construction.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can shipping containers be modified?",
+            "answer": "<p>Yes! Shipping containers are highly customizable. You can modify them with windows, doors, insulation, and more to suit your needs.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between a 20ft and 40ft shipping container?",
+            "answer": "<p>A 40ft container provides roughly twice the storage capacity of a 20ft container.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "question": "Am I able to pick a color?",
+            "answer": "<p>Color availability depends on current inventory. Contact our team for available options.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I see the container before purchasing?",
+            "answer": "<p>Contact our team to discuss viewing options at a depot near you.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s the origin of shipping containers?",
+            "answer": "<p>New one-trip containers are manufactured overseas and make one cargo journey before sale.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "intro": "We’ve answered the most common questions about buying and receiving shipping containers from Used Conex. From site prep to delivery timing, you’ll find everything you need to know here."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "gallery",
+    "cards",
+    "faq"
+  ]
+}

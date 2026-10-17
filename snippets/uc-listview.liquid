@@ -1,0 +1,195 @@
+{%- comment -%}
+  Used Conex — container list view (collection pages + ZIP search page).
+
+  Top bar (ZIP, count, sort), filter sidebar, then one row per container:
+  image, title, depot line, badges, and a price column with Add To Cart.
+
+  Usage:
+    {% render 'uc-listview', products: collection.products, settings: section.settings,
+       heading_tag: 'h1', heading: collection.title, subheading: ..., gate: false %}
+
+  gate: true hides the rows until a valid ZIP is entered (the search page).
+  All behaviour lives in uc-storefront.js (initListView + initShopFilters).
+{%- endcomment -%}
+
+{%- assign s = settings -%}
+{%- assign htag = heading_tag | default: 'h2' -%}
+{%- if htag == 'h1' -%}{%- assign ntag = 'h2' -%}{%- else -%}{%- assign ntag = 'h3' -%}{%- endif -%}
+
+<div class="uc-lv"
+  data-uc-listview
+  {% if gate %}data-gate{% endif %}
+  data-live="{{ s.live_pricing | default: true }}"
+  data-api-base="{{ s.api_base | default: 'https://api.usedconex.com/client/v1' }}"
+  data-api-email="{{ s.api_email | default: 'mg@usedconex.com' }}"
+  data-msg-invalid="{{ s.invalid_message | escape }}"
+  data-msg-loading="{{ s.loading_message | escape }}"
+  data-label-delivery="{{ s.price_label | escape }}"
+  data-label-pickup="{{ s.pickup_price_label | default: 'Pickup price:' | escape }}"
+>
+  <div class="uc-lv__bar">
+    <form class="uc-lv__zip" data-uc-lv-zipform novalidate>
+      <label class="uc-lv__zipfield">
+        {%- render 'uc-icon', name: 'map-pin' -%}
+        <input type="text" name="zipcode" inputmode="numeric" autocomplete="postal-code" maxlength="10"
+          placeholder="{{ s.zip_placeholder }}" aria-label="{{ s.zip_placeholder }}" data-uc-lv-zip>
+      </label>
+      <button type="submit" class="uc-lv__zipbtn">{{ s.zip_button }}</button>
+    </form>
+    <p class="uc-lv__count" data-uc-filter-count
+      data-template="{shown} {{ s.count_label | escape }}"
+      data-template-nozip="{shown} {{ s.count_label_nozip | default: 'containers' | escape }}"></p>
+    <label class="uc-lv__sort">
+      <span>{{ s.sort_label }}</span>
+      <span class="uc-lv__sortctl">
+        <select data-uc-sort>
+          <option value="recommended">Recommended</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+        {%- render 'uc-icon', name: 'chevron-down' -%}
+      </span>
+    </label>
+  </div>
+  <p class="uc-lv__status" data-uc-lv-status role="status" hidden></p>
+
+  {%- if gate -%}
+    <div class="uc-lv__prompt" data-uc-lv-prompt>
+      {%- render 'uc-icon', name: 'map-pin' -%}
+      <p>{{ s.prompt_message }}</p>
+    </div>
+  {%- endif -%}
+
+  <div class="uc-lv__layout" data-uc-shop-filters data-uc-lv-panel {% if gate %}hidden{% endif %}>
+
+    <aside class="uc-shopfilters uc-lv__filters">
+      <div class="uc-shopfilters__head">
+        <p class="uc-lv__filtertitle">{{ s.filters_heading }}</p>
+        <button type="button" class="uc-shopfilters__clear" data-uc-filter-clear>{{ s.clear_label }}</button>
+      </div>
+
+      {%- assign groups = 'size,condition,grade,price' | split: ',' -%}
+      {%- for g in groups -%}
+        {%- case g -%}
+          {%- when 'size' -%}{%- assign gh = s.size_heading -%}
+          {%- when 'condition' -%}{%- assign gh = s.condition_heading -%}
+          {%- when 'grade' -%}{%- assign gh = s.grade_heading -%}
+          {%- when 'price' -%}{%- assign gh = s.price_heading -%}
+        {%- endcase -%}
+        <div class="uc-shopfilters__group" data-uc-filter-group="{{ g }}">
+          <button type="button" class="uc-shopfilters__grouphead" data-uc-filter-toggle aria-expanded="true">
+            {{ gh }}{%- render 'uc-icon', name: 'chevron-down' -%}
+          </button>
+          <div class="uc-shopfilters__options" data-uc-filter-options>
+            {%- if g == 'price' -%}<p class="uc-shopfilters__hint" data-uc-filter-price-hint>{{ s.price_hint }}</p>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+
+      <div class="uc-lv__trust">
+        {%- render 'uc-icon', name: 'shield-check' -%}
+        <div>
+          <p class="uc-lv__trusttitle">{{ s.trust_heading }}</p>
+          <p>{{ s.trust_body }}</p>
+        </div>
+      </div>
+    </aside>
+
+    <div class="uc-lv__main">
+      <div class="uc-lv__head">
+        <{{ htag }} class="uc-lv__title">{{ heading }}</{{ htag }}>
+        {%- if subheading != blank -%}<div class="uc-lv__sub">{{ subheading }}</div>{%- endif -%}
+      </div>
+
+      <div class="uc-lv__list" data-uc-filter-grid>
+        {%- for product in products -%}
+          {%- assign cid = product.metafields.custom.container_id.value -%}
+          {%- assign size_cat = product.metafields.custom.size_category.value | default: '' -%}
+          {%- assign grade_raw = product.metafields.custom.type_category.value | default: '' -%}
+          {%- liquid
+            assign grade = grade_raw
+            assign condition = 'Used'
+            assign probe = grade_raw | append: ' ' | append: product.title
+            if probe contains 'Open Side'
+              assign grade = 'Open Side'
+              assign condition = 'New'
+            elsif probe contains 'Tunnel'
+              assign grade = 'Tunnel'
+              assign condition = 'New'
+            elsif grade_raw contains 'One-Trip' or grade_raw contains 'One Trip' or grade_raw contains 'New'
+              assign grade = 'One-Trip'
+              assign condition = 'New'
+            elsif probe contains 'Insulated'
+              assign grade = 'Insulated'
+            elsif grade_raw == 'CW' or grade_raw contains 'Cargo Worthy'
+              assign grade = 'Cargo Worthy'
+            elsif grade_raw == 'WWT' or grade_raw contains 'Watertight'
+              assign grade = 'Wind & Watertight'
+            endif
+            assign ft = size_cat | split: 'ft' | first | strip
+            if size_cat contains 'ft'
+              assign ft_label = ft | append: ' ft'
+            else
+              assign ft_label = size_cat
+            endif
+            if grade_raw == 'CW'
+              assign cart_grade = 'CW'
+            elsif grade_raw == 'WWT'
+              assign cart_grade = 'WWT'
+            else
+              assign cart_grade = grade
+            endif
+          -%}
+          <article class="uc-lv__row"
+            data-uc-card
+            data-container-id="{{ cid }}"
+            data-size="{{ size_cat }}"
+            data-condition="{{ condition }}"
+            data-grade="{{ grade }}"
+            data-index="{{ forloop.index0 }}"
+          >
+            <a class="uc-lv__img" href="{{ product.url }}" data-uc-product-link tabindex="-1" aria-hidden="true">
+              {%- if product.featured_image -%}
+                {{ product.featured_image | image_url: width: 520 | image_tag: alt: product.featured_image.alt | default: product.title, loading: 'lazy', decoding: 'async', sizes: '(max-width: 700px) 100vw, 260px' }}
+              {%- endif -%}
+            </a>
+
+            <div class="uc-lv__info">
+              <{{ ntag }} class="uc-lv__name"><a href="{{ product.url }}" data-uc-product-link>{{ product.title }}</a></{{ ntag }}>
+              <p class="uc-lv__depot" data-uc-lv-depot hidden>{%- render 'uc-icon', name: 'map-pin' -%}<span></span></p>
+              <ul class="uc-lv__badges">
+                {%- if ft_label != blank -%}<li>{%- render 'uc-icon', name: 'ruler' -%}{{ ft_label }}</li>{%- endif -%}
+                {%- if grade != blank -%}<li>{%- render 'uc-icon', name: 'layers' -%}{{ grade }}</li>{%- endif -%}
+                <li>{%- render 'uc-icon', name: 'sparkles' -%}{{ condition }}</li>
+              </ul>
+            </div>
+
+            <div class="uc-lv__buy">
+              <div class="uc-lv__pricing" data-uc-pricing hidden>
+                <span class="uc-lv__pricelabel" data-uc-lv-pricelabel>{{ s.price_label }}</span>
+                <span class="uc-lv__price" data-uc-price></span>
+                <span class="uc-lv__delivery" data-uc-delivery hidden></span>
+              </div>
+              <p class="uc-lv__noprice" data-uc-lv-noprice>{{ s.no_price_hint }}</p>
+              <p class="uc-lv__oos" data-uc-oos hidden>{{ s.oos_message }}</p>
+              <a class="uc-lv__cart"
+                href="{{ s.quote_url | default: '/pages/request-a-quote' }}"
+                data-uc-quote-cta
+                data-quote-url="{{ s.quote_url | default: '/pages/request-a-quote' }}"
+                data-size="{{ size_cat }}"
+                data-grade="{{ cart_grade }}"
+                data-condition="{{ condition }}"
+                data-product-title="{{ product.title | escape }}"
+                data-product-handle="{{ product.handle }}"
+                data-container-id="{{ cid }}"
+                data-image="{{ product.featured_image | image_url: width: 160 }}"
+              >{%- render 'uc-icon', name: 'shopping-cart' -%}{{ s.quote_label }}</a>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+      <p class="uc-lv__empty" data-uc-filter-empty hidden>{{ s.no_matches_message }}</p>
+    </div>
+
+  </div>
+</div>

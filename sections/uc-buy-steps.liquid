@@ -1,0 +1,554 @@
+{%- comment -%} Used Conex — "How to buy shipping container" step tabs + content card (dark section) {%- endcomment -%}
+{%- render 'uc-section-style', section: section -%}
+
+<section class="uc-steps uc-font" id="uc-steps-{{ section.id }}">
+  <div class="uc-wrap">
+    <div class="uc-steps__head">
+      <h2 class="uc-steps__title">{{ section.settings.heading }}</h2>
+      <p class="uc-steps__intro">{{ section.settings.intro }}</p>
+    </div>
+
+    <div class="uc-steps__tabs" role="tablist">
+      {%- for block in section.blocks -%}
+        <button type="button" class="uc-steps__tab{% if forloop.first %} is-active{% endif %}" data-step-tab="{{ forloop.index }}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" {{ block.shopify_attributes }}>
+          {{ block.settings.label }}
+        </button>
+        {%- unless forloop.last -%}<span class="uc-steps__tab-line" aria-hidden="true"></span>{%- endunless -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="uc-steps__panels">
+      {%- for block in section.blocks -%}
+        <div class="uc-steps__panel{% if forloop.first %} is-active{% endif %}" data-step-panel="{{ forloop.index }}" role="tabpanel">
+          <h3 class="uc-steps__panel-title">{{ block.settings.panel_title }}</h3>
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 1360 | image_tag: class: 'uc-steps__panel-img', alt: block.settings.panel_title, loading: 'lazy' }}
+          {%- elsif block.settings.fallback_image_url != blank -%}
+            {%- render 'uc-img', src: block.settings.fallback_image_url, class: 'uc-steps__panel-img', alt: block.settings.panel_title, widths: '360,540,720,960,1360', sizes: '(min-width: 990px) 60vw, 100vw' -%}
+          {%- endif -%}
+          <div class="uc-steps__panel-body">{{ block.settings.panel_body }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var section = document.getElementById('uc-steps-{{ section.id }}');
+  if (!section) return;
+  var tabs = section.querySelectorAll('[data-step-tab]');
+  var panels = section.querySelectorAll('[data-step-panel]');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var idx = tab.getAttribute('data-step-tab');
+      tabs.forEach(function(t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function(p) { p.classList.remove('is-active'); });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      var panel = section.querySelector('[data-step-panel="' + idx + '"]');
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "UC Buy Steps",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How to buy shipping container"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "Buying a shipping container may sound daunting, but the process becomes simpler once it’s broken down. Follow these steps to ensure you’re getting the best shipping container for your needs and your budget."
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "default": "Step 01"
+        },
+        {
+          "type": "text",
+          "id": "panel_title",
+          "label": "Panel title",
+          "default": "Research shipping container suppliers."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Panel image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Fallback panel image URL",
+          "info": "Used only if no image uploaded"
+        },
+        {
+          "type": "richtext",
+          "id": "panel_body",
+          "label": "Panel body text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "UC Buy Steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "label": "Step 01",
+            "panel_title": "Research shipping container suppliers.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step-illustration-hd.png",
+            "panel_body": "<p>The most important step in the process is finding a <strong>reputable supplier</strong>. Seek out suppliers that offer a high level of transparency every step of the way, from pricing to containers offered to any limitations on pickup or delivery. If you don't want to pore through online searches and directories, start with <strong>Used Conex</strong>. Used Conex offers the largest variety of used containers, the guaranteed lowest prices, and industry-leading warranties on all purchases.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Step 02",
+            "panel_title": "Determine the right container size and type.",
+            "panel_body": "<p>Consider what you'll be storing or shipping and choose between 20ft, 40ft, or 40ft High Cube containers, along with the grade that matches your budget and intended use.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Step 03",
+            "panel_title": "Request a quote.",
+            "panel_body": "<p>Enter your zip code and delivery preferences to get instant, transparent pricing with no hidden fees.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Step 04",
+            "panel_title": "Prepare your site.",
+            "panel_body": "<p>Make sure your delivery location has enough clearance and a level surface for drop-off.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Step 05",
+            "panel_title": "Schedule delivery.",
+            "panel_body": "<p>Choose a delivery window that works for you — our nationwide roll-off delivery network gets your container to you fast.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "label": "Step 06",
+            "panel_title": "Receive and inspect your container.",
+            "panel_body": "<p>Once delivered, do a final walkthrough to confirm your container meets the agreed-upon condition and grade.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

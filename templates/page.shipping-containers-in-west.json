@@ -1,0 +1,394 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-location-hero",
+      "settings": {
+        "heading": "Shipping containers for sale across the West",
+        "subheading": "From the Pacific Coast to the Rockies, Used Conex delivers durable shipping containers throughout the West — fast service, fair pricing, and local depots across California, the Pacific Northwest, and the Mountain West.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg"
+      }
+    },
+    "hub_intro": {
+      "type": "uc-hub-intro",
+      "settings": {
+        "heading": "Delivering across the West",
+        "body": "<p>Used Conex serves the western United States from container depots across California, Washington, Oregon, Colorado, Utah, and Idaho. Whether you're on a job site in the Bay Area, a ranch outside Boise, or a growing business in Denver, our local drivers know the terrain — from coastal fog and hills to high-desert heat and mountain snow.</p><p>We stock 20ft, 40ft, and 40ft high cube containers in Wind & Watertight, Cargo Worthy, and New One-Trip condition, ready for fast delivery across the region.</p>"
+      }
+    },
+    "why_us": {
+      "type": "uc-location-why-us",
+      "blocks": {
+        "p1": {
+          "type": "pill",
+          "settings": {
+            "text": "FREE 25 YEAR WARRANTY",
+            "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-warranty.png"
+          }
+        },
+        "p2": {
+          "type": "pill",
+          "settings": {
+            "text": "BEST PRICES",
+            "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-pricetag.png"
+          }
+        },
+        "p3": {
+          "type": "pill",
+          "settings": {
+            "text": "QUALITY CONTAINERS",
+            "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-shield.png"
+          }
+        },
+        "p4": {
+          "type": "pill",
+          "settings": {
+            "text": "PAY AFTER DELIVERY",
+            "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-receipt.png"
+          }
+        },
+        "p5": {
+          "type": "pill",
+          "settings": {
+            "text": "1000+ REVIEWS",
+            "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-reviews.png"
+          }
+        },
+        "p6": {
+          "type": "pill",
+          "settings": {
+            "text": "FAST DELIVERY",
+            "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-truck_4586a6de-ede3-47c7-9da1-868a1613438b.png"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ],
+      "settings": {
+        "heading": "Why Choose Used Conex?",
+        "intro": "With thousands of containers delivered nationwide, Used Conex is a trusted partner for businesses, homeowners, and job sites. Our competitive pricing, responsive service, and fast delivery make us the smart choice.",
+        "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-why-cube.png"
+      }
+    },
+    "how_it_works": {
+      "type": "uc-location-how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Input Your Zip Code",
+            "text": "Enter your ZIP code to see available inventory and pricing in your area."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Choose Your Container Size and Type",
+            "text": "Pick the size and condition that fits your storage needs — 20ft, 40ft, or high cube."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Complete Your Order",
+            "text": "We schedule your delivery and place the container exactly where you need it."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "how it works",
+        "intro": "Ordering a shipping container from Used Conex is simple, fast, and secure. Whether you're storing tools, inventory, or household goods, our 3-step process ensures a smooth experience from quote to delivery."
+      }
+    },
+    "types": {
+      "type": "uc-location-container-types",
+      "blocks": {
+        "t1": {
+          "type": "type",
+          "settings": {
+            "title": "NEW ONE TRIP",
+            "text": "These containers are virtually brand new and ready for 10-20 years of extensive use.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-onetrip.png",
+            "link": "/pages/grades-one-trip",
+            "button_label": "Learn More"
+          }
+        },
+        "t2": {
+          "type": "type",
+          "settings": {
+            "title": "WIND AND WATERTIGHT",
+            "text": "These containers are more affordable and that makes them a better choice when it comes to storage needs.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-wwt.png",
+            "link": "/pages/dimensions",
+            "button_label": "Learn More"
+          }
+        },
+        "t3": {
+          "type": "type",
+          "settings": {
+            "title": "CARGO WORTHY",
+            "text": "These containers are in better shape than used wind and watertight containers, and they are slightly more expensive as well.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-cw.png",
+            "link": "/pages/dimensions",
+            "button_label": "Learn More"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "heading": "Different conex types",
+        "intro": "We offer three container condition types to fit every need and budget. Whether you're looking for a low-cost option or a near-new unit, all our containers are wind and watertight, secure, and built to last."
+      }
+    },
+    "sizes": {
+      "type": "uc-location-sizes",
+      "blocks": {
+        "sz1": {
+          "type": "size",
+          "settings": {
+            "title": "20 FOOT",
+            "text": "Standard 20-foot shipping container dimensions are 20' x 8' x 8'6\" for the exterior dimensions and 19'4\" x 7'8\" x 7'10\" for the interior dimensions.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-20ft.png"
+          }
+        },
+        "sz2": {
+          "type": "size",
+          "settings": {
+            "title": "40 FOOT",
+            "text": "Standard 40-foot shipping container dimensions are 40' x 8' x 8'6\" for the exterior dimensions and 39'6\" x 7'8\" x 7'10\" for the interior dimensions.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-40ft-v2.png"
+          }
+        },
+        "sz3": {
+          "type": "size",
+          "settings": {
+            "title": "HIGH CUBE CONTAINERS",
+            "text": "High cube containers come with an extra foot of vertical space at 9'6\" compared to the standard 8'6\".",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-hc.png"
+          }
+        }
+      },
+      "block_order": [
+        "sz1",
+        "sz2",
+        "sz3"
+      ],
+      "settings": {
+        "heading": "Available container sizes",
+        "intro": "Choose from our most popular container sizes: 20ft standard, 40ft standard, or our high cube options. Each option is built from rugged steel and designed for easy on-site storage with flexible placement.",
+        "link": "/pages/dimensions",
+        "link_label": "Learn More"
+      }
+    },
+    "hub_cities": {
+      "type": "uc-hub-cities",
+      "blocks": {
+        "c1": {
+          "type": "city",
+          "settings": {
+            "name": "Los Angeles, CA",
+            "handle": "shipping-containers-in-los-angeles-ca"
+          }
+        },
+        "c2": {
+          "type": "city",
+          "settings": {
+            "name": "Long Beach, CA",
+            "handle": "shipping-containers-in-long-beach-ca"
+          }
+        },
+        "c3": {
+          "type": "city",
+          "settings": {
+            "name": "Oakland, CA",
+            "handle": "shipping-containers-in-oakland-ca"
+          }
+        },
+        "c4": {
+          "type": "city",
+          "settings": {
+            "name": "Sacramento, CA",
+            "handle": "shipping-containers-insacramento-ca"
+          }
+        },
+        "c5": {
+          "type": "city",
+          "settings": {
+            "name": "Fresno, CA",
+            "handle": "shipping-containers-in-fresno-ca"
+          }
+        },
+        "c6": {
+          "type": "city",
+          "settings": {
+            "name": "Bakersfield, CA",
+            "handle": "shipping-containers-in-bakersfield-ca"
+          }
+        },
+        "c7": {
+          "type": "city",
+          "settings": {
+            "name": "Stockton, CA",
+            "handle": "shipping-containers-in-stockton-ca"
+          }
+        },
+        "c8": {
+          "type": "city",
+          "settings": {
+            "name": "Seattle, WA",
+            "handle": "shipping-containers-inseattle-wa"
+          }
+        },
+        "c9": {
+          "type": "city",
+          "settings": {
+            "name": "Spokane, WA",
+            "handle": "shipping-containers-in-spokane-wa"
+          }
+        },
+        "c10": {
+          "type": "city",
+          "settings": {
+            "name": "Portland, OR",
+            "handle": "shipping-containers-in-portland-or"
+          }
+        },
+        "c11": {
+          "type": "city",
+          "settings": {
+            "name": "Denver, CO",
+            "handle": "shipping-containers-in-denver-co"
+          }
+        },
+        "c12": {
+          "type": "city",
+          "settings": {
+            "name": "Salt Lake City, UT",
+            "handle": "shipping-containers-in-salt-lake-city-ut"
+          }
+        },
+        "c13": {
+          "type": "city",
+          "settings": {
+            "name": "Boise, ID",
+            "handle": "shipping-containers-in-boise-id"
+          }
+        },
+        "c14": {
+          "type": "city",
+          "settings": {
+            "name": "Idaho Falls, ID",
+            "handle": "shipping-containers-in-idaho-falls-id"
+          }
+        },
+        "c15": {
+          "type": "city",
+          "settings": {
+            "name": "Twin Falls, ID",
+            "handle": "shipping-containers-in-twin-falls-id"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15"
+      ],
+      "settings": {
+        "heading": "Cities We Serve",
+        "intro": "Used Conex delivers to metro areas and surrounding communities throughout the West. Select your city below for local pricing, delivery details, and answers to region-specific questions."
+      }
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How far do you deliver from your West Coast depots?",
+            "answer": "<p>Most of our western depots serve a 200-300 mile radius, covering both major metros and the smaller towns and rural areas around them.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "Do you deliver to mountain or high-desert areas?",
+            "answer": "<p>Yes — we regularly deliver to Colorado, Utah, and Idaho communities, including rural and higher-elevation properties, as long as there's safe truck access.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your containers suited to coastal or desert climates?",
+            "answer": "<p>All our containers are wind and watertight steel units built to hold up in coastal humidity, high desert heat, and everything in between.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "intro": "We've answered the most common questions about buying and receiving shipping containers from Used Conex."
+      }
+    },
+    "quote_cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {
+        "heading": "Get Your Free Quote Today",
+        "text": "Enter your ZIP code to get an instant quote on a shipping container delivered anywhere across the West."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "hub_intro",
+    "why_us",
+    "how_it_works",
+    "types",
+    "sizes",
+    "hub_cities",
+    "faq",
+    "quote_cta"
+  ]
+}

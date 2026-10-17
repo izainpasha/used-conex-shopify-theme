@@ -1,0 +1,66 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Shipping Container Grades",
+        "subheading": "Every container we sell is wind and watertight. The grade tells you what condition to expect — and what you'll pay.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg"
+      }
+    },
+    "types": {
+      "type": "uc-location-container-types",
+      "blocks": {
+        "t1": {
+          "type": "type",
+          "settings": {
+            "title": "New — One Trip",
+            "text": "Virtually brand new and ready for 10-20 years of extensive use. These units carried a single cargo from their manufacturing center overseas, and arrive in as-new condition with original paint.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-onetrip.png",
+            "link": "/pages/grades-one-trip",
+            "button_label": "Learn More"
+          }
+        },
+        "t2": {
+          "type": "type",
+          "settings": {
+            "title": "Cargo Worthy",
+            "text": "In better shape than wind and watertight containers, and slightly more expensive. We can provide a sea-worthy certificate on a used CW container, so you can use it to ship items overseas.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-cw.png",
+            "link": "/pages/used-cw-containers",
+            "button_label": "Learn More"
+          }
+        },
+        "t3": {
+          "type": "type",
+          "settings": {
+            "title": "Wind & Watertight",
+            "text": "More affordable, which makes them a better choice for storage needs. We offer great quality WWT containers with a 25-year leak warranty — and never supply As-Is containers with holes or damage.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-wwt.png",
+            "link": "/pages/used-windwatertight",
+            "button_label": "Learn More"
+          }
+        }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "heading": "Compare Container Grades",
+        "intro": "We offer three container condition types to fit every need and budget. Whether you're looking for a low-cost storage option or a near-new unit, all our containers are wind and watertight, secure, and built to last."
+      }
+    },
+    "cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "types", "cta"]
+}

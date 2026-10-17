@@ -1,0 +1,964 @@
+{%- comment -%} Used Conex — Rent options (rent-to-own / short-term) pricing tables + rental application form {%- endcomment -%}{%- render 'uc-section-style', section: section -%}
+
+
+<section class="uc-section uc-font" id="uc-rent-app-{{ section.id }}">
+  <div class="uc-wrap">
+    <h2 class="uc-rent-guide__title uc-rent-guide__rule">{{ section.settings.heading }}</h2>
+
+    <div class="uc-rent-tabs" role="tablist">
+      <button type="button" class="uc-rent-tabs__tab uc-rent-tabs__tab--active" data-rent-tab="1" role="tab" aria-selected="true">{{ section.settings.tab_1 }}</button>
+      <button type="button" class="uc-rent-tabs__tab" data-rent-tab="2" role="tab" aria-selected="false">{{ section.settings.tab_2 }}</button>
+    </div>
+
+    <div class="uc-rent-pricing uc-rent-pricing--active" data-rent-panel="1" role="tabpanel">
+      <div class="uc-rent-pricing__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'price_card' -%}
+            <div class="uc-rent-pricing__card" {{ block.shopify_attributes }}>
+              <h3 class="uc-rent-pricing__title">{{ block.settings.title }}</h3>
+              {%- assign terms = block.settings.terms | newline_to_br | split: '<br />' -%}
+              {%- for term in terms -%}
+                {%- assign t = term | strip -%}
+                {%- if t != blank -%}
+                  {%- assign parts = t | split: '|' -%}
+                  <div class="uc-rent-pricing__row">
+                    <span class="uc-rent-pricing__term">{{ parts[0] | strip }}</span>
+                    <span class="uc-rent-pricing__price">{{ parts[1] | strip }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="uc-rent-pricing__note">{{ section.settings.pricing_note }}</div>
+    </div>
+
+    <div class="uc-rent-pricing" data-rent-panel="2" role="tabpanel" hidden>
+      <div class="uc-rent-pricing__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'short_term_card' -%}
+            <div class="uc-rent-pricing__card" {{ block.shopify_attributes }}>
+              <h3 class="uc-rent-pricing__title">{{ block.settings.title }}</h3>
+              {%- assign terms = block.settings.terms | newline_to_br | split: '<br />' -%}
+              {%- for term in terms -%}
+                {%- assign t = term | strip -%}
+                {%- if t != blank -%}
+                  {%- assign parts = t | split: '|' -%}
+                  <div class="uc-rent-pricing__row">
+                    <span class="uc-rent-pricing__term">{{ parts[0] | strip }}</span>
+                    <span class="uc-rent-pricing__price">{{ parts[1] | strip }}</span>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="uc-rent-pricing__note">{{ section.settings.short_term_note }}</div>
+    </div>
+
+    {%- form 'contact', id: 'uc-rent-form', class: 'uc-rent-form' -%}
+      <input type="hidden" name="contact[tags]" value="rental-application">
+
+      <h3 class="uc-rent-form__section-title uc-rent-form__section-title--first">{{ section.settings.personal_heading }}</h3>
+      <div class="uc-rent-form__grid">
+        <div class="uc-rent-form__field">
+          <label for="rent-name">{{ section.settings.name_label }}</label>
+          <input type="text" id="rent-name" name="contact[name]" placeholder="{{ section.settings.name_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-email">{{ section.settings.email_label }}</label>
+          <input type="email" id="rent-email" name="contact[email]" placeholder="{{ section.settings.email_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-phone">{{ section.settings.phone_label }}</label>
+          <input type="tel" id="rent-phone" name="contact[phone]" placeholder="{{ section.settings.phone_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-term">{{ section.settings.term_label }}</label>
+          <select id="rent-term" name="contact[term_container]">
+            {%- assign term_opts = section.settings.term_options | newline_to_br | split: '<br />' -%}
+            {%- for opt in term_opts -%}
+              {%- assign o = opt | strip -%}
+              {%- if o != blank -%}<option value="{{ o | strip }}">{{ o | strip }}</option>{%- endif -%}
+            {%- endfor -%}
+          </select>
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-containers">{{ section.settings.containers_label }}</label>
+          <input type="number" min="1" id="rent-containers" name="contact[num_containers]" value="1">
+        </div>
+        <div class="uc-rent-form__field uc-rent-form__field--wide">
+          <label for="rent-address">{{ section.settings.address_label }}</label>
+          <input type="text" id="rent-address" name="contact[delivery_address]" placeholder="{{ section.settings.address_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-zip">{{ section.settings.zip_label }}</label>
+          <input type="text" id="rent-zip" name="contact[zip]" placeholder="{{ section.settings.zip_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-city">{{ section.settings.city_label }}</label>
+          <input type="text" id="rent-city" name="contact[city]" placeholder="{{ section.settings.city_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-state">{{ section.settings.state_label }}</label>
+          <input type="text" id="rent-state" name="contact[state]" placeholder="{{ section.settings.state_placeholder }}">
+        </div>
+      </div>
+
+      <h3 class="uc-rent-form__section-title">{{ section.settings.employer_heading }}</h3>
+      <div class="uc-rent-form__grid">
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-type">{{ section.settings.employment_type_label }}</label>
+          <select id="rent-emp-type" name="contact[employment_type]">
+            {%- assign emp_opts = section.settings.employment_type_options | newline_to_br | split: '<br />' -%}
+            {%- for opt in emp_opts -%}
+              {%- assign o = opt | strip -%}
+              {%- if o != blank -%}<option value="{{ o | strip }}">{{ o | strip }}</option>{%- endif -%}
+            {%- endfor -%}
+          </select>
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-name">{{ section.settings.employer_name_label }}</label>
+          <input type="text" id="rent-emp-name" name="contact[employer_name]" placeholder="{{ section.settings.employer_name_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-phone">{{ section.settings.employer_phone_label }}</label>
+          <input type="tel" id="rent-emp-phone" name="contact[employer_phone]" placeholder="{{ section.settings.employer_phone_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-email">{{ section.settings.employer_email_label }}</label>
+          <input type="email" id="rent-emp-email" name="contact[employer_email]" placeholder="{{ section.settings.employer_email_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-income">{{ section.settings.income_label }}</label>
+          <input type="text" id="rent-income" name="contact[monthly_income]" placeholder="{{ section.settings.income_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field uc-rent-form__field--upload">
+          <label for="rent-paystubs">{{ section.settings.upload_label }}</label>
+          <div class="uc-rent-form__dropzone">
+            {%- if section.settings.upload_icon != blank -%}
+              {{ section.settings.upload_icon | image_url: width: 64 | image_tag: class: 'uc-rent-form__upload-icon', alt: '', loading: 'lazy' }}
+            {%- elsif section.settings.upload_icon_fallback_image_url != blank -%}
+              {%- render 'uc-img', src: section.settings.upload_icon_fallback_image_url, class: 'uc-rent-form__upload-icon', decorative: true, widths: '32,64', sizes: '32px' -%}
+            {%- endif -%}
+            <p class="uc-rent-form__dropzone-title">{{ section.settings.upload_text }}</p>
+            <p class="uc-rent-form__dropzone-note">{{ section.settings.upload_limit }}</p>
+            <p class="uc-rent-form__dropzone-note">{{ section.settings.upload_size }}</p>
+            <input type="file" id="rent-paystubs" name="contact[paystubs][]" multiple accept="application/pdf,image/*">
+          </div>
+        </div>
+        <div class="uc-rent-form__field uc-rent-form__field--wide">
+          <label for="rent-emp-address">{{ section.settings.address_label }}</label>
+          <input type="text" id="rent-emp-address" name="contact[employer_address]" placeholder="{{ section.settings.address_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-zip">{{ section.settings.zip_label }}</label>
+          <input type="text" id="rent-emp-zip" name="contact[employer_zip]" placeholder="{{ section.settings.zip_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-city">{{ section.settings.city_label }}</label>
+          <input type="text" id="rent-emp-city" name="contact[employer_city]" placeholder="{{ section.settings.city_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field">
+          <label for="rent-emp-state">{{ section.settings.state_label }}</label>
+          <input type="text" id="rent-emp-state" name="contact[employer_state]" placeholder="{{ section.settings.state_placeholder }}">
+        </div>
+      </div>
+
+      <h3 class="uc-rent-form__section-title">{{ section.settings.agent_heading }}</h3>
+      <div class="uc-rent-form__grid">
+        <div class="uc-rent-form__field uc-rent-form__field--full">
+          <label for="rent-agent">{{ section.settings.agent_label }}</label>
+          <input type="text" id="rent-agent" name="contact[sales_agent]" placeholder="{{ section.settings.agent_placeholder }}">
+        </div>
+        <div class="uc-rent-form__field uc-rent-form__field--full">
+          <label for="rent-comments">{{ section.settings.comments_label }}</label>
+          <textarea id="rent-comments" name="contact[body]" rows="5" placeholder="{{ section.settings.comments_placeholder }}"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="uc-btn uc-btn--yellow uc-rent-form__submit">
+        {{ section.settings.submit_label }}
+        <svg class="uc-btn__arrow" viewBox="0 0 13 7" fill="none" aria-hidden="true"><path d="M0 3.5h11M8 1l3 2.5L8 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    {%- endform -%}
+  </div>
+</section>
+
+<script>
+(function () {
+  var root = document.getElementById('uc-rent-app-{{ section.id }}');
+  if (!root) return;
+  var tabs = root.querySelectorAll('[data-rent-tab]');
+  var panels = root.querySelectorAll('[data-rent-panel]');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var idx = tab.getAttribute('data-rent-tab');
+      tabs.forEach(function (t) {
+        t.classList.remove('uc-rent-tabs__tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(function (p) {
+        p.classList.remove('uc-rent-pricing--active');
+        p.hidden = true;
+      });
+      tab.classList.add('uc-rent-tabs__tab--active');
+      tab.setAttribute('aria-selected', 'true');
+      var panel = root.querySelector('[data-rent-panel="' + idx + '"]');
+      if (panel) { panel.hidden = false; panel.classList.add('uc-rent-pricing--active'); }
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "UC Rent Application",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We’ve two options for rental"
+    },
+    {
+      "type": "image_picker",
+      "id": "upload_icon",
+      "label": "Upload dropzone icon"
+    },
+    {
+      "type": "text",
+      "id": "upload_icon_fallback_image_url",
+      "label": "Fallback upload icon URL",
+      "info": "Used only if no icon is selected above",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-upload-icon.svg"
+    },
+    {
+      "type": "text",
+      "id": "tab_1",
+      "label": "Tab 1 label",
+      "default": "Rent to Own"
+    },
+    {
+      "type": "text",
+      "id": "tab_2",
+      "label": "Tab 2 label",
+      "default": "Short term rental"
+    },
+    {
+      "type": "richtext",
+      "id": "pricing_note",
+      "label": "Pricing note",
+      "default": "<p>Rent-to-own options are best for customers seeking ownership potential after a series of rental payments. You have more flexibility to customize and modify the container to suit your needs. Monthly costs remain stable over the course of up to three years. If you’re able to budget for a higher monthly rate, you can save money on a shorter lease term. It’s really up to you and your needs and budget.</p><p>At Used Conex, we don’t ask for a security deposit with our rent-to-own options so you don’t have to worry about hidden costs upfront. Just choose the container and term that fits your needs best and get started with your application.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "short_term_note",
+      "label": "Short-term pricing note",
+      "default": "<p>Short-term rentals are best when you need storage for a defined period without any commitment to ownership. Pricing is billed monthly, and you can extend or end your rental as your project changes.</p><p>Delivery and pickup are arranged for you, so you only pay for the months you actually need the container.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Personal details"
+    },
+    {
+      "type": "text",
+      "id": "personal_heading",
+      "label": "Personal section heading",
+      "default": "Personal details"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Full name label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Full name placeholder",
+      "default": "David Willey.."
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "someone@example.com"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Contact no label",
+      "default": "Contact No"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Contact no placeholder",
+      "default": "+1 222 3333 244"
+    },
+    {
+      "type": "text",
+      "id": "term_label",
+      "label": "Term & container label",
+      "default": "Term and Container *"
+    },
+    {
+      "type": "textarea",
+      "id": "term_options",
+      "label": "Term & container options (one per line)",
+      "default": "1 Year Term - Used 20ft Standard\n2 Year Term - Used 20ft Standard\n3 Year Term - Used 20ft Standard\n1 Year Term - Used 40ft Standard\n2 Year Term - Used 40ft Standard\n3 Year Term - Used 40ft Standard\n1 Year Term - Used 40ft HC\n2 Year Term - Used 40ft HC\n3 Year Term - Used 40ft HC"
+    },
+    {
+      "type": "text",
+      "id": "containers_label",
+      "label": "Number of containers label",
+      "default": "Number of Containers Needed *"
+    },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "Delivery address label",
+      "default": "Delivery Address"
+    },
+    {
+      "type": "text",
+      "id": "address_placeholder",
+      "label": "Delivery address placeholder",
+      "default": "Lane 1 ,north street ash avenue"
+    },
+    {
+      "type": "text",
+      "id": "zip_label",
+      "label": "Zip label",
+      "default": "Zip Code"
+    },
+    {
+      "type": "text",
+      "id": "zip_placeholder",
+      "label": "Zip placeholder",
+      "default": "55422"
+    },
+    {
+      "type": "text",
+      "id": "city_label",
+      "label": "City label",
+      "default": "City"
+    },
+    {
+      "type": "text",
+      "id": "city_placeholder",
+      "label": "City placeholder",
+      "default": "north carolina"
+    },
+    {
+      "type": "text",
+      "id": "state_label",
+      "label": "State label",
+      "default": "State"
+    },
+    {
+      "type": "text",
+      "id": "state_placeholder",
+      "label": "State placeholder",
+      "default": "USA"
+    },
+    {
+      "type": "header",
+      "content": "Employer details"
+    },
+    {
+      "type": "text",
+      "id": "employer_heading",
+      "label": "Employer section heading",
+      "default": "Employers details"
+    },
+    {
+      "type": "text",
+      "id": "employment_type_label",
+      "label": "Employment type label",
+      "default": "Employement Type"
+    },
+    {
+      "type": "textarea",
+      "id": "employment_type_options",
+      "label": "Employment type options (one per line)",
+      "default": "Full-Time\nPart-Time\nSelf-Employed\nRetired\nOther"
+    },
+    {
+      "type": "text",
+      "id": "employer_name_label",
+      "label": "Employer name label",
+      "default": "Employers Full Name"
+    },
+    {
+      "type": "text",
+      "id": "employer_name_placeholder",
+      "label": "Employer name placeholder",
+      "default": "CDAC AVENUE"
+    },
+    {
+      "type": "text",
+      "id": "employer_phone_label",
+      "label": "Employer phone label",
+      "default": "Employer’s Phone"
+    },
+    {
+      "type": "text",
+      "id": "employer_phone_placeholder",
+      "label": "Employer phone placeholder",
+      "default": "+1 222 3333 244"
+    },
+    {
+      "type": "text",
+      "id": "employer_email_label",
+      "label": "Employer email label",
+      "default": "Employer’s Email"
+    },
+    {
+      "type": "text",
+      "id": "employer_email_placeholder",
+      "label": "Employer email placeholder",
+      "default": "someone@example.com"
+    },
+    {
+      "type": "text",
+      "id": "income_label",
+      "label": "Monthly income label",
+      "default": "Monthly Gross Income"
+    },
+    {
+      "type": "text",
+      "id": "income_placeholder",
+      "label": "Monthly income placeholder",
+      "default": "$0.00"
+    },
+    {
+      "type": "text",
+      "id": "upload_label",
+      "label": "Upload label",
+      "default": "Please Upload Your Pay Stubs (Last 3 months) *"
+    },
+    {
+      "type": "text",
+      "id": "upload_text",
+      "label": "Upload dropzone text",
+      "default": "Drag & Drop Files, Choose Files to Upload"
+    },
+    {
+      "type": "text",
+      "id": "upload_limit",
+      "label": "Upload limit text",
+      "default": "You can upload upto 6 files"
+    },
+    {
+      "type": "text",
+      "id": "upload_size",
+      "label": "Upload size text",
+      "default": "(max file size 64 mb)"
+    },
+    {
+      "type": "header",
+      "content": "Sales agent"
+    },
+    {
+      "type": "text",
+      "id": "agent_heading",
+      "label": "Agent section heading",
+      "default": "Sales agent"
+    },
+    {
+      "type": "text",
+      "id": "agent_label",
+      "label": "Agent name label",
+      "default": "Name Of Sales Agent"
+    },
+    {
+      "type": "text",
+      "id": "agent_placeholder",
+      "label": "Agent name placeholder",
+      "default": "CDAC AVENUE"
+    },
+    {
+      "type": "text",
+      "id": "comments_label",
+      "label": "Comments label",
+      "default": "Questions or Comments"
+    },
+    {
+      "type": "text",
+      "id": "comments_placeholder",
+      "label": "Comments placeholder",
+      "default": "Type Anything"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit button label",
+      "default": "Submit"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "price_card",
+      "name": "Pricing card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Container title",
+          "default": "Used 20-Foot Standard"
+        },
+        {
+          "type": "textarea",
+          "id": "terms",
+          "label": "Terms (Term|Price, one per line)",
+          "default": "1-Year Term|$350\n2-Year Term|$270\n3-Year Term|$200"
+        }
+      ]
+    },
+    {
+      "type": "short_term_card",
+      "name": "Short-term pricing card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Container title",
+          "default": "Used 20-Foot Standard"
+        },
+        {
+          "type": "textarea",
+          "id": "terms",
+          "label": "Terms (Term|Price, one per line)",
+          "default": "1-3 Month Term|$200\n6-Month Term|$175\n12-Month Term|$150\n18-Month Term|$125\n24-Month Term|$100"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "UC Rent Application",
+      "blocks": [
+        {
+          "type": "price_card",
+          "settings": {
+            "title": "Used 20-Foot Standard",
+            "terms": "1-Year Term|$350\n2-Year Term|$270\n3-Year Term|$200"
+          }
+        },
+        {
+          "type": "price_card",
+          "settings": {
+            "title": "Used 40-Foot Standard",
+            "terms": "1-Year Term|$495\n2-Year Term|$395\n3-Year Term|$295"
+          }
+        },
+        {
+          "type": "price_card",
+          "settings": {
+            "title": "Used 40-Foot HC",
+            "terms": "1-Year Term|$550\n2-Year Term|$449\n3-Year Term|$349"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

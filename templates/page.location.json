@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-location-hero",
+      "settings": {
+        "heading": "Shipping containers for sale in Oakland, California",
+        "subheading": "Looking for durable shipping containers in Oakland, CA? We offer fast delivery, great prices, and top-rated service for storage solutions of every kind — all backed by local experience you can count on.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg"
+      }
+    },
+    "delivery": {
+      "type": "uc-location-delivery",
+      "settings": {
+        "heading": "Local delivery",
+        "body": "<p>When you need a shipping container in Oakland, you need it delivered fast, safely, and exactly where it's needed. At Used Conex, we specialize in reliable container delivery across the Bay Area and Central California — including Oakland, Berkeley, San Leandro, Hayward, Fremont, and as far as Stockton and Modesto.</p><p>Whether you're receiving a container at a downtown construction site, a commercial facility near the Port of Oakland, or a residential property in the Oakland Hills, our experienced drivers ensure smooth, accurate placement — even on narrow or sloped surfaces.</p><p>We understand the logistical challenges of the East Bay — tight streets, hilly driveways, and busy commercial areas — and we're equipped to handle them all. Your quote is tailored to your ZIP code, so you know upfront what to expect in terms of pricing and delivery timeline.</p><p>Customers throughout Alameda, Contra Costa, San Joaquin, and Santa Clara counties rely on Used Conex for containers that are ready to go — no brokers, no delays, no surprises. Get the right container delivered to your property with ease.</p>"
+      }
+    },
+    "why_us": {
+      "type": "uc-location-why-us",
+      "blocks": {
+        "p1": { "type": "pill", "settings": { "text": "FREE 25 YEAR WARRANTY", "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-warranty.png" } },
+        "p2": { "type": "pill", "settings": { "text": "BEST PRICES", "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-pricetag.png" } },
+        "p3": { "type": "pill", "settings": { "text": "QUALITY CONTAINERS", "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-shield.png" } },
+        "p4": { "type": "pill", "settings": { "text": "PAY AFTER DELIVERY", "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-receipt.png" } },
+        "p5": { "type": "pill", "settings": { "text": "1000+ REVIEWS", "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-reviews.png" } },
+        "p6": { "type": "pill", "settings": { "text": "FAST DELIVERY", "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-truck_4586a6de-ede3-47c7-9da1-868a1613438b.png" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5", "p6"],
+      "settings": {
+        "heading": "Why Choose Used Conex?",
+        "intro": "With thousands of containers delivered nationwide, Used Conex is a trusted partner for businesses, homeowners, and job sites. Our competitive pricing, responsive service, and fast delivery make us the smart choice.",
+        "fallback_icon_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-why-cube.png"
+      }
+    },
+    "how_it_works": {
+      "type": "uc-location-how-it-works",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "number": "01", "title": "Input Your Zip Code", "text": "Enter your ZIP code to see available inventory and pricing in your area." } },
+        "s2": { "type": "step", "settings": { "number": "02", "title": "Choose Your Container Size and Type", "text": "Pick the size and condition that fits your storage needs — 20ft, 40ft, or high cube." } },
+        "s3": { "type": "step", "settings": { "number": "03", "title": "Complete Your Order", "text": "We schedule your delivery and place the container exactly where you need it." } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "heading": "how it works",
+        "intro": "Ordering a shipping container from Used Conex is simple, fast, and secure. Whether you're storing tools, inventory, or household goods, our 3-step process ensures a smooth experience from quote to delivery."
+      }
+    },
+    "industry": {
+      "type": "uc-location-industry",
+      "settings": {
+        "heading": "Industry Use",
+        "body": "<p>Oakland's economy is powered by construction, logistics, tech, and creative industries — and our shipping containers support them all. We've delivered units to industrial yards in West Oakland, contractors in Hayward, growers in the Central Valley, and vendors at events in Walnut Creek and San Jose.</p><p>Common uses include:</p><ul><li>On-site storage for construction crews in the East Bay</li><li>Overflow inventory for retailers in Alameda and Fremont</li><li>Agricultural equipment storage for small farms in Livermore and Brentwood</li><li>Temporary storage for film and event crews in downtown Oakland or San Jose</li></ul><p>Our 20ft, 40ft, and high cube containers are chosen by customers who need flexible, weatherproof space on demand. Whether you need secure job-site storage in Concord or want to expand your small business capacity in San Ramon, we've got the right container — and the logistics — to make it happen.</p><p>Plus, with multiple condition types available (WWT, CW, One-Trip), Oakland-area customers can balance budget and performance needs with ease.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-industry-v2.png"
+      }
+    },
+    "types": {
+      "type": "uc-location-container-types",
+      "blocks": {
+        "t1": { "type": "type", "settings": { "title": "NEW ONE TRIP", "text": "These containers are virtually brand new and ready for 10-20 years of extensive use.", "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-onetrip.png", "link": "/pages/grades-one-trip", "button_label": "Learn More" } },
+        "t2": { "type": "type", "settings": { "title": "WIND AND WATERTIGHT", "text": "These containers are more affordable and that makes them a better choice when it comes to storage needs.", "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-wwt.png", "link": "/pages/dimensions", "button_label": "Learn More" } },
+        "t3": { "type": "type", "settings": { "title": "CARGO WORTHY", "text": "These containers are in better shape than used wind and watertight containers, and they are slightly more expensive as well.", "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-type-cw.png", "link": "/pages/dimensions", "button_label": "Learn More" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "heading": "Different conex types",
+        "intro": "We offer three container condition types to fit every need and budget. Whether you're looking for a low-cost option or a near-new unit, all our containers are wind and watertight, secure, and built to last."
+      }
+    },
+    "sizes": {
+      "type": "uc-location-sizes",
+      "blocks": {
+        "sz1": { "type": "size", "settings": { "title": "20 FOOT", "text": "Standard 20-foot shipping container dimensions are 20' x 8' x 8'6\" for the exterior dimensions and 19'4\" x 7'8\" x 7'10\" for the interior dimensions.", "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-20ft.png" } },
+        "sz2": { "type": "size", "settings": { "title": "40 FOOT", "text": "Standard 40-foot shipping container dimensions are 40' x 8' x 8'6\" for the exterior dimensions and 39'6\" x 7'8\" x 7'10\" for the interior dimensions.", "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-40ft-v2.png" } },
+        "sz3": { "type": "size", "settings": { "title": "HIGH CUBE CONTAINERS", "text": "High cube containers come with an extra foot of vertical space at 9'6\" compared to the standard 8'6\".", "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-location-hc.png" } }
+      },
+      "block_order": ["sz1", "sz2", "sz3"],
+      "settings": {
+        "heading": "Available container sizes",
+        "intro": "Choose from our most popular container sizes: 20ft standard, 40ft standard, or our high cube options. Each option is built from rugged steel and designed for easy on-site storage with flexible placement.",
+        "link": "/pages/dimensions",
+        "link_label": "Learn More"
+      }
+    },
+    "reviews": {
+      "type": "uc-location-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "title": "Fast Delivery & Clean Container – A Seamless Experience with Used Conex",
+            "video_id": "qjocPhdSEfU",
+            "needed_title": "What This Customer Needed",
+            "needed_list": "<ul><li>A clean, ready-to-use 40ft container</li><li>Simple ordering and transparent delivery process</li><li>Precise drop-off to a specific location</li></ul>",
+            "delivered_title": "What Used Conex Delivered",
+            "delivered_list": "<ul><li>A spotless 40ft standard container, no sweeping or wiping needed</li><li>Fast shipping and responsive customer service</li><li>Delivery placed exactly as requested</li></ul>"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "title": "Rod Turns a 40ft High Cube Container into a Skid Steer Garage",
+            "video_id": "BcOoelGWIgw",
+            "needed_title": "What This Customer Needed",
+            "needed_list": "<ul><li>A clean, ready-to-use high cube container</li><li>Room to house and maneuver a skid steer</li><li>Simple ordering and reliable delivery to his site</li></ul>",
+            "delivered_title": "What Used Conex Delivered",
+            "delivered_list": "<ul><li>A one-trip 40ft high cube container in excellent condition</li><li>Seamless delivery placed exactly where needed</li><li>Exceptional customer support throughout the process</li></ul>"
+          }
+        }
+      },
+      "block_order": ["r1", "r2"],
+      "settings": {
+        "heading": "customer reviews",
+        "intro": "<p>Our customers say it best. From on-time delivery in the Oakland Hills to helpful service near Jack London Square, Used Conex is trusted across the Bay Area for reliable storage solutions.</p><p>Here's what some of our customers on Google reviews are saying about their experience with us.</p>"
+      }
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "Can you deliver to other towns or cities around Oakland or do you only deliver to Oakland?", "answer": "<p>Yes, we deliver to just about any city or town around Oakland. Most container depots are located in major cities, and we use local drivers who know the area well and plan deliveries accordingly.</p>" } },
+        "f2": { "type": "faq", "settings": { "question": "Do I need a permit to place a shipping container on my Oakland property?", "answer": "<p>In most residential areas of Oakland, short-term placement of a container on private property doesn't require a permit. However, placement on a public street, sidewalk, or in a commercial zone may require a temporary use or encroachment permit. Always check with the Oakland Planning Department or your HOA before delivery.</p>" } },
+        "f3": { "type": "faq", "settings": { "question": "Can you deliver to hilly areas like the Oakland Hills or Montclair?", "answer": "<p>Yes! We frequently deliver to properties in the Oakland Hills, Montclair, and other sloped neighborhoods. If your driveway or access road is steep or curved, let us know in advance so we can evaluate your site and ensure safe placement.</p>" } },
+        "f4": { "type": "faq", "settings": { "question": "How long does delivery take in the East Bay?", "answer": "<p>Most containers are delivered within 10-20 business days of your order in the Oakland area. We regularly serve Alameda, San Leandro, Hayward, and surrounding ZIP codes, so turnaround is typically quick and reliable.</p>" } },
+        "f5": { "type": "faq", "settings": { "question": "Am I able to pick a color?", "answer": "<p>Most customers want to choose their container color, and sometimes this is possible, but not always — you get the first container off the stack at the intermodal depot. If you order multiple containers, it's often possible to get the color of your choice.</p>" } },
+        "f6": { "type": "faq", "settings": { "question": "Can I see the container before purchasing?", "answer": "<p>Customers don't have access to the depots for liability reasons. All containers are inspected before delivery, and we recommend checking the container at delivery. If picking up, you'll be given a release number and depot information.</p>" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "intro": "We've answered the most common questions about buying and receiving shipping containers from Used Conex. From site prep to delivery timing, you'll find everything you need to know here."
+      }
+    },
+    "quote_cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {
+        "heading": "Get Your Free Quote Today",
+        "text": "Ready to buy a shipping container? Contact us for a free quote or browse our selection today to find the perfect shipping container for your needs!"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "delivery",
+    "why_us",
+    "industry",
+    "how_it_works",
+    "types",
+    "sizes",
+    "reviews",
+    "faq",
+    "quote_cta"
+  ]
+}

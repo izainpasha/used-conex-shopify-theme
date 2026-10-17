@@ -1,0 +1,98 @@
+{%- comment -%}
+  Used Conex — per-section design overrides from the shared "Section style"
+  settings (ids st_*) that every custom section carries.
+
+  Usage (first line of a section):
+    {%- render 'uc-section-style', section: section -%}
+
+  Only settings that have a value produce CSS, so a section looks exactly as
+  designed until someone changes an option in the theme editor.
+  Rules are scoped to this one section's wrapper (#shopify-section-<id>).
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign id = '#shopify-section-' | append: section.id
+  assign root = id | append: ' > :not(style, script, link, template, noscript)'
+  assign wraps = id | append: ' :is(.uc-wrap, .uc-footer__inner, .uc-footer__bottom)'
+  assign h_main = id | append: ' :is(h1, h2, .uc-section-title)'
+  assign h_sub = id | append: ' :is(h3, h4, h5)'
+  assign text = id | append: ' :is(p, li, .rte, dd, dt, label)'
+  assign btns = id | append: ' :is(.uc-btn, a[class*="__btn"], button[class*="__btn"], [class*="__submit"], a[class*="__cta"], button[class*="__cta"], .uc-checkout__pay, .uc-lv__cart, .uc-lv__zipbtn, .uc-btnlink)'
+  assign imgs = id | append: ' :is(img, video, iframe):not(.uc-payment-icon)'
+
+  assign desktop = ''
+  assign mobile = ''
+-%}
+
+{%- capture desktop -%}
+  {%- if s.st_custom_fonts -%}
+    {{ s.st_heading_font | font_face: font_display: 'swap' }}
+    {{ s.st_body_font | font_face: font_display: 'swap' }}
+    {%- assign bold = s.st_body_font | font_modify: 'weight', 'bold' -%}
+    {{ bold | font_face: font_display: 'swap' }}
+    {{ text }}, {{ btns }} { font-family: {{ s.st_body_font.family }}, {{ s.st_body_font.fallback_families }}; }
+    {{ h_main }}, {{ h_sub }} { font-family: {{ s.st_heading_font.family }}, {{ s.st_heading_font.fallback_families }}; font-style: {{ s.st_heading_font.style }}; }
+  {%- endif -%}
+
+  {%- if s.st_bg != blank -%}{{ root }} { background: {{ s.st_bg }}; }{%- endif -%}
+  {%- if s.st_bg_image != blank -%}
+    {{ root }} { background-image: {% if s.st_overlay > 0 %}linear-gradient(rgba(0,0,0,{{ s.st_overlay | divided_by: 100.0 }}), rgba(0,0,0,{{ s.st_overlay | divided_by: 100.0 }})), {% endif %}url('{{ s.st_bg_image | image_url: width: 2400 }}'); background-size: cover; background-position: {{ s.st_bg_image.presentation.focal_point | default: 'center' }}; }
+  {%- endif -%}
+  {%- if s.st_text_color != blank -%}{{ root }}, {{ text }} { color: {{ s.st_text_color }}; }{%- endif -%}
+  {%- if s.st_heading_color != blank -%}{{ h_main }}, {{ h_sub }} { color: {{ s.st_heading_color }}; }{%- endif -%}
+  {%- if s.st_align != 'default' -%}{{ root }} :is(h1, h2, h3, h4, p, .uc-section-title) { text-align: {{ s.st_align }}; }{%- endif -%}
+
+  {%- if s.st_heading_size != blank -%}{{ h_main }} { font-size: {{ s.st_heading_size }}px; }{%- endif -%}
+  {%- if s.st_subheading_size != blank -%}{{ h_sub }} { font-size: {{ s.st_subheading_size }}px; }{%- endif -%}
+  {%- if s.st_heading_weight != 'default' -%}{{ h_main }}, {{ h_sub }} { font-weight: {{ s.st_heading_weight }}; }{%- endif -%}
+  {%- if s.st_heading_case != 'default' -%}{{ h_main }}, {{ h_sub }} { text-transform: {{ s.st_heading_case }}; }{%- endif -%}
+  {%- if s.st_heading_spacing != blank -%}{{ h_main }}, {{ h_sub }} { letter-spacing: {{ s.st_heading_spacing }}px; }{%- endif -%}
+  {%- if s.st_text_size != blank -%}{{ text }} { font-size: {{ s.st_text_size }}px; }{%- endif -%}
+  {%- if s.st_line_height != blank -%}{{ text }} { line-height: {{ s.st_line_height | divided_by: 100.0 }}; }{%- endif -%}
+
+  {%- if s.st_pt != blank -%}{{ root }} { padding-top: {{ s.st_pt }}px; }{%- endif -%}
+  {%- if s.st_pb != blank -%}{{ root }} { padding-bottom: {{ s.st_pb }}px; }{%- endif -%}
+  {%- if s.st_mt != blank -%}{{ id }} { margin-top: {{ s.st_mt }}px; }{%- endif -%}
+  {%- if s.st_mb != blank -%}{{ id }} { margin-bottom: {{ s.st_mb }}px; }{%- endif -%}
+  {%- if s.st_width != blank -%}{{ wraps }} { max-width: {{ s.st_width }}px; margin-left: auto; margin-right: auto; }{%- endif -%}
+  {%- if s.st_gutter != blank -%}{{ wraps }} { padding-left: {{ s.st_gutter }}px; padding-right: {{ s.st_gutter }}px; }{%- endif -%}
+
+  {%- if s.st_btn_bg != blank -%}{{ btns }} { background: {{ s.st_btn_bg }}; border-color: {{ s.st_btn_bg }}; }{%- endif -%}
+  {%- if s.st_btn_color != blank -%}{{ btns }} { color: {{ s.st_btn_color }}; }{%- endif -%}
+  {%- if s.st_btn_bg_hover != blank -%}{{ btns }}:hover { background: {{ s.st_btn_bg_hover }}; border-color: {{ s.st_btn_bg_hover }}; }{%- endif -%}
+  {%- if s.st_btn_color_hover != blank -%}{{ btns }}:hover { color: {{ s.st_btn_color_hover }}; }{%- endif -%}
+  {%- if s.st_btn_radius != blank -%}{{ btns }} { border-radius: {{ s.st_btn_radius }}px; }{%- endif -%}
+  {%- if s.st_btn_size != blank -%}{{ btns }} { font-size: {{ s.st_btn_size }}px; }{%- endif -%}
+  {%- if s.st_btn_height != blank -%}{{ btns }} { min-height: {{ s.st_btn_height }}px; height: auto; }{%- endif -%}
+  {%- if s.st_btn_pad_x != blank -%}{{ btns }} { padding-left: {{ s.st_btn_pad_x }}px; padding-right: {{ s.st_btn_pad_x }}px; }{%- endif -%}
+  {%- if s.st_btn_case != 'default' -%}{{ btns }} { text-transform: {{ s.st_btn_case }}; }{%- endif -%}
+
+  {%- if s.st_img_radius != blank -%}{{ imgs }} { border-radius: {{ s.st_img_radius }}px; }{%- endif -%}
+  {%- if s.st_img_fit != 'default' -%}{{ id }} img:not(.uc-payment-icon) { object-fit: {{ s.st_img_fit }}; }{%- endif -%}
+  {%- if s.st_img_height != blank -%}{{ id }} img:not(.uc-payment-icon) { height: {{ s.st_img_height }}px; max-height: none; }{%- endif -%}
+
+  {%- if s.st_hide_desktop -%}@media (min-width: 750px) { {{ id }} { display: none; } }{%- endif -%}
+{%- endcapture -%}
+
+{%- capture mobile -%}
+  {%- if s.st_heading_size_m != blank -%}{{ h_main }} { font-size: {{ s.st_heading_size_m }}px; }{%- endif -%}
+  {%- if s.st_subheading_size_m != blank -%}{{ h_sub }} { font-size: {{ s.st_subheading_size_m }}px; }{%- endif -%}
+  {%- if s.st_text_size_m != blank -%}{{ text }} { font-size: {{ s.st_text_size_m }}px; }{%- endif -%}
+  {%- if s.st_align_m != 'default' -%}{{ root }} :is(h1, h2, h3, h4, p, .uc-section-title) { text-align: {{ s.st_align_m }}; }{%- endif -%}
+  {%- if s.st_pt_m != blank -%}{{ root }} { padding-top: {{ s.st_pt_m }}px; }{%- endif -%}
+  {%- if s.st_pb_m != blank -%}{{ root }} { padding-bottom: {{ s.st_pb_m }}px; }{%- endif -%}
+  {%- if s.st_gutter_m != blank -%}{{ wraps }} { padding-left: {{ s.st_gutter_m }}px; padding-right: {{ s.st_gutter_m }}px; }{%- endif -%}
+  {%- if s.st_btn_full_m -%}{{ btns }} { width: 100%; justify-content: center; }{%- endif -%}
+  {%- if s.st_img_height_m != blank -%}{{ id }} img:not(.uc-payment-icon) { height: {{ s.st_img_height_m }}px; }{%- endif -%}
+  {%- if s.st_hide_mobile -%}{{ id }} { display: none; }{%- endif -%}
+{%- endcapture -%}
+
+{%- assign desktop = desktop | strip -%}
+{%- assign mobile = mobile | strip -%}
+{%- if desktop != blank or mobile != blank -%}
+  <style>
+    {{ desktop }}
+    {%- if mobile != blank -%}@media (max-width: 749px) { {{ mobile }} }{%- endif -%}
+  </style>
+{%- endif -%}

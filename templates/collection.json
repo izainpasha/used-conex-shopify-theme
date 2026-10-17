@@ -1,0 +1,103 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "grid": {
+      "type": "uc-collection-grid",
+      "settings": {
+        "subheading": "Quality Shipping Containers. Great Prices. Local Delivery.",
+        "quote_label": "Add To Cart",
+        "quote_url": "",
+        "price_label": "Price including delivery:",
+        "pickup_price_label": "Pickup price:",
+        "no_price_hint": "Enter your ZIP code to see your delivered price",
+        "oos_message": "Currently unavailable at your nearest depot",
+        "empty_message": "No containers in this category yet. Please check back soon or contact us for availability.",
+        "zip_placeholder": "Enter ZIP Code",
+        "zip_button": "Update ZIP Code",
+        "count_label": "containers near you",
+        "count_label_nozip": "containers",
+        "sort_label": "Sort by",
+        "invalid_message": "Please enter a valid US ZIP code.",
+        "loading_message": "Checking Our Inventory for the Best Prices and Availability…",
+        "filters_heading": "Filters",
+        "clear_label": "Clear All",
+        "size_heading": "Container Size",
+        "condition_heading": "Condition",
+        "grade_heading": "Type",
+        "price_heading": "Maximum Price",
+        "price_hint": "Enter your ZIP code to filter by price.",
+        "no_matches_message": "No containers match your filters. Try clearing one or two.",
+        "trust_heading": "Buy with Confidence",
+        "trust_body": "Quality Containers. Competitive Prices.",
+        "live_pricing": true,
+        "api_base": "https://api.usedconex.com/client/v1",
+        "api_email": "mg@usedconex.com",
+        "prev_label": "Previous",
+        "next_label": "Next",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    },
+    "cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {
+        "heading": "Get Your Free Quote Today",
+        "text": "Get instant pricing and delivery — just enter your ZIP code to start your order.",
+        "zip_placeholder": "Enter your zip code",
+        "delivery_options": "Delivery, Pickup",
+        "button_label": "Get Instant Quote",
+        "form_action": "",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    }
+  },
+  "order": [
+    "grid",
+    "cta"
+  ]
+}

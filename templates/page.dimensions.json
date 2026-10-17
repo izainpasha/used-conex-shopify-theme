@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Shipping Container Dimension Guide",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-hero-bg-v2.jpg"
+      }
+    },
+    "size": {
+      "type": "uc-dims-standard-size",
+      "settings": {
+        "heading": "What is the size of a standard storage container?",
+        "intro": "Shipping container dimensions are generally standardized for cargo and international shipping, but there are a few things to know within those sizes before deciding what you need. The purpose for your rental or purchase matters, as do your needs for that shipping container. Standard conex boxes typically come in:",
+        "left_label": "20 Foot",
+        "mid_label": "8 Feet Wide",
+        "right_label": "40 Foot",
+        "body": "<p>The standard sizes of ISO shipping containers are also 20 feet or 40 feet long, and each container is 8 feet wide. No matter the length, the width remains the same. That’s because these containers are most often used for cargo transport. A variety of sizes would lead to issues loading, stacking, and unloading, which could lead to inefficiencies in the process.</p><p>With standardized sizes, there’s no need to estimate size and space needed for a cargo transport and the shipping process becomes less complex to manage.</p>",
+        "left_fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-container-20ft.png",
+        "right_fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-container-40ft.png",
+        "arrow_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-arrow.svg"
+      }
+    },
+    "height": {
+      "type": "uc-dims-height",
+      "settings": {
+        "heading": "How tall is a CONEX box?",
+        "intro": "A CONEX box or shipping container is either 8’6” or 9’6” when measured by its exterior height. The standard height is 8’6”, but a high cube box comes with an extra foot of vertical space.",
+        "note_label": "Note:",
+        "note_text": "A “CONEX” box is just another name for a shipping container. It stands for Container Express, and was first described as such during the Korean War. Standard sizes for cargo containers at that time have largely remained the same.",
+        "label_20": "20 Foot",
+        "fallback_20_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-h-20ft.svg",
+        "label_40": "40 Foot",
+        "fallback_40_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-h-40ft.svg",
+        "fallback_person_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-h-person.svg",
+        "height_20": "8’ 6 Ft",
+        "height_40": "9’ 6 Ft"
+      }
+    },
+    "specs": {
+      "type": "uc-dims-specs",
+      "blocks": {
+        "s1": {
+          "type": "spec",
+          "settings": {
+            "color": "dark",
+            "title": "20-Foot Shipping Container",
+            "exterior_value": "20’ x 8’ x 8’6",
+            "tare_value": "4,900 lbs",
+            "interior_value": "19’4 x 7’8 x 7’10",
+            "payload_value": "47,900 lbs",
+            "description": "<p>Standard 20-foot shipping container dimensions are 20’ x 8’ x 8’6” for the exterior dimensions and 19’4” x 7’8” x 7’10” for the interior dimensions. These more compact containers are perfect for extra inventory space, on-site storage for homeowners, or tool and equipment storage for homeowners and construction companies. These shipping containers may also be used for transporting smaller loads internationally.</p><p>On the modifications side, a smaller shipping container like this one is suitable for a compact mobile office or pop-up retail shop that values a smaller footprint and cost effectiveness over space. The ease of transport may be another draw. A smaller shipping container requires less space on the delivery side and a more manageable clearance for delivery trucks.</p>"
+          }
+        },
+        "s2": {
+          "type": "spec",
+          "settings": {
+            "color": "blue",
+            "title": "40-Foot Shipping Container",
+            "exterior_value": "40’ x 8’ x 8’6",
+            "tare_value": "8,377 lbs",
+            "interior_value": "39’4 x 7’8 x 7’10",
+            "payload_value": "58,823 lbs",
+            "description": "<p>Standard 40-foot shipping container dimensions are 40’ x 8’ x 8’6” for the exterior dimensions and 39’6” x 7’8” x 7’10” for the interior dimensions. These containers work well for a variety of purposes that require double the space of a smaller container.</p><p>Common uses include: shipping bulky cargo internationally, large-scale storage at construction sites, and extra inventory of larger goods and equipment. When modified, they can serve as more spacious mobile workspaces, workshops, classrooms, even living spaces. While more expensive than a 20-foot shipping container, the ample space may suit your needs more appropriately if those needs require more substantial storage or a larger shipping capacity.</p>"
+          }
+        },
+        "s3": {
+          "type": "spec",
+          "settings": {
+            "color": "yellow",
+            "title": "40-Foot High Cube Shipping",
+            "exterior_value": "40’ x 8’ x 9’6",
+            "tare_value": "8,860 lbs",
+            "interior_value": "39’4 x 7’8 x 8’10",
+            "payload_value": "58,823 lbs",
+            "description": "<p>Standard 40-foot high cube shipping container dimensions account for a foot of extra height. Standard dimensions are 40’ x 8’ x 9’6” for the exterior dimensions and 39’6” x 7’8” x 8’10” for the interior dimensions.</p><p>That extra foot of space in height may work well for clients who need extra space to accommodate bulk cargo and goods. That may include but is certainly not limited to construction equipment and machinery that requires additional vertical space. These are a popular shipping container option for industries that frequently work with oversized cargo.</p><p>The extra height may also allow for additional ventilation in containers shipping perishable goods, and make for a more comfortable workspace in container modifications or conversions.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "Dimensions and sizes shipping container available at Used Conex:"
+      }
+    },
+    "mods": {
+      "type": "uc-dims-mods-cta",
+      "settings": {
+        "heading": "If you’re interested in shipping container modifications, Used Conex offers expert planning and design services to turn shipping containers into customized spaces that suit your needs.",
+        "body": "<p>It’s important to note that HC containers are typically more expensive than standard containers due to their additional height. Despite their versatility, they may not be necessary for your specific project.</p><p>When choosing between a high cube and standard container, be sure to evaluate the size and nature of your cargo and the container’s intended use to save money and ensure you’re getting the product you want and need.</p>",
+        "card_text": "For a personalized quote or more information on creative uses for shipping containers, contact our office",
+        "phone": "1-800-230-7764"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "size",
+    "height",
+    "specs",
+    "mods"
+  ]
+}

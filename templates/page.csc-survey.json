@@ -1,0 +1,43 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-grade-hero",
+      "settings": {
+        "heading": "CSC Survey",
+        "text": "<p>The Container safety convention</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-24.jpg?v=1788981685"
+      }
+    },
+    "add": {
+      "type": "uc-csc-content",
+      "settings": {
+        "heading": "Add a CSC Survey to Your Shipping Container",
+        "body": "<p>If you need a CSC survey for your container, you’d need to purchase the container through our company since we do not offer this service on containers that you already own.</p><p>We can only provide the CSC certificate on CW containers and One-Trip units.</p><p>Once you place an order, our team will start the process of getting your container surveyed. Please keep in mind that the survey process might add an additional 3 – 5 business days to the delivery timeframe.</p>",
+        "primary_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-31.png?v=1788981682",
+        "secondary_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-28.jpg?v=1788981684",
+        "image_alt": "CSC safety approval plate details"
+      }
+    },
+    "convention": {
+      "type": "uc-csc-content",
+      "settings": {
+        "heading": "CSC – The Container Safety Convention",
+        "body": "<p>In 1972, a Convention for container safety was adopted at a conference jointly convened by the United Nations and the International Maritime Organization.</p><p>This was the <strong>International Convention for Safe Containers (CSC)</strong> and it has two important goals:</p><p>To maintain a high level of safety of human life in the transport and handling of containers.</p><p>To facilitate the international transport of containers by providing uniform international safety regulations.</p><p>Administrations normally entrust testing, inspection and approval to authorized organizations, such as Classification Societies.</p><p>Approvals are accepted by all other Contracting Parties, which means that, once approved, containers are able to move in international transport with the minimum of safety control formalities.</p><h3>WHAT IS THE CSC PLATE?</h3><p>The convention requires that any container used for international transport must be fitted with a valid safety approval plate (CSC Plate).</p><p>The CSC plate is fastened to every shipping container at the time of manufacture and is typically riveted to the outside of the left door.</p><p>Each CSC plate must contain a certain level of information, in either English or French. The words “CSC SAFETY APPROVAL” are prominent on the plate, along with the country of approval and the approval reference.</p><p>The date of container manufacture, specifically the month and year, must be evident. As must the manufacturer’s container identification number or, in the case of an existing container without a manufacturer number, the Container Operator’s operational number (using a “BIC Code”) or the number allotted by the Administration. The container’s maximum weight-carrying capability (usually referred to as “Payload” or “max net mass”) in both kilograms and lbs must be inscribed, along with the stacking and racking test load value.</p><p><strong>NOTE:</strong> <em>The CSC Plate is today typically included as part of a <strong>Combined Data Plate</strong>, which includes the other plates necessary for containers to be used in international trade, namely:</em></p><ul><li>The Customs plate (referring to the Customs Convention for Containers (CCC) requirements) showing the certificate applicable to the container to allow transport under customs seal.</li><li>The timber treatment applied to the wood flooring of the container as required by the Australian agriculture authorities.</li><li>Optionally, the Owner’s plate carrying the name of the container’s Operator and its operational number (using the “BIC Code”).</li></ul><h3>CSC INSPECTIONS</h3><p>Container owners are responsible for maintaining containers in a safe condition and must ensure containers are inspected at intervals appropriate to operating conditions. However practical considerations, commercial practice, and contractual agreements mean that this responsibility is transferred to the party in control of the container.</p><p>For maximum inspection intervals see below.</p><p>Two inspection programs are offered in the CSC.</p><h3>Periodic Examination Scheme (PES):</h3><p>Every container must be examined not more than 5 years after manufacture, and thereafter at intervals of less than thirty months. The date of the next inspection (NED) is required to be marked on the CSC plate.</p><h3>Approved Continuous Examination Program (ACEP).</h3><p>Deems the container to have been properly examined every time a repair is carried out or, in many cases, every time a container is inspected at a repair facility. Containers operated under an ACEP scheme must display the scheme number on the CSC plate, this is often in the form of a decal.</p><p>Contracting parties are required by the Convention to make the list of the ACEP schemes approved under their authority publicly available.</p><p>The IMO’s recommended method of publication is the Global ACEP Database operated by the BIC.</p><p><strong>Source:</strong> <a href=\"https://www.bic-code.org/csc-plate/\">https://www.bic-code.org/csc-plate/</a></p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "add",
+    "convention"
+  ]
+}

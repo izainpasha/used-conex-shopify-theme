@@ -1,0 +1,308 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-buy-hero",
+      "settings": {
+        "heading": "Shipping Containers For Sale",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg",
+        "zip_placeholder": "Enter your zip code",
+        "delivery_options": "Delivery, Pickup",
+        "button_label": "Get Instant Quote",
+        "form_action": ""
+      }
+    },
+    "offer": {
+      "type": "uc-buy-offer",
+      "blocks": {
+        "o1": {
+          "type": "feature",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-offer-icon-1.png",
+            "text": "The largest inventory of used shipping containers"
+          }
+        },
+        "o2": {
+          "type": "feature",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-offer-icon-2.png",
+            "text": "The guaranteed lowest prices"
+          }
+        },
+        "o3": {
+          "type": "feature",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-offer-icon-3.png",
+            "text": "Expert quality inspections"
+          }
+        },
+        "o4": {
+          "type": "feature",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-offer-icon-4.png",
+            "text": "Five-star nationwide delivery"
+          }
+        }
+      },
+      "block_order": [
+        "o1",
+        "o2",
+        "o3",
+        "o4"
+      ],
+      "settings": {
+        "heading": "At UsedConex we Offer"
+      }
+    },
+    "info": {
+      "type": "uc-buy-info-blocks",
+      "blocks": {
+        "i1": {
+          "type": "block",
+          "settings": {
+            "heading": "What Are Shipping Containers?",
+            "body": "<p>Shipping containers are steel structures designed for transporting goods across long distances, typically by sea, land, or rail. However, these durable containers have grown in popularity for a variety of uses beyond shipping, such as storage, construction, and even as living spaces.</p><p>They come in various sizes, from 10ft to 40ft, with the most common being 20ft and 40ft standard containers (which is what we at Used Conex offer). Their standard dimensions make them ideal for stacking, and they are capable of withstanding harsh weather conditions, ensuring that your items remain safe and secure.</p>"
+          }
+        },
+        "i2": {
+          "type": "block",
+          "settings": {
+            "heading": "Different Types of Shipping Containers for Sale",
+            "body": "<p>At UsedConex, we offer a wide variety of shipping containers to meet your needs. Whether you’re using them for storage, shipping, or custom modifications, we have options to suit every project.</p><ul><li>Standard Shipping Containers: Ideal for general storage and shipping, available in 20ft and 40ft sizes.</li><li>High-Cube Containers: These containers are taller than standard ones, offering more storage space.</li></ul><p>Each container type serves a unique purpose, so be sure to consider your needs when selecting the right one for your project.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2"
+      ],
+      "settings": {}
+    },
+    "info_cta": {
+      "type": "uc-buy-info-cta",
+      "settings": {
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-containers-photo.jpg",
+        "heading": "Need more information?",
+        "text": "Let us take you through the process TO BUY A SHIPPING CONTAINER from start to finish.",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "steps": {
+      "type": "uc-buy-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "label": "Step 01",
+            "panel_title": "Research shipping container suppliers.",
+            "image": "shopify://shop_images/uc-buy-step-illustration-hd.png",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step-illustration-hd.png",
+            "panel_body": "<p>The most important step in the process is finding a <strong>reputable supplier</strong>. Seek out suppliers that offer a high level of transparency every step of the way, from pricing to containers offered to any limitations on pickup or delivery. If you don't want to pore through online searches and directories, start with <strong>Used Conex</strong>. Used Conex offers the largest variety of used containers, the guaranteed lowest prices, and industry-leading warranties on all purchases.</p>"
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "label": "Step 02",
+            "panel_title": "Determine your needs.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step2-container.png",
+            "panel_body": "<p>Before you even start cost comparisons for new or used shipping containers, think about the purpose for your purchase. Ask yourself the following questions:</p><ul><li>What do I plan on doing with the shipping container?</li><li>Is this shipping container meant for storage or a living space?</li><li>Do I plan on doing any modifications to the container?</li><li>What’s my comfort level as far as scratches, dents, and surface rust?</li><li>Do I need more than one shipping container?</li></ul>"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "label": "Step 03",
+            "panel_title": "How much does a shipping container cost?",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step3-chart.png",
+            "panel_body": "<p>Container pricing varies with size, grade, and how far it has to travel to reach you. Compare quotes across suppliers using the same size and condition so you are comparing like for like, and confirm whether delivery is included in the price you are quoted.</p>"
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "label": "Step 04",
+            "panel_title": "Should you buy a 20ft shipping container or a 40ft shipping container?",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step4-grades.png",
+            "panel_body": "<p>Shipping containers come in a variety of sizes, but the standard is 20 or 40 feet long. Most suppliers also offer standard height or high cube shipping containers with an extra foot of space. Think about your purpose and your budget. What size suits your needs?</p><p>Think about the condition and look of your container. We’ve already mentioned comfort level with dents and dings, but you can also find containers with a fresh coat of paint. If that’s not important to you, you can save money with a container that has faded paint.</p><p>Grading is another area to consider. You’ll typically have three main shipping container types to choose from:</p><p><strong>New, One-Trip:</strong> These are containers that have only seen one trip. They have been loaded with a single cargo and shipped from manufacturing centers overseas and will look practically new.</p><p><strong>Used, Cargo-Worthy (CW):</strong> These are used shipping containers deemed suitable for cargo transportation. They are typically in better shape than wind and water tight containers, but more expensive.</p><p><strong>Used, Wind & Water Tight (WWT):</strong> These are used containers that don’t allow penetration of wind or water but no longer meet CSC (International Convention for Safe Containers) requirements for shipping. They are typically your most affordable option.</p>"
+          }
+        },
+        "s5": {
+          "type": "step",
+          "settings": {
+            "label": "Step 05",
+            "panel_title": "Get a quote from the best shipping container company.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step5-quote.png",
+            "panel_body": "<p>Now that you know the size shipping container you need, start gathering quotes for shipping containers that suit those needs. If you think you may need more than one shipping container, make that decision before gathering quotes. You may be able to get a discount on your total purchase.</p><p>Not sure where to start? Get an instant quote from Used Conex. Our quotes include an option for pickup or delivery.</p>"
+          }
+        },
+        "s6": {
+          "type": "step",
+          "settings": {
+            "label": "Step 06",
+            "panel_title": "Arrange transportation for your shipping container.",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-step6-delivery.png",
+            "panel_body": "<p>Before purchasing a shipping container, delivery customers need to make sure that they meet the delivery guidelines set by their supplier. At Used Conex, we have a delivery guide to ensure a smooth delivery for all our customers.</p><p>Consider building in time for delivery route inspections that could help your supplier (and you!) determine best routes to get your shipping container to where it needs to go. Every supplier should have a checklist for drop site preparation, as well.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ],
+      "settings": {
+        "heading": "How to Buy a Shipping Container",
+        "intro": "Buying a shipping container may sound daunting, but the process becomes simpler once it’s broken down. Follow these steps to ensure you’re getting the best shipping container for your needs and your budget."
+      }
+    },
+    "cards": {
+      "type": "uc-buy-container-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "style": "dark",
+            "title": "New One-Trip Containers",
+            "condition_label": "Condition",
+            "condition_items": "No holes or leaks\nNew flooring\nFully functional doors\nFresh paint\nMinimum dents and scratches possible",
+            "ideal_label": "Ideal for:",
+            "ideal_items": "Overseas shipping\nLand and commercial freight\nRetail and residential storage\nContainer home conversions"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "style": "blue",
+            "title": "Used CW Containers",
+            "condition_label": "Condition",
+            "condition_items": "No holes or leaks\nMinimal flooring repair and scratches possible\nFully functional doors\nFaded paint possible\nSome dents, patches, and surface rust acceptable",
+            "ideal_label": "Ideal for:",
+            "ideal_items": "Overseas shipping\nLand freight\nRetail and residential storage\nCustomization and reconditioning\nContainer home conversions"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "style": "yellow",
+            "title": "Used WWT Containers",
+            "condition_label": "Condition",
+            "condition_items": "No holes or leaks\nMany flooring repairs and scratches possible\nFully functional doors\nFaded paint acceptable\nMany dents, patches, and surface rust acceptable",
+            "ideal_label": "Ideal for:",
+            "ideal_items": "Retail and residential storage\nBudget-friendly option for customization and reconditioning\nCheaper option for modification work\nContainer home conversions"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "heading": "Best shipping containers to buy",
+        "subheading": "Choose from one of our quality storage solutions based on your needs, timeline, and budget."
+      }
+    },
+    "near_me": {
+      "type": "uc-buy-near-me",
+      "settings": {
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-near-me-bg.jpg",
+        "heading": "Where to Buy Shipping Containers Near Me?",
+        "text": "Used Conex offers nationwide roll-off delivery of shipping containers that meet your needs, specifications, and budget. Not ready to buy? We're here to answer any questions to make the process as smooth as possible."
+      }
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How long do shipping containers last?",
+            "answer": "<p>With proper care, a shipping container can last 20-30 years or more, thanks to their durable steel construction.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can shipping containers be modified?",
+            "answer": "<p>Yes! Shipping containers are highly customizable. You can modify them with windows, doors, insulation, and more to suit your needs.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between a 20ft and 40ft shipping container?",
+            "answer": "<p>A 20ft container offers about 1,170 cubic feet of storage, while a 40ft container offers roughly double that space — ideal for larger loads or storage needs.</p>"
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "Am I able to pick a color?",
+            "answer": "<p>Color availability depends on current inventory. Contact our team to check available colors for your container grade and size.</p>"
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I see the container before purchasing?",
+            "answer": "<p>In many cases, yes. Reach out to our team to arrange a viewing at a depot near you before you buy.</p>"
+          }
+        },
+        "f6": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s the origin of shipping containers?",
+            "answer": "<p>Most used shipping containers originate overseas, having completed one or more trips carrying international cargo before being sold.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "intro": "We’ve answered the most common questions about buying and receiving shipping containers from Used Conex. From site prep to delivery timing, you’ll find everything you need to know here."
+      }
+    },
+    "quote_cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {
+        "heading": "Get Your Free Quote Today",
+        "text": "Get instant pricing and delivery — just enter your ZIP code to start your order.",
+        "zip_placeholder": "Enter your zip code",
+        "delivery_options": "Delivery, Pickup",
+        "button_label": "Get Instant Quote",
+        "form_action": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "offer",
+    "info",
+    "info_cta",
+    "steps",
+    "cards",
+    "near_me",
+    "faq",
+    "quote_cta"
+  ]
+}

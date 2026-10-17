@@ -1,0 +1,178 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Shipping Container Delivery Guidelines",
+        "subheading": "Before purchasing a shipping container, make sure you have enough space for a smooth roll-off delivery. Read our guidelines to understand the minimum requirements.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg"
+      }
+    },
+    "avoid": {
+      "type": "uc-csc-content",
+      "settings": {
+        "heading": "What to Avoid for a Stress-Free Delivery",
+        "body": "<p><strong>Rough roads.</strong> Roads made of dirt, gravel, or with damaged pavement may not be suitable for shipping container delivery due to road weight limits and the risk of getting stuck, causing damage to the road and equipment, or being environmentally disruptive.</p><p><strong>Steep road inclines and declines.</strong> Steep inclines can make it impossible to haul a load uphill, while a steep decline can pose safety hazards to the delivery crew and the surrounding environment. Contact us to receive an evaluation of your delivery route and determine if your local roadway grades qualify for a successful delivery.</p><p><strong>Tight turns.</strong> Shipping containers require sufficient turning clearance to prevent getting stuck, causing damage, and for safety purposes. Delivery of a 20ft container requires a minimum of 60ft straight line clearance, while a 40ft container requires a minimum of 125ft straight line clearance to perform a safe and effective turn.</p><p><strong>Height restrictions.</strong> Any obstacle that does not offer at least 14ft of vertical clearance is considered a height restriction — including power lines, trees, gateways, arches, building eaves, and low bridges.</p><p><strong>Width restrictions.</strong> Shipping containers require a minimum of 14ft of horizontal clearance to pass through without getting stuck or causing delays. Ideally, roads leading to your location should be a standard 2-lane marked road at minimum.</p><p><strong>Weather-affected roadways.</strong> Icy, flooded, muddy, debris-covered, or unplowed snowy roads can make delivery impractical and dangerous. We're always happy to work with you to plan a delivery that accommodates your schedule and ensures a safe process.</p>",
+        "primary_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-delivery-power-lines.png?v=1789074149",
+        "image_alt": "Overhead power lines height restriction"
+      }
+    },
+    "methods": {
+      "type": "uc-csc-content",
+      "settings": {
+        "heading": "Tilt Bed & Flatbed Delivery",
+        "body": "<p><strong>Tilt bed delivery.</strong> Tilt bed trailers perform secure delivery with direct placement on the ground at the drop-off location. They're ideal for small businesses, private properties, and locations without specialized forklifts or cranes. Tilt beds can haul 20ft and 40ft containers, and because the trailer is pulled out from underneath the container, this method requires a minimum of 125ft straight line clearance. You'll also need to decide which way the doors will face before delivery.</p><p><strong>Flatbed delivery.</strong> Unlike tilt beds, flatbed trailers don't have their own off-loading feature — any container delivered on a flatbed must be off-loaded manually using a crane, forklift, or other heavy lifting equipment. Flatbed delivery is intended for business locations or properties with dedicated heavy lifting equipment on site.</p>",
+        "primary_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-delivery-stacked-containers.png?v=1789074149",
+        "image_alt": "Stacked shipping containers"
+      }
+    },
+    "clearance": {
+      "type": "uc-moving-clearance",
+      "blocks": {
+        "c1": {
+          "type": "size",
+          "settings": {
+            "heading": "20ft Shipping Container",
+            "text": "<ul><li><strong>100ft Straight Line Clearance:</strong> This applies to roads leading to the drop site and at the drop site itself. Our truck and trailer require at least 80ft straight line clearance to unload the unit.</li><li><strong>14ft Vertical Clearance on the Road:</strong> Roadways leading to the drop-off site should be free of overhanging obstacles with a minimum of 14ft vertical clearance at all times.</li><li>12-14ft Width Clearance.</li><li>16ft Vertical Clearance at Drop-Off Site.</li></ul>",
+            "accent": false
+          }
+        },
+        "c2": {
+          "type": "size",
+          "settings": {
+            "heading": "40ft Shipping Container",
+            "text": "<ul><li><strong>100ft Straight Line Clearance.</strong></li><li><strong>14ft Vertical Clearance on the Road:</strong> This includes all sections of the road leading to and at the drop-off location.</li><li>12-14ft Width Clearance.</li><li>16ft Vertical Clearance at Drop-Off Site.</li></ul>",
+            "accent": true
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {
+        "heading": "Shipping Container Delivery Space Clearance"
+      }
+    },
+    "prep": {
+      "type": "uc-csc-content",
+      "settings": {
+        "heading": "Shipping Container Drop Site Preparation",
+        "body": "<p>A big part of shipping container drop-offs is being prepared. When your location is well-suited for drop-off, storage, or transfer, the process can be completed in an hour or less. Here's what to consider before ordering, to save time and avoid safety risks, equipment damage, or delivery cancellation.</p><p><strong>Delivery vehicle & trailer clearance.</strong> Drop sites without sufficient clearance can make it difficult or impossible to perform drop-offs — make sure your site offers enough room to maneuver the vehicle, trailer, and container into place.</p><p><strong>Level ground.</strong> The drop site should be on level ground to ensure secure delivery and even weight distribution across all four corners. If the ground isn't naturally level, it can be modified with stone pavers, blocks of wood, gravel, or railroad ties.</p><p><strong>Drop site ground surfaces.</strong> Containers can be dropped off on any surface that is firm, level, and dry — asphalt or concrete is ideal, though compact dirt, gravel, and even grass may be suitable if level and well-supported. Sand, soft dirt, and muddy ground are not recommended.</p><p><strong>Free of debris and safety hazards.</strong> Make sure your drop site is free of rocks, tree stumps, branches, low-hanging wires, cables, or any other obstacles or hazards.</p><p><strong>Weather conditions.</strong> Plan your delivery around weather forecasts — bad weather can lead to snowy or icy roads, muddy grounds, flooding, and soft soil that may cause delays or cancellation.</p><p><strong>Being ready.</strong> Make sure neighbors are informed, no vehicles or obstacles are in the way, and you or a representative is on-site at the time of arrival to avoid delay fees.</p>",
+        "primary_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-delivery-container-doors.png?v=1789074149",
+        "image_alt": "Shipping container doors close-up"
+      }
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How much does shipping container delivery cost?",
+            "answer": "<p>Delivery is typically included in the total container quote, but the exact cost depends on your location and container size. We offer transparent, all-in pricing — no hidden fees. You can get an instant quote by entering your ZIP code.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "<p>Most containers are delivered within 7 to 10 business days after order confirmation. Delivery times may vary based on your location and weather conditions. Our team will coordinate a convenient time window and call ahead before arriving.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "Do I need a foundation or permit for my container?",
+            "answer": "<p>In most areas, no permanent foundation is required — containers can be placed on compacted dirt, gravel, or concrete pads. Permit requirements vary by city or county. We recommend checking local zoning codes or asking our team if you're unsure.</p>"
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I choose where the doors face?",
+            "answer": "<p>Yes — when ordering, you can specify door orientation (facing cab or rear of truck). This ensures your container is positioned correctly when it slides off the delivery trailer.</p>"
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "What happens if the delivery site isn't ready?",
+            "answer": "<p>If the site isn't accessible or safe, delivery may be rescheduled — but you need to inform the logistics team ahead of time or you could incur a dry-run fee. Make sure to contact us in advance if anything changes.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ],
+      "settings": {
+        "heading": "Delivery FAQs",
+        "intro": "We've answered the most common questions about receiving shipping containers from Used Conex. From delivery time to site preparation, you'll find everything you need to know here."
+      }
+    },
+    "cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {}
+    },
+    "video_avoid": {
+      "type": "uc-video-row",
+      "blocks": {
+        "v1": {
+          "type": "video",
+          "settings": {
+            "title": "What to avoid for a stress-free delivery",
+            "youtube_id": "9zuv3Zk8Jw8"
+          }
+        }
+      },
+      "block_order": [
+        "v1"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    },
+    "video_flatbed": {
+      "type": "uc-video-row",
+      "blocks": {
+        "v1": {
+          "type": "video",
+          "settings": {
+            "title": "Flatbed shipping container delivery",
+            "youtube_id": "VXGdyfGeE8o"
+          }
+        }
+      },
+      "block_order": [
+        "v1"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "avoid",
+    "video_avoid",
+    "methods",
+    "video_flatbed",
+    "clearance",
+    "prep",
+    "faq",
+    "cta"
+  ]
+}

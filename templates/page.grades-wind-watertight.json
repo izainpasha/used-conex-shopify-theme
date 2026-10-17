@@ -1,0 +1,129 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-grade-hero",
+      "settings": {
+        "heading": "Used Wind & Watertight Shipping Containers",
+        "text": "<p>Wind & Watertight shipping containers are more affordable and that makes them a better choice when it comes to storage needs. At Used Conex, we offer great quality WWT containers with a 25-year leak warranty. We don't supply As-is shipping containers that come with multiple holes and damages.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-17.jpg?v=1788981686"
+      }
+    },
+    "info": {
+      "type": "uc-grade-info-split",
+      "settings": {
+        "heading": "What is a Wind and Watertight Container?",
+        "body": "<ul><li>A WWT Container is a Grade-C Used Conex box that no longer meets CSC (International Convention for Safe Containers) requirements. These containers are sold by shipping companies once they have reached the end of their maritime lifespan and are typically transferred into storage service and the modification markets.</li><li>WWT containers have significant wear-and-tear and are retired from shipping service when they are considered liable to structural compromise.</li></ul>",
+        "subheading": "What Type of Wear-and-Tear Can I Expect from a Wind and Watertight Container for Sale?",
+        "supporting_text": "<p>WWT containers from Used Conex have passed a multi-point inspection for strict wind and watertight standards and are guaranteed to be free of holes and leaks.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-02.png?v=1788981683",
+        "image_alt": "Used wind and watertight shipping container"
+      }
+    },
+    "wear": {
+      "type": "uc-grade-wear-map",
+      "blocks": {
+        "w1": {
+          "type": "wear",
+          "settings": {
+            "side": "left",
+            "label": "Surface Rust, Dents, Gouges, Scratches, Scuffs, and Dinks"
+          }
+        },
+        "w2": {
+          "type": "wear",
+          "settings": {
+            "side": "left",
+            "label": "Imperfect Roof Bows"
+          }
+        },
+        "w3": {
+          "type": "wear",
+          "settings": {
+            "side": "left",
+            "label": "Faded Paint"
+          }
+        },
+        "w4": {
+          "type": "wear",
+          "settings": {
+            "side": "left",
+            "label": "Welding Repairs"
+          }
+        },
+        "w5": {
+          "type": "wear",
+          "settings": {
+            "side": "left",
+            "label": "Patch Work and Repairs"
+          }
+        },
+        "w6": {
+          "type": "wear",
+          "settings": {
+            "side": "right",
+            "label": "Floor Markings, Scratches, Gouges, and Patchwork"
+          }
+        },
+        "w7": {
+          "type": "wear",
+          "settings": {
+            "side": "right",
+            "label": "Interior Scratches, Scuffs, Dents, Gouges, and Patchwork"
+          }
+        },
+        "w8": {
+          "type": "wear",
+          "settings": {
+            "side": "right",
+            "label": "Floor Delamination"
+          }
+        },
+        "w9": {
+          "type": "wear",
+          "settings": {
+            "side": "right",
+            "label": "Imperfect Roof Pits"
+          }
+        },
+        "w10": {
+          "type": "wear",
+          "settings": {
+            "side": "right",
+            "label": "Doors May Not Open/Swing Efficiently and Require Some Lubrication/Work"
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5",
+        "w6",
+        "w7",
+        "w8",
+        "w9",
+        "w10"
+      ],
+      "settings": {
+        "heading": "As a Grade-C shipping container, WWT conex boxes typically come with significant wear-and-tear and evidence of repairs, such as:",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-06.svg?v=1788981682",
+        "image_alt": "Wind and watertight container wear diagram"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "wear"
+  ]
+}

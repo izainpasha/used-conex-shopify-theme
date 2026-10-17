@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-hero-bg-v2.jpg"
+      }
+    },
+    "main": {
+      "type": "uc-page-content",
+      "settings": {
+        "wide": true
+      }
+    },
+    "cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "main", "cta"]
+}

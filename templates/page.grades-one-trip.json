@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-grade-hero",
+      "settings": {
+        "heading": "New - One Trip Shipping Containers",
+        "text": "<p>One-Trip storage containers are virtually brand new and ready for 10-20 years of extensive use. These units been loaded with a single cargo to defray transportation costs and shipped from their manufacturing center overseas — and are now available for purchase and long-term use.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-grade-onetrip-hero-bg.jpg"
+      }
+    },
+    "origin": {
+      "type": "uc-grade-origin",
+      "settings": {
+        "heading": "Where Do One-Trip Containers Come From?",
+        "text": "<p>When you purchase one-trip shipping containers, you are buying something that hasn’t been used for more than several weeks. Our one-trip containers for sale have undergone a single transit from a major container manufacturing center (typically China) to their port of destination. They were loaded with a single cargo and transported overseas, unloaded, and are now as-new storage containers for sale.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-grade-onetrip-container.png"
+      }
+    },
+    "features": {
+      "type": "uc-grade-features",
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "new",
+            "label": "As-New Condition"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "paint",
+            "label": "Original Paint"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "grade",
+            "label": "Grade-A Shipping Container"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "warranty",
+            "label": "25 Year Premium Warranty"
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "icon": "cost",
+            "label": "Cost-Effective"
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "icon": "longterm",
+            "label": "Suitable for Long-Term Use"
+          }
+        },
+        "f7": {
+          "type": "feature",
+          "settings": {
+            "icon": "clean",
+            "label": "Clean",
+            "wide": true
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7"
+      ],
+      "settings": {
+        "heading": "One-Trip Containers Features & Benefits",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-grade-features-bg.png"
+      }
+    },
+    "wear": {
+      "type": "uc-grade-text-block",
+      "settings": {
+        "heading": "What Type of Wear-and-Tear Can I Expect from a One-Trip Shipping Container?",
+        "text": "<p>One-trip containers from Used Conex are thoroughly inspected for damage and wear-and-tear prior to going on the market. Our multi-point shipping container inspection ensures that each unit has not suffered any structural damage, has any holes or rust, is dirty and unsanitary in any way or has otherwise been compromised in quality.</p>"
+      }
+    },
+    "compare": {
+      "type": "uc-grade-text-block",
+      "settings": {
+        "heading": "One-Trip Shipping Container vs. Used Shipping Container",
+        "text": "<p>A one-time shipping container can last as long as 20 years or more. If you have a business where presentation is a big factor, a one-trip shipping container comes with a clean finish, little-to-no rust or damage, and blends well with a tidy environment. Depending on its age, a used shipping container may not offer the same benefits as a one-time shipping container or at least not aesthetically. Used shipping containers typically come with a limited lifespan and resale value. It’s important to consider the above points when reviewing cost savings and comparing one-time and used shipping containers for your needs. We guarantee only the highest-quality one-trip containers with negligible wear-and-tear. But if you don’t mind the surface dings and dents, a used container is a more pocket friendly choice.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "origin",
+    "wear",
+    "compare",
+    "features"
+  ]
+}

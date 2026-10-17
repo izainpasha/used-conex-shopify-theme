@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Shop Shipping Containers",
+        "subheading": "Enter your ZIP code to see the containers we can deliver to your area, then request a quote on the one you need.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg"
+      }
+    },
+    "results": {
+      "type": "uc-zip-results",
+      "settings": {
+        "heading": "Containers Available Near You",
+        "quote_label": "Add To Cart",
+        "prompt_message": "Enter a US ZIP code above to see the containers we can deliver to your area.",
+        "invalid_message": "Please enter a valid US ZIP code (5 digits, e.g. 10001). We currently deliver within the United States only."
+      }
+    }
+  },
+  "order": ["hero", "results"]
+}

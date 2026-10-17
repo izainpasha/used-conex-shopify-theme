@@ -1,0 +1,55 @@
+{%- comment -%}
+  Used Conex — ZIP + delivery/pickup control.
+
+  Rendered two ways: as a full-width band above collection listings, and as an
+  inline block inside the product info column. Both share this markup so the
+  behaviour in uc-storefront.js stays a single implementation.
+
+  Params: label, placeholder, button_label, loading_message, invalid_message,
+          live_pricing, api_base, api_email, inline, search
+{%- endcomment -%}
+
+{%- assign zb_api = api_base | default: 'https://api.usedconex.com/client/v1' -%}
+{%- assign zb_email = api_email | default: 'mg@usedconex.com' -%}
+{%- assign zb_loading = loading_message | default: 'Checking availability…' -%}
+{%- assign zb_invalid = invalid_message | default: 'Please enter a valid US ZIP code.' -%}
+{%- assign zb_placeholder = placeholder | default: 'Enter your zip code' -%}
+{%- assign zb_button = button_label | default: 'Check' -%}
+
+<div class="uc-zipbar{% if inline %} uc-zipbar--inline{% endif %}{% if search %} uc-zipbar--search{% endif %}"
+  data-uc-zipbar
+  data-live="{{ live_pricing | default: true }}"
+  data-api-base="{{ zb_api }}"
+  data-api-email="{{ zb_email }}"
+  data-msg-loading="{{ zb_loading | escape }}"
+  data-msg-invalid="{{ zb_invalid | escape }}"
+>
+  <div class="uc-zipbar__inner">
+    {%- if label != blank -%}
+      <p class="uc-zipbar__label">{{ label }}</p>
+    {%- endif -%}
+
+    <form class="uc-zipbar__form" data-uc-zipbar-form novalidate>
+      <input
+        type="text"
+        class="uc-zipbar__input"
+        data-uc-zipbar-input
+        inputmode="numeric"
+        autocomplete="postal-code"
+        maxlength="10"
+        placeholder="{{ zb_placeholder }}"
+        aria-label="{{ zb_placeholder }}"
+      >
+      <div class="uc-zipbar__select">
+        <select data-uc-zipbar-mode aria-label="Delivery or pickup">
+          <option value="true">Delivery</option>
+          <option value="false">Pick Up</option>
+        </select>
+        <svg viewBox="0 0 20 10" fill="none" aria-hidden="true"><path d="M2 2l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <button type="submit" class="uc-zipbar__submit">{{ zb_button }}</button>
+    </form>
+
+    <p class="uc-zipbar__status" data-uc-zipbar-status hidden></p>
+  </div>
+</div>

@@ -1,0 +1,754 @@
+{%- comment -%}
+Used Conex — Choose Your Container (3 columns)
+{%- endcomment -%}
+
+{%- render 'uc-section-style', section: section -%}
+
+{%- style -%}
+
+  #uc-choose-{{ section.id }} {
+    --uc-cursor-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23000' d='M14.5 1.5 1 6.7l5.2 1.9 1.9 5.4z'/%3E%3C/svg%3E");
+  }
+
+  /* =========================================
+     3 COLUMN GRID
+     ========================================= */
+
+  #uc-choose-{{ section.id }} .uc-choose__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+    align-items: start;
+  }
+
+  #uc-choose-{{ section.id }} .uc-choose__col {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* =========================================
+     SAME SIZE IMAGES
+     ========================================= */
+
+  #uc-choose-{{ section.id }} .uc-choose__media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 2 !important;
+    height: auto !important;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-top: 24px;
+    background: #f3f3f3;
+  }
+
+  #uc-choose-{{ section.id }} .uc-choose__media .uc-choose__img {
+    position: absolute !important;
+
+    top: 18px !important;
+    left: 18px !important;
+
+    width: calc(100% - 36px) !important;
+    height: calc(100% - 36px) !important;
+
+    min-width: 0 !important;
+    min-height: 0 !important;
+
+    max-width: none !important;
+    max-height: none !important;
+
+    object-fit: contain !important;
+    object-position: center center !important;
+
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border-radius: 0 !important;
+}
+  }
+
+
+  /* =========================================
+     TABLET
+     ========================================= */
+
+  @media screen and (max-width: 989px) {
+
+    #uc-choose-{{ section.id }} .uc-choose__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+  }
+
+
+  /* =========================================
+     MOBILE
+     ========================================= */
+
+  @media screen and (max-width: 749px) {
+
+    #uc-choose-{{ section.id }} .uc-choose__grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    #uc-choose-{{ section.id }} .uc-choose__media {
+      aspect-ratio: 3 / 2 !important;
+      margin-top: 18px;
+    }
+
+  }
+
+{%- endstyle -%}
+
+
+<section
+  class="uc-section uc-font"
+  id="uc-choose-{{ section.id }}"
+>
+
+  <div class="uc-wrap">
+
+    <h2 class="uc-section-title">
+      {{ section.settings.heading }}
+    </h2>
+
+
+    <div class="uc-choose__grid">
+
+      {%- for block in section.blocks -%}
+
+        <div
+          class="uc-choose__col"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="uc-choose__head">
+            {{ block.settings.title }}
+          </div>
+
+
+          <ul class="uc-choose__list">
+
+            {%- assign features = block.settings.features
+              | newline_to_br
+              | split: '<br />'
+            -%}
+
+            {%- for feature in features -%}
+
+              {%- assign f = feature | strip -%}
+
+              {%- if f != blank -%}
+                <li>{{ f }}</li>
+              {%- endif -%}
+
+            {%- endfor -%}
+
+          </ul>
+
+
+          {%- if block.settings.image != blank -%}
+
+            <div class="uc-choose__media">
+
+              {{
+                block.settings.image
+                | image_url: width: 1400
+                | image_tag:
+                  class: 'uc-choose__img',
+                  alt: block.settings.title,
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200, 1400',
+                  sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw'
+              }}
+
+            </div>
+
+
+          {%- elsif block.settings.fallback_image_url != blank -%}
+
+            <div class="uc-choose__media">
+
+              {%- render 'uc-img', src: block.settings.fallback_image_url, class: 'uc-choose__img', alt: block.settings.title, widths: '400,600,800,1000', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw' -%}
+
+            </div>
+
+          {%- endif -%}
+
+
+        </div>
+
+      {%- endfor -%}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "UC Choose Container",
+
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Choose Your Container"
+    },
+
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+
+  ],
+
+
+  "blocks": [
+
+    {
+      "type": "column",
+      "name": "Container type",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "One Trip Container"
+        },
+
+        {
+          "type": "textarea",
+          "id": "features",
+          "label": "Features (one per line)",
+          "default": "No Holes or Leaks\nNew Flooring\nFully Functional doors\nIdeal for export and storage needs\nSuitable for modifications\nFresh Paint\nMay Come with some dents or scratches\nPerfect Condition"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Fallback image URL",
+          "info": "Used only if no image uploaded"
+        }
+
+      ]
+
+    }
+
+  ],
+
+
+  "max_blocks": 3,
+
+
+  "presets": [
+
+    {
+      "name": "UC Choose Container",
+
+      "blocks": [
+
+        {
+          "type": "column",
+
+          "settings": {
+            "title": "One Trip Container",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-choose-onetrip.png",
+            "features": "No Holes or Leaks\nNew Flooring\nFully Functional doors\nIdeal for export and storage needs\nSuitable for modifications\nFresh Paint\nMay Come with some dents or scratches\nPerfect Condition"
+          }
+
+        },
+
+        {
+          "type": "column",
+
+          "settings": {
+            "title": "Cargo Worthy Container",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-choose-cargo.png",
+            "features": "No Holes or Leaks\nMinimal flooring repair and scratches\nFully Functional doors\nGreat for export and storage needs\nSuitable for modifications\nFaded Paint acceptable\nSome dents, patches and surface rust accepted\nGood Condition"
+          }
+
+        },
+
+        {
+          "type": "column",
+
+          "settings": {
+            "title": "Wind & Watertight Container",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-choose-wwt.png",
+            "features": "No Holes or Leaks\nMany flooring repairs and scratches\nFully Functional doors\nGreat for Storage\nCheaper option for modification work\nFaded Paint acceptable\nMany dents, patches and surface rust accepted\nAcceptable Condition"
+          }
+
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+{% endschema %}

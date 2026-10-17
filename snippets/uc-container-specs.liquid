@@ -1,0 +1,58 @@
+{%- comment -%}
+  Used Conex — condition + specification renderer, driven by product metafields.
+
+  Usage:
+    {% render 'uc-container-specs', product: product, compact: true %}
+
+  compact: true  → card layout (condition bullets + tight spec rows)
+  compact: false → full product-page layout
+{%- endcomment -%}
+
+{%- assign mf = product.metafields.custom -%}
+{%- assign condition_raw = mf.condition.value -%}
+
+{%- assign spec_labels = 'External length,External width,External height,Interior length,Interior width,Interior height,Tare weight,Max payload' | split: ',' -%}
+{%- assign spec_values = '' -%}
+{%- capture spec_values -%}
+{{ mf.external_length.value }}|{{ mf.external_width.value }}|{{ mf.external_height.value }}|{{ mf.interior_length.value }}|{{ mf.interior_width.value }}|{{ mf.interior_height.value }}|{{ mf.tare_weight.value }}|{{ mf.max_payload.value }}
+{%- endcapture -%}
+{%- assign spec_list = spec_values | strip | split: '|' -%}
+
+{%- assign has_specs = false -%}
+{%- for v in spec_list -%}
+  {%- if v != blank %}{% assign has_specs = true %}{% endif -%}
+{%- endfor -%}
+
+<div class="uc-specs{% if compact %} uc-specs--compact{% endif %}">
+
+  {%- if condition_raw != blank -%}
+    {%- assign lines = condition_raw | strip | newline_to_br | split: '<br />' -%}
+    <div class="uc-specs__block">
+      <h3 class="uc-specs__heading">Condition</h3>
+      <ul class="uc-specs__list">
+        {%- for line in lines -%}
+          {%- assign l = line | strip -%}
+          {%- if l != blank -%}<li>{{ l }}</li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+
+  {%- if has_specs -%}
+    <div class="uc-specs__block">
+      <h3 class="uc-specs__heading">Specifications</h3>
+      <dl class="uc-specs__table">
+        {%- for label in spec_labels -%}
+          {%- assign val = spec_list[forloop.index0] | strip -%}
+          {%- if val != blank -%}
+            <div class="uc-specs__row">
+              <dt>{{ label }}</dt>
+              <dd>{{ val }}</dd>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </dl>
+    </div>
+  {%- endif -%}
+
+</div>

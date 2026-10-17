@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "regions": {
+      "type": "uc-regions",
+      "blocks": {
+        "r1": {
+          "type": "region",
+          "settings": {
+            "title": "West",
+            "link": "/pages/shipping-containers-in-west",
+            "menu": "",
+            "cities": "Los Angeles, CA::shipping-containers-in-los-angeles-ca\nLong Beach, CA::shipping-containers-in-long-beach-ca\nOakland, CA::shipping-containers-in-oakland-ca\nSacramento, CA::shipping-containers-insacramento-ca\nFresno, CA::shipping-containers-in-fresno-ca\nBakersfield, CA::shipping-containers-in-bakersfield-ca\nStockton, CA::shipping-containers-in-stockton-ca\nSeattle, WA::shipping-containers-inseattle-wa\nSpokane, WA::shipping-containers-in-spokane-wa\nPortland, OR::shipping-containers-in-portland-or\nDenver, CO::shipping-containers-in-denver-co\nSalt Lake City, UT::shipping-containers-in-salt-lake-city-ut\nBoise, ID::shipping-containers-in-boise-id\nIdaho Falls, ID::shipping-containers-in-idaho-falls-id\nTwin Falls, ID::shipping-containers-in-twin-falls-id"
+          }
+        },
+        "r2": {
+          "type": "region",
+          "settings": {
+            "title": "Midwest",
+            "link": "/pages/midwest-container-sales",
+            "menu": "",
+            "cities": "Chicago, IL::shipping-containers-in-chicago-il\nWilmington, IL::shipping-containers-in-wilmington-il\nDetroit, MI::shipping-containers-in-detroit-mi\nColumbus, OH::shipping-containers-in-columbus-oh\nCincinnati, OH::shipping-containers-in-cincinnati-oh\nCleveland, OH::shipping-containers-in-cleveland-oh\nIndianapolis, IN::shipping-containers-in-indianapolis-in\nFort Wayne, IN::shipping-containers-in-fort-wayne-in\nMilwaukee, WI::shipping-containers-in-milwaukee-wi\nMinneapolis, MN::shipping-containers-in-minneapolis-mn\nSt. Louis, MO::shipping-containers-in-st-louis-mo\nKansas City, MO::shipping-containers-in-kansas-city-mo\nOmaha, NE::shipping-containers-in-omaha-ne\nWichita, KS::shipping-containers-in-wichita-ks"
+          }
+        },
+        "r3": {
+          "type": "region",
+          "settings": {
+            "title": "Southwest",
+            "link": "/pages/southwest-shipping-container",
+            "menu": "",
+            "cities": "Dallas, TX::shipping-containers-in-dallas-tx\nFort Worth, TX::shipping-containers-in-fort-worth-tx\nHouston, TX::shipping-containers-in-houston-tx\nSan Antonio, TX::shipping-containers-in-san-antonio-tx\nAustin, TX::shipping-containers-in-austin-tx\nEl Paso, TX::shipping-containers-in-el-paso-tx\nOklahoma City, OK::shipping-containers-in-oklahoma-city-ok\nTulsa, OK::shipping-containers-in-tulsa-ok\nLittle Rock, AR::shipping-containers-in-little-rock-ar"
+          }
+        },
+        "r4": {
+          "type": "region",
+          "settings": {
+            "title": "Southeast",
+            "link": "/pages/southeast-shipping-container",
+            "menu": "",
+            "cities": "Atlanta, GA::shipping-containers-in-atlanta-ga\nColumbus, GA::shipping-containers-in-columbus-ga\nSavannah, GA::shipping-containers-in-savannah-ga\nTampa, FL::shipping-containers-in-tampa-fl\nMiami, FL::shipping-containers-in-miami-fl\nOrlando, FL::shipping-containers-in-orlando-fl\nJacksonville, FL::shipping-containers-in-jacksonville-fl\nCharlotte, NC::shipping-containers-in-charlotte-nc\nNashville, TN::shipping-containers-in-nashville-tn\nMemphis, TN::shipping-containers-in-memphis-tn\nKnoxville, TN::shipping-containers-in-knoxville-tn\nLouisville, KY::shipping-containers-in-louisville-ky\nNew Orleans, LA::shipping-containers-in-new-orleans-la\nMobile, AL::shipping-containers-in-mobile-al"
+          }
+        },
+        "r5": {
+          "type": "region",
+          "settings": {
+            "title": "Northeast",
+            "link": "/pages/northeast-shipping-containers",
+            "menu": "",
+            "cities": "New York, NY::shipping-containers-in-new-york-ny\nNewark, NJ::shipping-containers-in-newark-nj\nBaltimore, MD::shipping-containers-in-baltimore-md\nRichmond, VA::shipping-containers-in-richmond-va\nNorfolk, VA::shipping-containers-in-norfolk-va\nChesapeake, VA::shipping-containers-in-chesapeake-va"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ],
+      "settings": {
+        "heading": "Regions We Cover",
+        "background": "shopify://shop_images/Regions_we_deliver.png",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-regions-bg.jpg",
+        "st_bg": "linear-gradient(6deg, rgba(249, 241, 43, 1), rgba(249, 223, 43, 0.53) 1%)",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": true
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "col1": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer-shop"
+          }
+        },
+        "col2": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Services",
+            "menu": "footer-services"
+          }
+        },
+        "col3": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Resources",
+            "menu": "footer-resources"
+          }
+        },
+        "col4": {
+          "type": "menu_column",
+          "settings": {
+            "heading": "Company",
+            "menu": "footer-company"
+          }
+        }
+      },
+      "block_order": [
+        "col1",
+        "col2",
+        "col3",
+        "col4"
+      ],
+      "custom_css": [],
+      "settings": {
+        "logo": "shopify://shop_images/Logo-transparent-white.png",
+        "tagline": "More Box for Your Buck.",
+        "phone": "+1-800-230-7764",
+        "email": "info@usedconex.com",
+        "address": "5401 West Kennedy Blvd, Suite 100, Tampa, FL 33609",
+        "hours": "8am – 6pm EST",
+        "payments_label": "We accept",
+        "payment_types": "visa, master, discover, american_express",
+        "instagram": "https://www.instagram.com/usedconex/",
+        "facebook": "https://www.facebook.com/usedconex/",
+        "linkedin": "https://www.linkedin.com/company/usedconexllc",
+        "youtube": "https://www.youtube.com/channel/UCIHY6u7PDFNCUM4Yc210TjA",
+        "twitter": "",
+        "copyright": "UsedConex.com",
+        "policy_links": "footer-policies",
+        "phone_label": "PHONE",
+        "email_label": "EMAIL",
+        "address_label": "ADDRESS",
+        "hours_label": "BUSINESS HOURS",
+        "rights_text": "All rights reserved.",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_img_height": 100,
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    }
+  },
+  "order": [
+    "regions",
+    "footer"
+  ]
+}

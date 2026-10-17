@@ -1,0 +1,969 @@
+{%- comment -%}
+  Used Conex — checkout (quote request) page.
+
+  Form on the left (contact + delivery address), order summary on the right
+  (containers selected, delivered price, tax when there is any, total).
+  The ZIP comes prefilled from the one the visitor already searched; changing
+  it re-prices the order.
+
+  "Continue to Payment" creates the customer and a quote-flagged order in the
+  CRM, then hands off to the CRM's own hosted payment page — no card details
+  are collected on this site. "Save My Quote for Later" sends the same quote
+  but stays here and shows the reference.
+
+  All behaviour lives in uc-quote.js and uc-storefront.js.
+{%- endcomment -%}
+{%- render 'uc-section-style', section: section -%}
+
+<section class="uc-font uc-checkout"
+  data-uc-quote-page
+  data-api-base="{{ section.settings.api_base | default: 'https://api.usedconex.com/client/v1' }}"
+  data-price-prefix="{{ section.settings.price_prefix }}"
+  data-delivery-label="{{ section.settings.delivery_label | default: 'Includes delivery' }}"
+  data-msg-invalid-zip="{{ section.settings.invalid_zip | escape }}"
+  data-msg-required="{{ section.settings.required_message | escape }}"
+  data-msg-email="{{ section.settings.email_message | escape }}"
+  data-msg-sending="{{ section.settings.sending_message | escape }}"
+  data-msg-redirecting="{{ section.settings.redirecting_message | escape }}"
+  data-msg-empty="{{ section.settings.empty_message | escape }}"
+  data-item-note="{{ section.settings.item_note | escape }}"
+>
+  <div class="uc-wrap">
+
+    <div class="uc-checkout__top">
+      <a class="uc-checkout__back" href="{{ section.settings.browse_url | default: '/collections/all' }}">
+        {%- render 'uc-icon', name: 'arrow-left' -%}{{ section.settings.back_label }}
+      </a>
+      <ol class="uc-checkout__steps" aria-label="Checkout progress">
+        <li class="is-done"><span class="uc-checkout__stepdot">{%- render 'uc-icon', name: 'check' -%}</span><span>{{ section.settings.step1_label }}</span></li>
+        <li class="is-current" aria-current="step"><span class="uc-checkout__stepdot">2</span><span>{{ section.settings.step2_label }}</span></li>
+        <li><span class="uc-checkout__stepdot">3</span><span>{{ section.settings.step3_label }}</span></li>
+      </ol>
+      <div class="uc-checkout__trusted">
+        {%- render 'uc-icon', name: 'shield-check' -%}
+        <div><strong>{{ section.settings.trusted_heading }}</strong><span>{{ section.settings.trusted_body }}</span></div>
+      </div>
+    </div>
+
+    <div class="uc-checkout__grid" data-uc-quote-main>
+
+      <form class="uc-checkout__card uc-checkout__form" data-uc-quote-form novalidate>
+        <div class="uc-checkout__head">
+          <div>
+            <h1 class="uc-checkout__title">{{ section.settings.heading }}</h1>
+            <p class="uc-checkout__sub">{{ section.settings.subheading }}</p>
+          </div>
+          <div class="uc-checkout__fast">
+            {%- render 'uc-icon', name: 'truck' -%}
+            <div><strong>{{ section.settings.fast_heading }}</strong><span>{{ section.settings.fast_body }}</span></div>
+          </div>
+        </div>
+
+        <div class="uc-checkout__step">
+          <span class="uc-checkout__num">1</span>
+          <div><h2>{{ section.settings.contact_heading }}</h2><p>{{ section.settings.contact_sub }}</p></div>
+        </div>
+
+        <div class="uc-checkout__row2">
+          <label class="uc-checkout__field">
+            <span class="uc-checkout__label">{{ section.settings.first_label }} <em>*</em></span>
+            <span class="uc-checkout__control">{%- render 'uc-icon', name: 'user' -%}<input type="text" name="firstName" autocomplete="given-name" placeholder="{{ section.settings.first_ph | escape }}" required></span>
+          </label>
+          <label class="uc-checkout__field">
+            <span class="uc-checkout__label">{{ section.settings.last_label }} <em>*</em></span>
+            <span class="uc-checkout__control">{%- render 'uc-icon', name: 'user' -%}<input type="text" name="lastName" autocomplete="family-name" placeholder="{{ section.settings.last_ph | escape }}" required></span>
+          </label>
+        </div>
+        <div class="uc-checkout__row2">
+          <label class="uc-checkout__field">
+            <span class="uc-checkout__label">{{ section.settings.email_label }} <em>*</em></span>
+            <span class="uc-checkout__control">{%- render 'uc-icon', name: 'mail' -%}<input type="email" name="email" autocomplete="email" placeholder="{{ section.settings.email_ph | escape }}" required></span>
+          </label>
+          <label class="uc-checkout__field">
+            <span class="uc-checkout__label">{{ section.settings.phone_label }} <em>*</em></span>
+            <span class="uc-checkout__control">{%- render 'uc-icon', name: 'phone' -%}<input type="tel" name="phone" autocomplete="tel" placeholder="{{ section.settings.phone_ph | escape }}" required></span>
+          </label>
+        </div>
+
+        <hr class="uc-checkout__rule">
+
+        <div class="uc-checkout__step">
+          <span class="uc-checkout__num">2</span>
+          <div><h2>{{ section.settings.address_heading }}</h2><p>{{ section.settings.address_sub }}</p></div>
+        </div>
+
+        <label class="uc-checkout__field">
+          <span class="uc-checkout__label">{{ section.settings.street_label }} <em>*</em></span>
+          <span class="uc-checkout__control">{%- render 'uc-icon', name: 'map-pin' -%}<input type="text" name="address" autocomplete="street-address" placeholder="{{ section.settings.street_ph | escape }}" required></span>
+        </label>
+        <div class="uc-checkout__row2">
+          <label class="uc-checkout__field">
+            <span class="uc-checkout__label">{{ section.settings.city_label }} <em>*</em></span>
+            <span class="uc-checkout__control">{%- render 'uc-icon', name: 'map-pin' -%}<input type="text" name="city" autocomplete="address-level2" placeholder="{{ section.settings.city_ph | escape }}" required></span>
+          </label>
+          <label class="uc-checkout__field">
+            <span class="uc-checkout__label">{{ section.settings.state_label }} <em>*</em></span>
+            <span class="uc-checkout__control uc-checkout__control--select">
+              <select name="state" autocomplete="address-level1" required data-uc-quote-state>
+                <option value="">{{ section.settings.state_ph }}</option>
+              </select>
+              {%- render 'uc-icon', name: 'chevron-down' -%}
+            </span>
+          </label>
+        </div>
+        <label class="uc-checkout__field">
+          <span class="uc-checkout__label">{{ section.settings.zip_label }} <em>*</em></span>
+          <span class="uc-checkout__control">{%- render 'uc-icon', name: 'map-pin' -%}<input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10" placeholder="{{ section.settings.zip_ph | escape }}" required data-uc-quote-zip></span>
+        </label>
+
+        <button type="submit" class="uc-checkout__pay" data-uc-quote-submit>
+          {%- render 'uc-icon', name: 'lock' -%}<span>{{ section.settings.submit_label }}</span>{%- render 'uc-icon', name: 'arrow-right' -%}
+        </button>
+        <button type="button" class="uc-checkout__save" data-uc-quote-save>
+          {%- render 'uc-icon', name: 'bookmark' -%}<span>{{ section.settings.save_label }}</span>
+        </button>
+        <p class="uc-checkout__status" data-uc-quote-status role="status" hidden></p>
+      </form>
+
+      <aside class="uc-checkout__card uc-checkout__summary" aria-label="Order summary">
+        <div class="uc-checkout__sumhead">
+          <h2>{{ section.settings.summary_heading }}</h2>
+          <span data-uc-quote-itemcount>0 Items</span>
+        </div>
+
+        <ul class="uc-checkout__items" data-uc-quote-list></ul>
+        <p class="uc-checkout__empty" data-uc-quote-empty hidden>
+          {{ section.settings.empty_message }}
+          <a href="{{ section.settings.browse_url | default: '/collections/all' }}">{{ section.settings.back_label }}</a>
+        </p>
+
+        <div class="uc-checkout__totals">
+          <div class="uc-checkout__trow"><span data-uc-quote-sublabel>{{ section.settings.subtotal_label }}</span><span data-uc-quote-subtotal>—</span></div>
+          <div class="uc-checkout__trow" data-uc-quote-taxrow hidden><span>{{ section.settings.tax_label }}</span><span data-uc-quote-tax></span></div>
+          <div class="uc-checkout__trow uc-checkout__trow--total"><span>{{ section.settings.total_label }}</span><span data-uc-quote-total>—</span></div>
+        </div>
+
+        <div class="uc-checkout__note">
+          {%- render 'uc-icon', name: 'truck' -%}
+          <div><strong data-uc-quote-zipnote>{{ section.settings.zip_note_empty }}</strong><span>{{ section.settings.zip_note_body }}</span></div>
+        </div>
+
+        <div class="uc-checkout__tiles">
+          <div class="uc-checkout__tile">{%- render 'uc-icon', name: 'shield-check' -%}<strong>{{ section.settings.tile1_heading }}</strong><span>{{ section.settings.tile1_body }}</span></div>
+          <div class="uc-checkout__tile">{%- render 'uc-icon', name: 'circle-dollar-sign' -%}<strong>{{ section.settings.tile2_heading }}</strong><span>{{ section.settings.tile2_body }}</span></div>
+          <div class="uc-checkout__tile">{%- render 'uc-icon', name: 'truck' -%}<strong>{{ section.settings.tile3_heading }}</strong><span>{{ section.settings.tile3_body }}</span></div>
+        </div>
+
+        <div class="uc-checkout__help">
+          {%- render 'uc-icon', name: 'headset' -%}
+          <div><strong>{{ section.settings.help_heading }}</strong><span>{{ section.settings.help_body }}</span></div>
+          <a class="uc-checkout__mail" href="mailto:{{ section.settings.support_email }}">{%- render 'uc-icon', name: 'mail' -%}{{ section.settings.support_email }}</a>
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="uc-checkout__card uc-checkout__done" data-uc-quote-done hidden>
+      <span class="uc-checkout__donecheck">{%- render 'uc-icon', name: 'check' -%}</span>
+      <h2>{{ section.settings.success_heading }}</h2>
+      <p>{{ section.settings.success_body }}</p>
+      <p class="uc-checkout__ref">{{ section.settings.reference_label }} <strong data-uc-quote-ref></strong></p>
+      <div class="uc-checkout__doneactions">
+        <a class="uc-checkout__pay" href="#" data-uc-quote-paylink hidden>{%- render 'uc-icon', name: 'lock' -%}<span>{{ section.settings.pay_now_label }}</span></a>
+        <a class="uc-checkout__save" href="{{ section.settings.browse_url | default: '/collections/all' }}">{{ section.settings.back_label }}</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UC Checkout",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Checkout"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Enter your information below to complete your order."
+    },
+    {
+      "type": "text",
+      "id": "back_label",
+      "label": "Back link label",
+      "default": "Back to Containers"
+    },
+    {
+      "type": "url",
+      "id": "browse_url",
+      "label": "Back link"
+    },
+    {
+      "type": "text",
+      "id": "trusted_heading",
+      "label": "Trust line heading",
+      "default": "Trusted by 10,000+ customers"
+    },
+    {
+      "type": "text",
+      "id": "trusted_body",
+      "label": "Trust line text",
+      "default": "Quality containers. Delivered nationwide."
+    },
+    {
+      "type": "text",
+      "id": "fast_heading",
+      "label": "Delivery note heading",
+      "default": "Fast & Reliable Delivery"
+    },
+    {
+      "type": "text",
+      "id": "fast_body",
+      "label": "Delivery note text",
+      "default": "Your container will be delivered to the address you provide."
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Step 1 heading",
+      "default": "Contact Information"
+    },
+    {
+      "type": "text",
+      "id": "contact_sub",
+      "label": "Step 1 text",
+      "default": "We'll use this information to keep you updated about your order."
+    },
+    {
+      "type": "text",
+      "id": "address_heading",
+      "label": "Step 2 heading",
+      "default": "Delivery Address"
+    },
+    {
+      "type": "text",
+      "id": "address_sub",
+      "label": "Step 2 text",
+      "default": "Your container will be delivered to this address."
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Payment button",
+      "default": "Continue to Payment"
+    },
+    {
+      "type": "text",
+      "id": "save_label",
+      "label": "Save button",
+      "default": "Save My Quote for Later"
+    },
+    {
+      "type": "header",
+      "content": "Order summary"
+    },
+    {
+      "type": "text",
+      "id": "summary_heading",
+      "label": "Heading",
+      "default": "Your Order"
+    },
+    {
+      "type": "text",
+      "id": "subtotal_label",
+      "label": "Subtotal label",
+      "default": "Delivered Price"
+    },
+    {
+      "type": "text",
+      "id": "zip_note_empty",
+      "label": "Note before a ZIP is known",
+      "default": "Enter your ZIP code to see your delivered price"
+    },
+    {
+      "type": "text",
+      "id": "zip_note_body",
+      "label": "Note text",
+      "default": "Final price may vary if delivery address changes."
+    },
+    {
+      "type": "text",
+      "id": "tile1_heading",
+      "label": "Tile 1 heading",
+      "default": "Secure checkout"
+    },
+    {
+      "type": "text",
+      "id": "tile1_body",
+      "label": "Tile 1 text",
+      "default": "Your information is encrypted"
+    },
+    {
+      "type": "text",
+      "id": "tile2_heading",
+      "label": "Tile 2 heading",
+      "default": "No hidden fees"
+    },
+    {
+      "type": "text",
+      "id": "tile2_body",
+      "label": "Tile 2 text",
+      "default": "What you see is what you pay"
+    },
+    {
+      "type": "text",
+      "id": "tile3_heading",
+      "label": "Tile 3 heading",
+      "default": "Delivery included"
+    },
+    {
+      "type": "text",
+      "id": "tile3_body",
+      "label": "Tile 3 text",
+      "default": "Straight to your location"
+    },
+    {
+      "type": "text",
+      "id": "help_heading",
+      "label": "Help heading",
+      "default": "Questions? Contact our team."
+    },
+    {
+      "type": "text",
+      "id": "help_body",
+      "label": "Help text",
+      "default": "We're here to help."
+    },
+    {
+      "type": "text",
+      "id": "support_email",
+      "label": "Support email",
+      "default": "support@usedconex.com"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_message",
+      "label": "Empty order message",
+      "default": "You have not added any containers yet."
+    },
+    {
+      "type": "header",
+      "content": "After saving a quote"
+    },
+    {
+      "type": "text",
+      "id": "success_heading",
+      "label": "Heading",
+      "default": "Your quote is saved"
+    },
+    {
+      "type": "textarea",
+      "id": "success_body",
+      "label": "Text",
+      "default": "Our team will be in touch with your all-in price. Keep this reference for your records."
+    },
+    {
+      "type": "text",
+      "id": "reference_label",
+      "label": "Reference label",
+      "default": "Your reference:"
+    },
+    {
+      "type": "text",
+      "id": "pay_now_label",
+      "label": "Pay now button",
+      "default": "Pay Now"
+    },
+    {
+      "type": "text",
+      "id": "item_note",
+      "label": "Line under each item",
+      "default": "Great for storage or modifications."
+    },
+    {
+      "type": "header",
+      "content": "Messages"
+    },
+    {
+      "type": "text",
+      "id": "invalid_zip",
+      "label": "Invalid ZIP",
+      "default": "Please enter a valid US ZIP code."
+    },
+    {
+      "type": "text",
+      "id": "required_message",
+      "label": "Missing fields",
+      "default": "Please fill in every required field."
+    },
+    {
+      "type": "text",
+      "id": "email_message",
+      "label": "Invalid email",
+      "default": "Please enter a valid email address."
+    },
+    {
+      "type": "text",
+      "id": "sending_message",
+      "label": "Sending",
+      "default": "Sending your order…"
+    },
+    {
+      "type": "text",
+      "id": "redirecting_message",
+      "label": "Redirecting",
+      "default": "Taking you to secure payment…"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "api_base",
+      "label": "CRM API base URL",
+      "default": "https://api.usedconex.com/client/v1"
+    },
+    {
+      "type": "text",
+      "id": "price_prefix",
+      "label": "Price prefix",
+      "info": "Leave blank."
+    },
+    {
+      "type": "text",
+      "id": "delivery_label",
+      "label": "Delivery caption",
+      "default": "Includes delivery"
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "step1_label",
+      "label": "Step 1",
+      "default": "Cart"
+    },
+    {
+      "type": "text",
+      "id": "step2_label",
+      "label": "Step 2",
+      "default": "Checkout"
+    },
+    {
+      "type": "text",
+      "id": "step3_label",
+      "label": "Step 3",
+      "default": "Payment"
+    },
+    {
+      "type": "text",
+      "id": "first_label",
+      "label": "First name label",
+      "default": "First Name"
+    },
+    {
+      "type": "text",
+      "id": "first_ph",
+      "label": "First name placeholder",
+      "default": "Enter your first name"
+    },
+    {
+      "type": "text",
+      "id": "last_label",
+      "label": "Last name label",
+      "default": "Last Name"
+    },
+    {
+      "type": "text",
+      "id": "last_ph",
+      "label": "Last name placeholder",
+      "default": "Enter your last name"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_ph",
+      "label": "Email placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Phone label",
+      "default": "Phone Number"
+    },
+    {
+      "type": "text",
+      "id": "phone_ph",
+      "label": "Phone placeholder",
+      "default": "Enter your phone number"
+    },
+    {
+      "type": "text",
+      "id": "street_label",
+      "label": "Street label",
+      "default": "Street Address"
+    },
+    {
+      "type": "text",
+      "id": "street_ph",
+      "label": "Street placeholder",
+      "default": "Enter your street address"
+    },
+    {
+      "type": "text",
+      "id": "city_label",
+      "label": "City label",
+      "default": "City"
+    },
+    {
+      "type": "text",
+      "id": "city_ph",
+      "label": "City placeholder",
+      "default": "Enter your city"
+    },
+    {
+      "type": "text",
+      "id": "state_label",
+      "label": "State label",
+      "default": "State"
+    },
+    {
+      "type": "text",
+      "id": "state_ph",
+      "label": "State placeholder",
+      "default": "Select State"
+    },
+    {
+      "type": "text",
+      "id": "zip_label",
+      "label": "ZIP label",
+      "default": "ZIP Code"
+    },
+    {
+      "type": "text",
+      "id": "zip_ph",
+      "label": "ZIP placeholder",
+      "default": "Enter your ZIP code"
+    },
+    {
+      "type": "text",
+      "id": "tax_label",
+      "label": "Tax label",
+      "default": "Tax"
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Total label",
+      "default": "Total"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "UC Checkout"
+    }
+  ]
+}
+{% endschema %}

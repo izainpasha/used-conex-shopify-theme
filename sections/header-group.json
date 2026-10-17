@@ -1,0 +1,49 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo": "shopify://shop_images/Logo-transparent-white.png",
+        "logo_height": 80,
+        "logo_height_m": 100,
+        "cart_url": "",
+        "menu": "main-menu",
+        "phone": "1-800-230-7764",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

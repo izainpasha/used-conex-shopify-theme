@@ -1,0 +1,150 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-grade-hero",
+      "settings": {
+        "heading": "Container Moving Services",
+        "text": "<p>Container moving services offer a convenient, efficient and cost-effective solution for your next move.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-03.jpg?v=1788981685"
+      }
+    },
+    "steps": {
+      "type": "uc-get-in-touch",
+      "blocks": {
+        "s1": {
+          "type": "card",
+          "settings": {
+            "icon": "enterprise",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-touch-card-bg.jpg",
+            "card_bg": "shopify://shop_images/1234-1.png",
+            "title": "Get a Quote",
+            "body": "<p>Get a quote on your container move with the ZIP codes of your pickup and drop-off locations.</p>"
+          }
+        },
+        "s2": {
+          "type": "card",
+          "settings": {
+            "icon": "contact",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-touch-card-bg.jpg",
+            "card_bg": "shopify://shop_images/Financing-e1647208793343.png",
+            "title": "Get in Touch",
+            "body": "<p>Get in touch with one of our sales reps and let them know when you need your container moved by. Request an invoice and make the payment.</p>"
+          }
+        },
+        "s3": {
+          "type": "card",
+          "settings": {
+            "icon": "clock",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-touch-card-bg.jpg",
+            "card_bg": "shopify://shop_images/Container-modification.png",
+            "title": "Schedule Your Move",
+            "body": "<p>We will assign one of our experienced drivers to move your container. And then we will contact you with our first available spot to relocate your container to its new home!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "How It Works?"
+      }
+    },
+    "requirements": {
+      "type": "uc-moving-requirements",
+      "blocks": {
+        "r1": {
+          "type": "requirement",
+          "settings": {
+            "label": "Accessible pick-up location"
+          }
+        },
+        "r2": {
+          "type": "requirement",
+          "settings": {
+            "label": "Ideal ground condition and no obstacles blocking the road"
+          }
+        },
+        "r3": {
+          "type": "requirement",
+          "settings": {
+            "label": "No 90 degree Turns"
+          }
+        },
+        "r4": {
+          "type": "requirement",
+          "settings": {
+            "label": "The drop Site needs to be already leveled and ready"
+          }
+        },
+        "r5": {
+          "type": "requirement",
+          "settings": {
+            "label": "Container not exceeding the maximum weight limit"
+          }
+        },
+        "r6": {
+          "type": "requirement",
+          "settings": {
+            "label": "Container must be empty"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {
+        "heading": "Necessary Requirements"
+      }
+    },
+    "clearance": {
+      "type": "uc-moving-clearance",
+      "blocks": {
+        "c1": {
+          "type": "size",
+          "settings": {
+            "heading": "20ft Shipping Container",
+            "text": "<ul><li><strong>60ft Straight Line Clearance:</strong> This applies to roads leading to the drop site as well as at the drop site itself. With a 20ft shipping container cargo, our truck and trailer will require at least 60ft straight line clearance to make a turn.</li><li><strong>14ft Vertical Clearance on the Road:</strong> Roadways leading to the drop-off site should be free of any overhanging obstacles with a minimum of 14ft vertical clearance at all times.</li><li>12-14ft Width Clearance.</li><li>16ft Vertical Clearance at Drop-Off Site</li></ul>",
+            "accent": false
+          }
+        },
+        "c2": {
+          "type": "size",
+          "settings": {
+            "heading": "40ft Shipping Container",
+            "text": "<ul><li><strong>100ft Straight Line Clearance:</strong> A minimum of 100ft straight line clearance is required at all times during the delivery of a 40ft shipping container.</li><li><strong>14ft Vertical Clearance on the Road:</strong> This includes all sections of road leading to and at the drop-off location.</li><li>12-14ft Width Clearance.</li><li>16ft Vertical Clearance at Drop-Off Site</li></ul>",
+            "accent": true
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "settings": {
+        "heading": "Minimum Space Requirements for Different Sizes of Containers"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "steps",
+    "requirements",
+    "clearance"
+  ]
+}

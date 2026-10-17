@@ -1,0 +1,32 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Shipping Container Financing",
+        "subheading": "At Used Conex we provide different options to make buying a shipping container easy and affordable and we are proud to work with Paramount Financial to facilitate some of our customer's needs through financing.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-hero-bg-v2.jpg"
+      }
+    },
+    "body": {
+      "type": "uc-service-image",
+      "settings": {
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-service-financing.jpg",
+        "image_alt": "Quick and easy financing: benefits of leasing compared with a bank loan and cash, with Paramount Financial"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "body"
+  ]
+}

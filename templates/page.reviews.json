@@ -1,0 +1,241 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Used Conex Reviews",
+        "subheading": "“Great Containers and Competitive prices are our strengths, but customer service is our company-wide culture.” Brittney Evans, President",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-reviews-hero-bg.jpg"
+      }
+    },
+    "reviews": {
+      "type": "uc-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "title": "Fast Delivery & Clean Container – A Seamless Experience with Used Conex",
+            "video_id": "qjocPhdSEfU",
+            "needed_title": "What This Customer Needed",
+            "needed_list": "<ul><li>A clean, ready-to-use 40ft container</li><li>Simple ordering and transparent delivery process</li><li>Precise drop-off to a specific location</li></ul>",
+            "delivered_title": "What Used Conex Delivered",
+            "delivered_list": "<ul><li>A spotless 40ft standard container, no sweeping or wiping needed</li><li>Fast shipping and responsive customer service</li><li>Delivery placed exactly as requested</li></ul>"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "title": "Rod Turns a 40ft High Cube Container into a Skid Steer Garage",
+            "video_id": "BcOoelGWIgw",
+            "needed_title": "What This Customer Needed",
+            "needed_list": "<ul><li>A clean, ready-to-use high cube container</li><li>Room to house and maneuver a skid steer</li><li>Simple ordering and reliable delivery to his site</li></ul>",
+            "delivered_title": "What Used Conex Delivered",
+            "delivered_list": "<ul><li>A one-trip 40ft high cube container in excellent condition</li><li>Seamless delivery placed exactly where needed</li><li>Exceptional customer support throughout the process</li></ul>"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "title": "Smooth Ordering and Quality Delivery for a 20ft Shipping Container",
+            "video_id": "UYCmhuNAcp4",
+            "needed_title": "What This Customer Needed",
+            "needed_list": "<ul><li>A 20ft watertight container for secure storage</li><li>Fast, simple delivery with no complications</li><li>Proof the unit could hold up to real weather conditions</li></ul>",
+            "delivered_title": "What Used Conex Delivered",
+            "delivered_list": "<ul><li>A competitively priced container in solid structural condition</li><li>Professional and prompt delivery service</li><li>Clean, leak-free interior confirmed in rainy conditions</li></ul>"
+          }
+        },
+        "review_zpaGTy": {
+          "type": "review",
+          "settings": {
+            "title": "Smooth Ordering and Quality Delivery for a 20ft Shipping Container",
+            "video_id": "UYCmhuNAcp4",
+            "needed_title": "What This Customer Needed",
+            "needed_list": "<ul><li>A 20ft watertight container for secure storage</li><li>Fast, simple delivery with no complications</li><li>Proof the unit could hold up to real weather conditions</li></ul>",
+            "delivered_title": "What Used Conex Delivered",
+            "delivered_list": "<ul><li>A competitively priced container in solid structural condition</li><li>Professional and prompt delivery service</li><li>Clean, leak-free interior confirmed in rainy conditions</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "review_zpaGTy"
+      ],
+      "settings": {
+        "heading": ""
+      }
+    },
+    "playlist": {
+      "type": "uc-reviews-playlist",
+      "blocks": {
+        "c1": {
+          "type": "clip",
+          "settings": {
+            "video_id": "Zgb5voHr5O0",
+            "label": "Customer Review!"
+          }
+        },
+        "c2": {
+          "type": "clip",
+          "settings": {
+            "video_id": "vbsmiRxo7Lg",
+            "label": "Customer Review!"
+          }
+        },
+        "c3": {
+          "type": "clip",
+          "settings": {
+            "video_id": "7p42lWGlm3M",
+            "label": "Customer Review!"
+          }
+        },
+        "c4": {
+          "type": "clip",
+          "settings": {
+            "video_id": "iaCq3N93ra0",
+            "label": "Customer Review!"
+          }
+        },
+        "c5": {
+          "type": "clip",
+          "settings": {
+            "video_id": "VXGdyfGeE8o",
+            "label": "Customer Review!"
+          }
+        },
+        "c6": {
+          "type": "clip",
+          "settings": {
+            "video_id": "d9NqdJWeB20",
+            "label": "Customer Review!"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "heading": "Thousands of Happy Customers Nationwide!",
+        "subheading": ""
+      }
+    },
+    "members": {
+      "type": "uc-members",
+      "blocks": {
+        "m1": {
+          "type": "badge",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-badge-bbb.png",
+            "alt": "BBB Accredited Business",
+            "link": ""
+          }
+        },
+        "m2": {
+          "type": "badge",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-badge-2.png",
+            "alt": "NPSA Member",
+            "link": ""
+          }
+        },
+        "m3": {
+          "type": "badge",
+          "settings": {
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-badge-3.png",
+            "alt": "Accreditation",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3"
+      ],
+      "settings": {
+        "heading": "Trusted By"
+      }
+    },
+    "faq": {
+      "type": "uc-buy-faq",
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "question": "How long do shipping containers last?",
+            "answer": "<p>With proper care, a shipping container can last 20-30 years or more, thanks to their durable steel construction.</p>"
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can shipping containers be modified?",
+            "answer": "<p>Yes! Shipping containers are highly customizable. You can modify them with windows, doors, insulation, and more to suit your needs.</p>"
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the difference between a 20ft and 40ft shipping container?",
+            "answer": "<p>A 20ft container offers about 1,170 cubic feet of storage, while a 40ft container offers roughly double that space — ideal for larger loads or storage needs.</p>"
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "question": "Am I able to pick a color?",
+            "answer": "<p>Color availability depends on current inventory. Contact our team to check available colors for your container grade and size.</p>"
+          }
+        },
+        "f5": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I see the container before purchasing?",
+            "answer": "<p>In many cases, yes. Reach out to our team to arrange a viewing at a depot near you before you buy.</p>"
+          }
+        },
+        "f6": {
+          "type": "faq",
+          "settings": {
+            "question": "What’s the origin of shipping containers?",
+            "answer": "<p>Most used shipping containers originate overseas, having completed one or more trips carrying international cargo before being sold.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "intro": "We’ve answered the most common questions about buying and receiving shipping containers from Used Conex. From site prep to delivery timing, you’ll find everything you need to know here."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "reviews",
+    "playlist",
+    "members",
+    "faq"
+  ]
+}

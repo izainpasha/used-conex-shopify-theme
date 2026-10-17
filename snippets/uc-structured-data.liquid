@@ -1,0 +1,99 @@
+{%- comment -%}
+  Used Conex — structured data for search engines (JSON-LD).
+  Business details mirror the Contact page; update both together.
+{%- endcomment -%}
+{%- liquid
+  assign uc_origin = request.origin
+  assign uc_org_id = uc_origin | append: '/#organization'
+  assign uc_logo = ''
+  if settings.favicon != blank
+    assign uc_logo = settings.favicon | image_url: width: 512 | prepend: 'https:'
+  endif
+-%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": {{ uc_org_id | json }},
+  "name": "Used Conex LLC",
+  "url": {{ uc_origin | json }},
+  {%- if uc_logo != '' %}
+  "logo": {{ uc_logo | json }},
+  "image": {{ uc_logo | json }},
+  {%- endif %}
+  "telephone": "+1-800-230-7764",
+  "email": "info@usedconex.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5401 West Kennedy Blvd, Suite 100",
+    "addressLocality": "Tampa",
+    "addressRegion": "FL",
+    "postalCode": "33609",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  }],
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "sameAs": [
+    "https://www.instagram.com/usedconex/",
+    "https://www.facebook.com/usedconex/",
+    "https://www.linkedin.com/company/usedconexllc",
+    "https://www.youtube.com/channel/UCIHY6u7PDFNCUM4Yc210TjA"
+  ]
+}
+</script>
+
+{%- if request.page_type == 'index' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Used Conex",
+  "url": {{ uc_origin | append: '/' | json }},
+  "publisher": { "@id": {{ uc_org_id | json }} }
+}
+</script>
+{%- endif %}
+
+{%- if request.page_type == 'article' %}
+{%- assign uc_art_desc = article.excerpt_or_content | strip_html | strip_newlines | strip | truncate: 200 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {{ canonical_url | json }},
+  "headline": {{ article.title | truncate: 110 | json }},
+  "description": {{ uc_art_desc | json }},
+  {%- if article.image %}
+  "image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],
+  {%- endif %}
+  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+  "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%:z' | json }},
+  "author": { "@type": "Organization", "name": "Used Conex", "url": {{ uc_origin | json }} },
+  "publisher": { "@id": {{ uc_org_id | json }} }
+}
+</script>
+{%- endif %}
+
+{%- assign uc_crumb_types = 'page,collection,product,blog,article,policy' | split: ',' %}
+{%- if uc_crumb_types contains request.page_type %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ uc_origin | append: '/' | json }} },
+    {%- if request.page_type == 'article' %}
+    { "@type": "ListItem", "position": 2, "name": {{ blog.title | json }}, "item": {{ uc_origin | append: blog.url | json }} },
+    { "@type": "ListItem", "position": 3, "name": {{ article.title | json }}, "item": {{ canonical_url | json }} }
+    {%- else %}
+    { "@type": "ListItem", "position": 2, "name": {{ page_title | strip_newlines | strip | json }}, "item": {{ canonical_url | json }} }
+    {%- endif %}
+  ]
+}
+</script>
+{%- endif %}

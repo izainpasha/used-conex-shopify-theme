@@ -1,0 +1,551 @@
+{%- comment -%} Used Conex — How tall is a CONEX box (height diagram + note) {%- endcomment -%}{%- render 'uc-section-style', section: section -%}
+
+{%- assign img_20 = section.settings.image_20 -%}
+{%- assign img_40 = section.settings.image_40 -%}
+{%- assign img_person = section.settings.image_person -%}
+
+<section class="uc-dims-height uc-font">
+  <div class="uc-wrap">
+    <h2 class="uc-dims-height__title">{{ section.settings.heading }}</h2>
+    <p class="uc-dims-height__intro">{{ section.settings.intro }}</p>
+
+    <div class="uc-dims-height__panel">
+      <div class="uc-dims-height__stage">
+        <figure class="uc-dims-height__unit">
+          <figcaption class="uc-dims-height__unit-label">{{ section.settings.label_20 }}</figcaption>
+          {%- if img_20 != blank -%}
+            {{ img_20 | image_url: width: 684 | image_tag: class: 'uc-dims-height__art', alt: section.settings.label_20, loading: 'lazy' }}
+          {%- else -%}
+            {%- render 'uc-img', src: section.settings.fallback_20_url, class: 'uc-dims-height__art', alt: section.settings.label_20, width: 342, height: 470, widths: '342,513,684', sizes: '(min-width: 750px) 342px, 45vw' -%}
+          {%- endif -%}
+        </figure>
+
+        <div class="uc-dims-height__rulers" aria-hidden="true">
+          <span class="uc-dims-height__ruler">
+            <span class="uc-dims-height__ruler-text">{{ section.settings.height_20 }}</span>
+          </span>
+          <span class="uc-dims-height__ruler">
+            <span class="uc-dims-height__ruler-text">{{ section.settings.height_40 }}</span>
+          </span>
+        </div>
+
+        <figure class="uc-dims-height__unit">
+          <figcaption class="uc-dims-height__unit-label">{{ section.settings.label_40 }}</figcaption>
+          {%- if img_40 != blank -%}
+            {{ img_40 | image_url: width: 684 | image_tag: class: 'uc-dims-height__art', alt: section.settings.label_40, loading: 'lazy' }}
+          {%- else -%}
+            {%- render 'uc-img', src: section.settings.fallback_40_url, class: 'uc-dims-height__art', alt: section.settings.label_40, width: 342, height: 470, widths: '342,513,684', sizes: '(min-width: 750px) 342px, 45vw' -%}
+          {%- endif -%}
+        </figure>
+
+        <div class="uc-dims-height__aside">
+          {%- if img_person != blank -%}
+            {{ img_person | image_url: width: 916 | image_tag: class: 'uc-dims-height__person', alt: '', loading: 'lazy' }}
+          {%- else -%}
+            {%- render 'uc-img', src: section.settings.fallback_person_url, class: 'uc-dims-height__person', decorative: true, width: 458, height: 410, widths: '458,687,916', sizes: '(min-width: 750px) 458px, 50vw' -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.note_text != blank -%}
+        <div class="uc-dims-height__note">
+          <strong>{{ section.settings.note_label }}</strong>
+          <span>{{ section.settings.note_text }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UC Dims Height",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How tall is a CONEX box?"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "A CONEX box or shipping container is either 8’6” or 9’6” when measured by its exterior height. The standard height is 8’6”, but a high cube box comes with an extra foot of vertical space."
+    },
+    {
+      "type": "header",
+      "content": "Container illustrations"
+    },
+    {
+      "type": "text",
+      "id": "label_20",
+      "label": "Left container label",
+      "default": "20 Foot"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_20",
+      "label": "Left container illustration"
+    },
+    {
+      "type": "text",
+      "id": "fallback_20_url",
+      "label": "Left illustration fallback URL",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-h-20ft.svg"
+    },
+    {
+      "type": "text",
+      "id": "label_40",
+      "label": "Right container label",
+      "default": "40 Foot"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_40",
+      "label": "Right container illustration"
+    },
+    {
+      "type": "text",
+      "id": "fallback_40_url",
+      "label": "Right illustration fallback URL",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-h-40ft.svg"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_person",
+      "label": "Question mark illustration"
+    },
+    {
+      "type": "text",
+      "id": "fallback_person_url",
+      "label": "Question mark fallback URL",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-h-person.svg"
+    },
+    {
+      "type": "header",
+      "content": "Height labels"
+    },
+    {
+      "type": "text",
+      "id": "height_20",
+      "label": "Standard height label",
+      "default": "8’ 6 Ft"
+    },
+    {
+      "type": "text",
+      "id": "height_40",
+      "label": "High cube height label",
+      "default": "9’ 6 Ft"
+    },
+    {
+      "type": "header",
+      "content": "Note"
+    },
+    {
+      "type": "text",
+      "id": "note_label",
+      "label": "Note label",
+      "default": "Note:"
+    },
+    {
+      "type": "textarea",
+      "id": "note_text",
+      "label": "Note text",
+      "default": "A “CONEX” box is just another name for a shipping container. It stands for Container Express, and was first described as such during the Korean War. Standard sizes for cargo containers at that time have largely remained the same."
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "UC Dims Height"
+    }
+  ]
+}
+{% endschema %}

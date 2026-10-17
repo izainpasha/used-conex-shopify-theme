@@ -1,0 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-dims-hero",
+      "settings": {
+        "heading": "Get In Touch With Us",
+        "subheading": "Have a question about pricing, delivery, or your order? Our team is here to help.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-buy-hero-bg.jpg",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    },
+    "touch": {
+      "type": "uc-get-in-touch",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "icon": "enterprise",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-touch-card-bg.jpg",
+            "card_bg": "shopify://shop_images/1234-1.png",
+            "title": "Corporate Office",
+            "body": "<p>5401 West Kennedy Blvd, Suite 100<br/>Tampa FL 33609</p>"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "icon": "contact",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-touch-card-bg.jpg",
+            "card_bg": "shopify://shop_images/Financing-e1647208793343.png",
+            "title": "Contact Info",
+            "body": "<p>1.800.230.7764<br/>1.855.524.0888<br/>info@usedconex.com</p>"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "icon": "clock",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-touch-card-bg.jpg",
+            "card_bg": "shopify://shop_images/Container-modification.png",
+            "title": "Working Hours",
+            "body": "<p>Monday-Friday<br/>8 am-6 pm EST</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "heading": "Get In Touch",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    },
+    "map": {
+      "type": "uc-contact-map",
+      "settings": {
+        "map_src": "https://maps.google.com/maps?t=m&output=embed&iwloc=near&z=13&q=5401+West+Kennedy+Blvd%2C+Tampa+FL",
+        "aria_label": "Used Conex corporate office location",
+        "st_bg": "",
+        "st_overlay": 0,
+        "st_heading_color": "",
+        "st_text_color": "",
+        "st_custom_fonts": false,
+        "st_heading_font": "assistant_n4",
+        "st_body_font": "assistant_n4",
+        "st_heading_weight": "default",
+        "st_heading_case": "default",
+        "st_align": "default",
+        "st_align_m": "default",
+        "st_btn_full_m": false,
+        "st_btn_bg": "",
+        "st_btn_color": "",
+        "st_btn_bg_hover": "",
+        "st_btn_color_hover": "",
+        "st_btn_case": "default",
+        "st_img_fit": "default",
+        "st_hide_desktop": false,
+        "st_hide_mobile": false
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "touch",
+    "map"
+  ]
+}

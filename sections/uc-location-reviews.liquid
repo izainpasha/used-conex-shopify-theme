@@ -1,0 +1,532 @@
+{%- comment -%}
+  Used Conex — Location page "Customer Reviews" dark band (Figma 274:901).
+  Verified against the real Figma screenshot: this is the SAME two-story
+  bullet-list card format as the main Reviews page (sections/uc-reviews.liquid),
+  in a 2x2 grid — not the plain-text-testimonial format WordPress's raw HTML
+  suggested. Layout matches Figma; per-city copy is instance data.
+{%- endcomment -%}
+{%- render 'uc-section-style', section: section -%}
+
+<section class="uc-location-reviews uc-font">
+  <div class="uc-wrap">
+    <h2 class="uc-section-title uc-section-title--onDark">{{ section.settings.heading }}</h2>
+    {%- assign mf_intro = page.metafields.location.reviews_intro_html.value -%}
+    <div class="uc-location-reviews__intro">{{ mf_intro | default: section.settings.intro }}</div>
+
+    <div class="uc-reviews__grid uc-location-reviews__grid">
+      {%- for block in section.blocks -%}
+        {%- assign vid = block.settings.video_id | strip -%}
+        <article class="uc-reviews__card" {{ block.shopify_attributes }}>
+          <header class="uc-reviews__card-head">
+            <h3 class="uc-reviews__card-title">{{ block.settings.title }}</h3>
+          </header>
+          <div class="uc-reviews__card-body">
+            <div class="uc-reviews__lists">
+              {%- if block.settings.needed_title != blank -%}
+                <h3 class="uc-reviews__subhead">{{ block.settings.needed_title }}</h3>
+                <div class="uc-reviews__list">{{ block.settings.needed_list }}</div>
+              {%- endif -%}
+              {%- if block.settings.delivered_title != blank -%}
+                <h3 class="uc-reviews__subhead">{{ block.settings.delivered_title }}</h3>
+                <div class="uc-reviews__list">{{ block.settings.delivered_list }}</div>
+              {%- endif -%}
+            </div>
+            <div class="uc-reviews__media">
+              {%- if vid != blank -%}
+                <button class="uc-reviews__video" type="button" data-yt="{{ vid }}" aria-label="Play video: {{ block.settings.title | escape }}">
+                  <img class="uc-reviews__poster" src="https://i.ytimg.com/vi/{{ vid }}/oardefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ vid }}/maxresdefault.jpg'" alt="{{ block.settings.title | escape }}" loading="lazy" width="1080" height="1920">
+                  <span class="uc-reviews__play" aria-hidden="true">
+                    <svg viewBox="0 0 68 48" width="68" height="48" focusable="false">
+                      <path class="uc-reviews__play-bg" d="M66.52 7.74a8.57 8.57 0 0 0-6.02-6.06C55.2.24 34 .24 34 .24s-21.2 0-26.5 1.44a8.57 8.57 0 0 0-6.02 6.06A89.5 89.5 0 0 0 0 24a89.5 89.5 0 0 0 1.48 16.26 8.57 8.57 0 0 0 6.02 6.06C12.8 47.76 34 47.76 34 47.76s21.2 0 26.5-1.44a8.57 8.57 0 0 0 6.02-6.06A89.5 89.5 0 0 0 68 24a89.5 89.5 0 0 0-1.48-16.26z"/>
+                      <path d="M27.2 34.4 45.6 24 27.2 13.6z" fill="#fff"/>
+                    </svg>
+                  </span>
+                </button>
+              {%- elsif block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 566 | image_tag: class: 'uc-reviews__poster', alt: block.settings.title, loading: 'lazy' }}
+              {%- endif -%}
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.currentScript.previousElementSibling;
+    if (!root) return;
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest('.uc-reviews__video');
+      if (!btn) return;
+      var id = btn.getAttribute('data-yt');
+      if (!id) return;
+      var frame = document.createElement('iframe');
+      frame.className = 'uc-reviews__iframe';
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0&playsinline=1';
+      frame.title = btn.getAttribute('aria-label') || 'Customer review video';
+      frame.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.setAttribute('loading', 'lazy');
+      btn.replaceWith(frame);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "UC Location Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Customer Reviews"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro copy"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Story title"
+        },
+        {
+          "type": "text",
+          "id": "video_id",
+          "label": "YouTube video ID"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Fallback image"
+        },
+        {
+          "type": "text",
+          "id": "needed_title",
+          "label": "First list heading",
+          "default": "What This Customer Needed"
+        },
+        {
+          "type": "richtext",
+          "id": "needed_list",
+          "label": "First list"
+        },
+        {
+          "type": "text",
+          "id": "delivered_title",
+          "label": "Second list heading",
+          "default": "What Used Conex Delivered"
+        },
+        {
+          "type": "richtext",
+          "id": "delivered_list",
+          "label": "Second list"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "UC Location Reviews"
+    }
+  ]
+}
+{% endschema %}

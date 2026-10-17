@@ -1,0 +1,121 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-grade-hero",
+      "settings": {
+        "heading": "Used Cargo Worthy Shipping Containers",
+        "text": "<p>Cargo worthy shipping containers are in better shape than used wind and watertight containers, and they are slightly more expensive as well.</p><p>At Used Conex we can provide you a sea-worthy certificate on a used CW shipping container that you can purchase through us. You can use the Cargo Worthy containers to ship your items overseas.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-15.jpg?v=1788981683"
+      }
+    },
+    "age": {
+      "type": "uc-grade-age",
+      "blocks": {
+        "a1": {
+          "type": "sign",
+          "settings": {
+            "label": "Surface Rust"
+          }
+        },
+        "a2": {
+          "type": "sign",
+          "settings": {
+            "label": "Dents"
+          }
+        },
+        "a3": {
+          "type": "sign",
+          "settings": {
+            "label": "Gouges"
+          }
+        },
+        "a4": {
+          "type": "sign",
+          "settings": {
+            "label": "Scratches"
+          }
+        },
+        "a5": {
+          "type": "sign",
+          "settings": {
+            "label": "Scuffs and Dings"
+          }
+        },
+        "a6": {
+          "type": "sign",
+          "settings": {
+            "label": "Faded Paint"
+          }
+        },
+        "a7": {
+          "type": "sign",
+          "settings": {
+            "label": "Visible Past Repairs"
+          }
+        },
+        "a8": {
+          "type": "sign",
+          "settings": {
+            "label": "Wall Scratches"
+          }
+        },
+        "a9": {
+          "type": "sign",
+          "settings": {
+            "label": "Scuffs"
+          }
+        },
+        "a10": {
+          "type": "sign",
+          "settings": {
+            "label": "Marks and Patches"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8",
+        "a9",
+        "a10"
+      ],
+      "settings": {
+        "heading": "Cargo Worthy Container Signs of Age & Use Typically Include:",
+        "note": "<p>*While Cargo Worthy containers are in less-than perfect condition, CW containers are still qualified to serve all the major uses of shipping containers under international requirements and standards.</p><p>They are also an affordable option for purposes of storage and customization in a business capacity or in alternative use.</p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-09.png?v=1788981682",
+        "image_alt": "Blue Used Conex cargo worthy shipping container"
+      }
+    },
+    "compare": {
+      "type": "uc-grade-compare",
+      "settings": {
+        "heading": "Cargo-Worthy Container vs Wind & Watertight Container",
+        "intro": "<p>CW and WWT containers share many similarities, having both seen extensive use in maritime shipping over the years. However, they differ in quality grades: Cargo Worthy (CW) containers are Grade B, while Wind and Watertight (WWT) containers are Grade C. CW containers are generally in better condition and do not require repairs to pass CSC surveys, whereas WWT containers typically need repairs to meet CSC standards.</p>",
+        "left_fallback_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-16.png?v=1788981684",
+        "left_label": "CW Shipping Container",
+        "vs_fallback_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-32.png?v=1788981682",
+        "right_fallback_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-35.png?v=1788981684",
+        "right_label": "WWT Shipping Container"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "age",
+    "compare"
+  ]
+}

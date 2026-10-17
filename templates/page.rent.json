@@ -1,0 +1,282 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-rent-hero",
+      "settings": {
+        "heading": "Shipping Container Rental Services",
+        "subheading": "Renting a shipping container can be an affordable way to meet your needs for on-site storage."
+      }
+    },
+    "intro": {
+      "type": "uc-rent-intro",
+      "settings": {
+        "heading": "Rent a Shipping Container: Affordable, Flexible, and Convenient Solutions",
+        "body": "<p>Are you in need of extra storage or a secure space for your business, construction project, or personal use? Renting a shipping container offers an affordable, flexible solution tailored to your needs. Whether you’re moving, renovating, or storing excess inventory, a shipping container provides an easy-to-access, weatherproof space without the long-term commitment of owning one. With a variety of container sizes and rental options, you can find the perfect solution for your short or long-term needs. Rent a container from us today and enjoy secure, reliable storage delivered to your doorstep.</p>"
+      }
+    },
+    "storage_cta": {
+      "type": "uc-rent-storage-cta",
+      "settings": {
+        "heading": "Looking to rent a shipping container for storage?",
+        "body": "<p>Used Conex offers flexible options for rent-to-own and short and long-term rentals. Get approved within <b>3 BUSINESS DAYS</b></p>",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-truck-v2.png?v=1789163007"
+      }
+    },
+    "guide": {
+      "type": "uc-rent-guide",
+      "blocks": {
+        "t1": {
+          "type": "tip",
+          "settings": {
+            "title": "Determine space requirements.",
+            "text": "Consider the size and type of shipping container you need for your project or storage needs. Larger storage containers will naturally cost you more, but that won’t matter if you need more length or height with your container"
+          }
+        },
+        "t2": {
+          "type": "tip",
+          "settings": {
+            "title": "Think about your timeline.",
+            "text": "Determine the duration of your rental before you apply for that rental. You may need to buffer in some time on construction projects or seek out more flexible rental terms."
+          }
+        },
+        "t3": {
+          "type": "tip",
+          "settings": {
+            "title": "Research local suppliers.",
+            "text": "Go through online shipping container directories as you search the key term “shipping container rental near me.” Ask for recommendations from others who have used rental services in your area."
+          }
+        },
+        "c1": {
+          "type": "cost_tip",
+          "settings": {
+            "title": "Compare prices.",
+            "text": "Now that you’ve narrowed down your options, compare prices. Make sure you have all of the information ready about your sizing and rental term requirements before any cost comparisons.."
+          }
+        },
+        "c2": {
+          "type": "cost_tip",
+          "settings": {
+            "title": "Ask about additional costs.",
+            "text": "The best shipping container rental companies will be upfront about their pricing, but it’s always best-practice to inquire about any hidden costs. That includes insurance, security deposits, and taxes."
+          }
+        },
+        "p1": {
+          "type": "paperwork",
+          "settings": {
+            "title": "Gather the necessary paperwork.",
+            "text": "Most shipping container rental agreements come with a few basic requirements to ensure regular payments. At Used Conex, you may need a combination of pay stubs, monthly bank statements, and verified income."
+          }
+        },
+        "p2": {
+          "type": "paperwork",
+          "settings": {
+            "title": "Discuss delivery requirements.",
+            "text": "Talk to the company about any cost adjustments around the delivery of your container. At Used Conex, we ask for a one-time delivery fee to get you started with your shipping container rental. You can also learn more about our delivery guidelines here."
+          }
+        },
+        "p3": {
+          "type": "paperwork",
+          "settings": {
+            "title": "Inspect your container.",
+            "text": "You don’t want any surprises once you enter into a rental agreement. Check for signs of damage beyond normal wear and tear. At Used Conex, our experts in quality inspection promise high-quality containers at delivery."
+          }
+        },
+        "p4": {
+          "type": "paperwork",
+          "settings": {
+            "title": "Keep the container in good condition.",
+            "text": "If you’re entering into a short- or long-term rental vs. a CONEX container rent-to-own, be mindful of your container’s condition. Talk to your chosen container provider about any maintenance or repair requirements."
+          }
+        },
+        "f1": {
+          "type": "flex",
+          "settings": {
+            "title": "Short-Term Rentals:",
+            "text": "Ideal for temporary storage during a move, renovation, or special event. Rent for as little as one month and enjoy the flexibility of extending the rental period as needed."
+          }
+        },
+        "f2": {
+          "type": "flex",
+          "settings": {
+            "title": "Long-Term Rentals:",
+            "text": "Perfect for businesses that need consistent storage for inventory, construction materials, or equipment. Whether you need a container for a year or longer, our long-term rental plans offer convenience and affordable pricing."
+          }
+        },
+        "f3": {
+          "type": "flex",
+          "settings": {
+            "title": "No Hidden Fees:",
+            "text": "We believe in transparent pricing, so you’ll always know exactly what you’re paying for—whether it’s a delivery fee, rental cost, or insurance."
+          }
+        },
+        "ct1": {
+          "type": "container_type",
+          "settings": {
+            "title": "20ft Standard Container",
+            "description": "Perfect for small to medium-sized storage needs.",
+            "style": "dark",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-container-20.png"
+          }
+        },
+        "ct2": {
+          "type": "container_type",
+          "settings": {
+            "title": "40ft Standard Container",
+            "description": "Offers ample space for larger storage needs, making it a great choice for business or construction use.",
+            "style": "blue",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-container-40.png"
+          }
+        },
+        "ct3": {
+          "type": "container_type",
+          "settings": {
+            "title": "40ft High Cube",
+            "description": "Ideal for storing larger or bulkier items that require extra height for easy access.",
+            "style": "yellow",
+            "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-container-hc.png"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "c1",
+        "c2",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "f1",
+        "f2",
+        "f3",
+        "ct1",
+        "ct2",
+        "ct3"
+      ],
+      "settings": {
+        "heading": "How to Rent a Shipping Container at Affordable Rates",
+        "intro": "Renting a shipping container at affordable rates is all about knowing your options. Long-term rentals could save you money over time, but that option won’t make sense if you need a shipping container for short-term use only.",
+        "tips_kicker": "Here are a few quick tips before you decide:",
+        "tips_fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-tips.png",
+        "reviews_text": "AT USED CONEX , we pride ourselves on thousands of positive reviews from shipping container rental customers just like you. Take a look at a few testimonials to see what our customers have to say about Used Contex.",
+        "checklist_fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-checklist.png",
+        "deposit_text": "AT USED CONEX , we don’t ask for a security deposit to start rental agreements with our customers. You don’t have to worry about hidden costs on our end. Just choose the right container for you and fill out an application to get started.",
+        "flex_kicker": "Renting Options & Flexibility",
+        "flex_text": "We offer flexible rental options tailored to meet your specific needs, whether for a few weeks or several months. With no long-term commitment required, renting a shipping container provides the freedom to choose the rental duration that best suits your project.",
+        "types_heading": "Container Types"
+      }
+    },
+    "cost_faq": {
+      "type": "uc-rent-cost-faq",
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "title": "How much does it cost to rent a container?",
+            "body": "<p>How much it costs to rent a container depends on shipping container size and the duration of your rental. Expect to pay at least $100 per month as your a 20-ft container rental price on a long-term contract. A 40-foot container for rent starts at $175 per month.</p><p>Long-term rentals generally come with monthly discounts.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "title": "How much is it to rent a container for a month at Used Conex?",
+            "body": "<p>Now the rent for a container for just a month depends on what type of container you are planning to rent. You can see below the breakdown for our rates!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2"
+      ],
+      "settings": {
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-coins.png"
+      }
+    },
+    "why_us": {
+      "type": "uc-rent-why-us",
+      "settings": {
+        "text": "We know that you have options when it comes to shipping, container rentals near you. We also know that we’re the preffered rental company for many customers for a reason.",
+        "emphasis": "Enjoy a flexible range of options, competetive pricing, and a speedy application process at Used Conex.",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-pusher-clean.png"
+      }
+    },
+    "application": {
+      "type": "uc-rent-application",
+      "blocks": {
+        "pc1": {
+          "type": "price_card",
+          "settings": {
+            "title": "Used 20-Foot Standard",
+            "terms": "1-Year Term|$350\n2-Year Term|$270\n3-Year Term|$200"
+          }
+        },
+        "pc2": {
+          "type": "price_card",
+          "settings": {
+            "title": "Used 40-Foot Standard",
+            "terms": "1-Year Term|$495\n2-Year Term|$395\n3-Year Term|$295"
+          }
+        },
+        "pc3": {
+          "type": "price_card",
+          "settings": {
+            "title": "Used 40-Foot HC",
+            "terms": "1-Year Term|$550\n2-Year Term|$449\n3-Year Term|$349"
+          }
+        },
+        "st1": {
+          "type": "short_term_card",
+          "settings": {
+            "title": "Used 20-Foot Standard",
+            "terms": "1-3 Month Term|$200\n6-Month Term|$175\n12-Month Term|$150\n18-Month Term|$125\n24-Month Term|$100"
+          }
+        },
+        "st2": {
+          "type": "short_term_card",
+          "settings": {
+            "title": "Used 40-Foot Standard",
+            "terms": "1-3 Month Term|$275\n6-Month Term|$250\n12-Month Term|$225\n18-Month Term|$200\n24-Month Term|$175"
+          }
+        },
+        "st3": {
+          "type": "short_term_card",
+          "settings": {
+            "title": "Used 40-Foot HC",
+            "terms": "1-3 Month Term|$275\n6-Month Term|$250\n12-Month Term|$225\n18-Month Term|$200\n24-Month Term|$175"
+          }
+        }
+      },
+      "block_order": [
+        "pc1",
+        "pc2",
+        "pc3",
+        "st1",
+        "st2",
+        "st3"
+      ],
+      "settings": {
+        "upload_icon_fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-rent-upload-icon.svg",
+        "short_term_note": "<p>Short-term rentals are best when you need storage for a defined period without any commitment to ownership. Pricing is billed monthly, and you can extend or end your rental as your project changes.</p><p>Delivery and pickup are arranged for you, so you only pay for the months you actually need the container.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "storage_cta",
+    "guide",
+    "cost_faq",
+    "application",
+    "why_us"
+  ]
+}

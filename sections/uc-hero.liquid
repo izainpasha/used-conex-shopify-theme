@@ -1,0 +1,1389 @@
+{%- comment -%} UsedConex — Modern quote hero. Keeps the existing quote GET parameter names. {%- endcomment -%}
+<section class="uc-hero uc-font" id="uc-hero-{{ section.id }}">
+  {%- if section.settings.background != blank -%}
+    {%- render 'uc-img', image: section.settings.background, class: 'uc-hero__bg', alt: 'Shipping containers stacked at a port terminal', widths: '750,1100,1500,1920,2400', priority: true -%}
+  {%- elsif section.settings.fallback_image_url != blank -%}
+{%- render 'uc-img', src: section.settings.fallback_image_url, class: 'uc-hero__bg', width: 1920, height: 1080, priority: true -%}  {%- endif -%}
+  {%- comment -%} Desktop-only optional video. The original background image remains the mobile/poster fallback. {%- endcomment -%}
+  {%- if section.settings.enable_desktop_video and section.settings.desktop_video != blank -%}
+    {%- assign uc_desktop_mp4 = blank -%}
+    {%- for uc_source in section.settings.desktop_video.sources -%}
+      {%- if uc_source.mime_type == 'video/mp4' -%}
+        {%- assign uc_desktop_mp4 = uc_source.url -%}
+        {%- if uc_source.width <= 1920 and uc_source.width >= 1280 -%}{%- break -%}{%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if uc_desktop_mp4 != blank -%}
+      <video class="uc-hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-video-url="{{ uc_desktop_mp4 | escape }}"></video>
+    {%- endif -%}
+  {%- endif -%}
+  <div class="uc-hero__overlay" aria-hidden="true"></div>
+  <div class="uc-hero__content">
+    {%- assign uc_heading = section.settings.heading | default: 'Need More Storage?' | escape -%}
+    {%- assign uc_heading_color = uc_heading | replace: 'Storage?', '<span class="uc-hero__accent">Storage?</span>' | replace: 'STORAGE?', '<span class="uc-hero__accent">STORAGE?</span>' -%}
+    <h1 class="uc-hero__title">{{ uc_heading_color }}</h1>
+    {%- if section.settings.subheading != blank -%}
+      <p class="uc-hero__subheading">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+
+    <form class="uc-hero__form" action="{{ section.settings.form_action | default: '/pages/shop' }}" method="get" role="search">
+      <div class="uc-hero__field uc-hero__field--zip">
+        <svg class="uc-hero__field-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+        <input type="text" name="zipcode" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" required placeholder="{{ section.settings.zip_placeholder | default: 'Enter delivery ZIP code' | escape }}" aria-label="Delivery ZIP code">
+      </div>
+      <div class="uc-hero__field uc-hero__field--delivery">
+        <select name="isDelivery" aria-label="Delivery or pickup">
+          {%- assign opts = section.settings.delivery_options | split: ',' -%}
+          {%- for opt in opts -%}
+            {%- assign opt_clean = opt | strip -%}
+            {%- assign opt_lower = opt_clean | downcase -%}
+            <option value="{% if opt_lower contains 'deliver' %}true{% else %}false{% endif %}">{{ opt_clean | escape }}</option>
+          {%- endfor -%}
+        </select>
+        <span class="uc-hero__select-arrow" aria-hidden="true"><svg class="uc-hero__caret" viewBox="0 0 24 24" fill="none" focusable="false"><path d="m6 9 6 6 6-6" stroke="#ffffff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <button class="uc-hero__submit" type="submit"><span>{{ section.settings.button_label | default: 'Get Instant Quote' | escape }}</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+
+    <!-- Fully editable steps: real text and crisp inline vector icons (no infographic image). -->
+    <div class="uc-hero__journey" aria-label="How shipping container delivery works">
+      <div class="uc-hero__step">
+        <div class="uc-hero__icon-wrap">
+          <div class="uc-hero__step-icon">
+<svg viewBox="0 0 100 80" aria-hidden="true" focusable="false" fill="none">
+  <g stroke="currentColor" stroke-width="2.8" stroke-linejoin="round">
+    <path d="M9 39 39 31 60 38 30 47Z" fill="currentColor"/>
+    <path d="M9 39V66L30 74V47Z" fill="currentColor"/>
+    <path d="M30 47 60 38V65L30 74Z" fill="currentColor"/>
+    <path d="M22 17 49 10 70 18 43 26Z" fill="currentColor"/>
+    <path d="M22 17V41L43 49V26Z" fill="currentColor"/>
+    <path d="M43 26 70 18V42L43 49Z" fill="currentColor"/>
+  </g>
+  <g stroke="#26313a" stroke-width="2" stroke-linecap="round" opacity=".83">
+    <path d="M16 45v19M23 48v19M36 49v19M44 46v20M52 44v19M30 21v16M37 25v16M49 28v12M56 25v14M64 23v14"/>
+  </g>
+  <circle cx="72" cy="56" r="14" fill="none" stroke="currentColor" stroke-width="6"/>
+  <path d="m82 67 13 12" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+</svg>
+          </div>
+        </div>
+        <div class="uc-hero__step-info">
+          <h2 class="uc-hero__step-name">{{ section.settings.step_1_title | escape }}</h2>
+          <p class="uc-hero__step-description">{{ section.settings.step_1_description | escape }}</p>
+        </div>
+      </div>
+      <div class="uc-hero__step">
+        <div class="uc-hero__icon-wrap">
+          <div class="uc-hero__step-icon">
+<svg viewBox="0 0 100 80" aria-hidden="true" focusable="false" fill="none">
+  <circle cx="33" cy="39" r="15" fill="currentColor"/>
+  <path d="M9 77c0-16 9-25 24-25s24 9 24 25" fill="currentColor"/>
+  <path d="M52 6h35a8 8 0 0 1 8 8v23a8 8 0 0 1-8 8H72L62 55V45H52a8 8 0 0 1-8-8V14a8 8 0 0 1 8-8Z" fill="currentColor"/>
+  <g fill="#26313a"><circle cx="60" cy="25" r="3"/><circle cx="71" cy="25" r="3"/><circle cx="82" cy="25" r="3"/></g>
+</svg>
+          </div>
+        </div>
+        <div class="uc-hero__step-info">
+          <h2 class="uc-hero__step-name">{{ section.settings.step_2_title | escape }}</h2>
+          <p class="uc-hero__step-description">{{ section.settings.step_2_description | escape }}</p>
+        </div>
+      </div>
+      <div class="uc-hero__step">
+        <div class="uc-hero__icon-wrap">
+          <div class="uc-hero__step-icon">
+<svg viewBox="0 0 112 92" aria-hidden="true" focusable="false" fill="none">
+  <defs>
+    <mask id="uc-hero-truck-cutout-{{ section.id }}">
+      <rect width="112" height="92" fill="black"/>
+      <path d="M8 30H22" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <path d="M2 38H18" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <path d="M10 46H24" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <rect x="28" y="18" width="40" height="36" rx="2" fill="white"/>
+      <path d="M68 30H83C85 30 86 31 88 33L97 44C98 45 99 46 99 48V54H68V30Z" fill="white"/>
+      <path d="M30 54H99" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <path d="M36 54V58" stroke="white" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="46" cy="62" r="10" fill="white"/>
+      <circle cx="84" cy="62" r="10" fill="white"/>
+      <path d="M78 35H84C85 35 85.5 35.3 86.2 36L91 41C91.5 41.5 91.2 42 90.4 42H78V35Z" fill="black"/>
+      <circle cx="46" cy="62" r="5.2" fill="black"/>
+      <circle cx="84" cy="62" r="5.2" fill="black"/>
+    </mask>
+  </defs>
+  <rect width="112" height="92" fill="currentColor" mask="url(#uc-hero-truck-cutout-{{ section.id }})"/>
+</svg>
+          </div>
+        </div>
+        <div class="uc-hero__step-info">
+          <h2 class="uc-hero__step-name">{{ section.settings.step_3_title | escape }}</h2>
+          <p class="uc-hero__step-description">{{ section.settings.step_3_description | escape }}</p>
+        </div>
+      </div>
+      <div class="uc-hero__step">
+        <div class="uc-hero__icon-wrap">
+          <div class="uc-hero__step-icon">
+<svg viewBox="0 0 100 80" aria-hidden="true" focusable="false" fill="none">
+  <!-- Solid white map pin with transparent round center, matching the quote magnifier. -->
+  <path fill="currentColor" fill-rule="evenodd" d="M50 3C32 3 19 16 19 33c0 23 31 43 31 43s31-20 31-43C81 16 68 3 50 3Z M50 13a20 20 0 1 0 0 40a20 20 0 1 0 0-40Z"/>
+  <path d="m39 33 8 8 15-16" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <ellipse cx="50" cy="78" rx="24" ry="2" fill="currentColor" opacity=".7"/>
+</svg>
+          </div>
+        </div>
+        <div class="uc-hero__step-info">
+          <h2 class="uc-hero__step-name">{{ section.settings.step_4_title | escape }}</h2>
+          <p class="uc-hero__step-description">{{ section.settings.step_4_description | escape }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%- liquid
+  assign uc_dark = section.settings.overlay_opacity | divided_by: 100.0
+  assign uc_dark_top = uc_dark | times: 0.4
+  assign uc_dark_mid = uc_dark | times: 0.72
+  assign uc_yellow_alpha = section.settings.yellow_overlay_opacity | divided_by: 100.0
+  assign uc_yellow_rgba = section.settings.yellow_overlay_color | color_modify: 'alpha', uc_yellow_alpha
+  assign uc_dark_m = section.settings.overlay_opacity_m | divided_by: 100.0
+  assign uc_dark_top_m = uc_dark_m | times: 0.4
+  assign uc_dark_mid_m = uc_dark_m | times: 0.72
+  assign uc_yellow_alpha_m = section.settings.yellow_overlay_opacity_m | divided_by: 100.0
+  assign uc_yellow_rgba_m = section.settings.yellow_overlay_color | color_modify: 'alpha', uc_yellow_alpha_m
+-%}
+<style>
+#uc-hero-{{ section.id }} {
+ --uc-heading-color: {{ section.settings.heading_color }};
+ --uc-accent: {{ section.settings.accent_color }};
+ --uc-body-color: {{ section.settings.body_color }};
+ --uc-button-bg: {{ section.settings.button_bg }};
+ --uc-button-text: {{ section.settings.button_text }};
+ --uc-button-hover: {{ section.settings.button_hover }};
+ --uc-form-bg: {{ section.settings.form_bg }};
+ --uc-field-bg: {{ section.settings.field_bg }};
+ --uc-field-text: {{ section.settings.field_text }};
+ --uc-hero-height: {{ section.settings.hero_min_height }}px;
+ --uc-hero-pad-top: {{ section.settings.padding_top }}px;
+ --uc-hero-pad-bottom: {{ section.settings.padding_bottom }}px;
+ --uc-content-width: {{ section.settings.content_width }}px;
+ --uc-heading-size: {{ section.settings.heading_size }}px;
+ --uc-heading-weight: {{ section.settings.heading_weight }};
+ --uc-subheading-size: {{ section.settings.subheading_size }}px;
+ --uc-heading-gap: {{ section.settings.heading_gap }}px;
+ --uc-subheading-gap: {{ section.settings.subheading_gap }}px;
+ --uc-form-width: {{ section.settings.form_width }}px;
+ --uc-form-gap: {{ section.settings.form_gap }}px;
+ --uc-form-pad: {{ section.settings.form_padding }}px;
+ --uc-form-radius: {{ section.settings.form_radius }}px;
+ --uc-control-height: {{ section.settings.control_height }}px;
+ --uc-field-font: {{ section.settings.field_font_size }}px;
+ --uc-button-font: {{ section.settings.button_font_size }}px;
+ --uc-button-radius: {{ section.settings.button_radius }}px;
+ --uc-steps-gap: {{ section.settings.steps_spacing }}px;
+ --uc-steps-width: {{ section.settings.steps_width }}px;
+ --uc-steps-icon-size: {{ section.settings.steps_icon_size }}px;
+ --uc-steps-road-gap: {{ section.settings.steps_column_gap }}px;
+ --uc-steps-title-size: {{ section.settings.steps_title_size }}px;
+ --uc-steps-description-size: {{ section.settings.steps_description_size }}px;
+ --uc-steps-icon-title-gap: {{ section.settings.steps_icon_title_gap }}px;
+ --uc-steps-title-description-gap: {{ section.settings.steps_title_description_gap }}px;
+ --uc-steps-description-width: {{ section.settings.steps_description_width }}px;
+ --uc-steps-road-color: {{ section.settings.steps_line_color }};
+ position:relative; isolation:isolate; overflow:hidden; background:{{ section.settings.bg_color }};
+ min-height:var(--uc-hero-height) !important; padding:var(--uc-hero-pad-top) {{ section.settings.side_padding }}px var(--uc-hero-pad-bottom) !important;
+ display:flex; align-items:{{ section.settings.vertical_alignment }}; justify-content:center; box-sizing:border-box;
+}
+#uc-hero-{{ section.id }} *,#uc-hero-{{ section.id }} *::before,#uc-hero-{{ section.id }} *::after{box-sizing:border-box}
+#uc-hero-{{ section.id }} .uc-hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center {{ section.settings.bg_position }}%;z-index:-2}
+/* Video covers the photo only once playback has actually started. */
+#uc-hero-{{ section.id }} .uc-hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center {{ section.settings.bg_position }}%;z-index:-2;opacity:0;pointer-events:none;transition:opacity .35s ease}
+#uc-hero-{{ section.id }} .uc-hero__video.uc-video-playing{opacity:1}
+@media(max-width:989px),(prefers-reduced-motion:reduce){#uc-hero-{{ section.id }} .uc-hero__video{display:none !important}}
+
+#uc-hero-{{ section.id }} .uc-hero__overlay {
+ position:absolute; inset:0; z-index:-1; pointer-events:none;
+ background:
+   linear-gradient(180deg, rgba(9,17,26,{{ uc_dark_top }}) 0%, rgba(8,17,26,{{ uc_dark_mid }}) 57%, rgba(5,13,22,{{ uc_dark }}) 100%)
+   {% if section.settings.yellow_overlay_enabled %}, linear-gradient(0deg,{{ uc_yellow_rgba }},{{ uc_yellow_rgba }}){% endif %};
+}
+#uc-hero-{{ section.id }} .uc-hero__content{position:relative;width:100%;max-width:var(--uc-content-width) !important;margin:0 auto;text-align:{{ section.settings.content_alignment }};z-index:1}
+#uc-hero-{{ section.id }} .uc-hero__title{margin:0 0 var(--uc-heading-gap) !important;color:var(--uc-heading-color);font-size:var(--uc-heading-size) !important;line-height:1.12;font-weight:var(--uc-heading-weight);letter-spacing:-.035em;text-transform:{{ section.settings.heading_case }};overflow-wrap:anywhere}
+#uc-hero-{{ section.id }} .uc-hero__accent{color:var(--uc-accent)}
+#uc-hero-{{ section.id }} .uc-hero__subheading{color:var(--uc-body-color);font-size:var(--uc-subheading-size) !important;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;font-weight:500;margin:0 auto var(--uc-subheading-gap) !important}
+#uc-hero-{{ section.id }} .uc-hero__form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:var(--uc-form-gap) !important;width:100%;max-width:var(--uc-form-width) !important;margin:0 auto var(--uc-steps-gap) !important;padding:var(--uc-form-pad) !important;background:var(--uc-form-bg);border-radius:var(--uc-form-radius);box-shadow:0 14px 32px rgba(0,0,0,.22);align-items:stretch}
+#uc-hero-{{ section.id }} .uc-hero__field{display:flex;align-items:center;position:relative;min-width:0;height:var(--uc-control-height) !important;border:1px solid #d8dfe6;background:var(--uc-field-bg);border-radius:var(--uc-button-radius);padding:0 14px}
+#uc-hero-{{ section.id }} .uc-hero__field-icon{width:19px;height:19px;flex:none;color:var(--uc-field-text);margin-right:10px}
+#uc-hero-{{ section.id }} .uc-hero__field input,#uc-hero-{{ section.id }} .uc-hero__field select{appearance:none;-webkit-appearance:none;width:100%;height:100%;min-width:0;padding:0;border:0;background:transparent;color:var(--uc-field-text);font-family:inherit;font-size:var(--uc-field-font) !important;font-weight:600;box-shadow:none;outline:none;text-transform:none}
+#uc-hero-{{ section.id }} .uc-hero__field input::placeholder{color:#6c737e;opacity:1;text-transform:uppercase;font-size:calc(var(--uc-field-font) - 1px)}
+/* Delivery dropdown: remove the old cube icon and use an always-visible white chevron on dark background. */
+#uc-hero-{{ section.id }} .uc-hero__field--delivery{padding:0 !important;position:relative;overflow:hidden}
+#uc-hero-{{ section.id }} .uc-hero__field--delivery select{
+  -webkit-appearance:none !important;appearance:none !important;
+  background-image:none !important;
+  display:block !important;
+  width:100% !important;height:100% !important;
+  border:0 !important;border-radius:0 !important;
+  padding:0 76px 0 17px !important;
+  margin:0 !important;outline:0;box-shadow:none !important;
+  color:var(--uc-field-text) !important;
+  font-size:var(--uc-field-font) !important;
+  cursor:pointer;position:relative;z-index:1;
+}
+#uc-hero-{{ section.id }} .uc-hero__field--delivery .uc-hero__select-arrow{
+  position:absolute;right:0;top:0;bottom:0;
+  width:64px;height:100%;
+  display:flex !important;align-items:center;justify-content:center;
+  background:#26313a !important;
+  pointer-events:none;z-index:2;
+}
+#uc-hero-{{ section.id }} .uc-hero__field--delivery .uc-hero__caret{
+  display:block !important;width:22px !important;height:22px !important;
+  flex:none !important;margin:0 !important;padding:0 !important;
+  color:#fff !important;opacity:1 !important;
+}
+#uc-hero-{{ section.id }} .uc-hero__field--delivery .uc-hero__caret path{
+  stroke:#ffffff !important;stroke-width:2.7 !important;
+}
+#uc-hero-{{ section.id }} .uc-hero__field:focus-within{border-color:var(--uc-button-bg);outline:2px solid var(--uc-button-bg)}
+#uc-hero-{{ section.id }} .uc-hero__submit{display:flex;align-items:center;justify-content:center;gap:13px;width:100%;min-width:0;height:{{ section.settings.button_height }}px !important;border:0;background:var(--uc-button-bg);color:var(--uc-button-text);border-radius:var(--uc-button-radius);padding:0 12px;font-size:var(--uc-button-font) !important;font-weight:800;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .2s}
+#uc-hero-{{ section.id }} .uc-hero__submit:hover{background:var(--uc-button-hover);transform:translateY(-1px)}
+#uc-hero-{{ section.id }} .uc-hero__submit:focus-visible{outline:3px solid #fff;outline-offset:3px}
+#uc-hero-{{ section.id }} .uc-hero__submit svg{width:19px;height:19px;flex:none}
+/* Coded, editable steps: no large PNG and no transparent image padding. */
+#uc-hero-{{ section.id }} .uc-hero__journey {
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  column-gap:var(--uc-steps-road-gap);
+  max-width:var(--uc-steps-width) !important;
+  width:100%;
+  margin:0 auto;
+  align-items:start;
+}
+#uc-hero-{{ section.id }} .uc-hero__step {
+  position:relative;
+  color:{{ section.settings.steps_text_color }} !important;
+  min-width:0;
+  text-align:center;
+}
+#uc-hero-{{ section.id }} .uc-hero__icon-wrap {
+  height:var(--uc-steps-icon-size);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+#uc-hero-{{ section.id }} .uc-hero__step-icon {
+  width:var(--uc-steps-icon-size);
+  height:var(--uc-steps-icon-size);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+  color:{{ section.settings.steps_icon_color }};
+}
+#uc-hero-{{ section.id }} .uc-hero__step-icon svg {
+  display:block;width:100%;height:100%;overflow:visible;
+}
+/* Dashed line only in the space between icons, never on top of icons. */
+#uc-hero-{{ section.id }} .uc-hero__step:not(:last-child) .uc-hero__icon-wrap::after {
+  content:"";
+  position:absolute;
+  top:calc(50% - 2px);
+  left:calc(50% + var(--uc-steps-icon-size) / 2 + 9px);
+  width:calc(100% + var(--uc-steps-road-gap) - var(--uc-steps-icon-size) - 18px);
+  height:4px;
+  border-radius:4px;
+  background:repeating-linear-gradient(90deg,var(--uc-steps-road-color) 0 16px,transparent 16px 28px);
+  z-index:0;
+}
+/* No tinted cards/shadows behind individual step captions: equal alignment on the background image. */
+#uc-hero-{{ section.id }} .uc-hero__step-info {
+  margin-top:var(--uc-steps-icon-title-gap);
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:none !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+#uc-hero-{{ section.id }} .uc-hero__step-name {
+  color:inherit !important;
+  margin:0 !important;
+  padding:0 !important;
+  font-size:var(--uc-steps-title-size) !important;
+  font-weight:750;
+  line-height:1.25;
+  text-transform:none;
+  letter-spacing:0;
+  text-wrap:balance;
+  text-shadow:0 1px 4px rgba(0,0,0,.4);
+}
+#uc-hero-{{ section.id }} .uc-hero__step-description {
+  color:inherit !important;
+  margin:var(--uc-steps-title-description-gap) auto 0 !important;
+  padding:0 !important;
+  font-size:var(--uc-steps-description-size) !important;
+  font-weight:400;
+  line-height:1.5;
+  max-width:var(--uc-steps-description-width);
+  text-wrap:pretty;
+  text-shadow:0 1px 3px rgba(0,0,0,.6);
+}
+@media(max-width:767px){
+ #uc-hero-{{ section.id }} .uc-hero__overlay {
+   background: linear-gradient(180deg, rgba(9,17,26,{{ uc_dark_top_m }}) 0%, rgba(8,17,26,{{ uc_dark_mid_m }}) 57%, rgba(5,13,22,{{ uc_dark_m }}) 100%)
+   {% if section.settings.yellow_overlay_enabled %}, linear-gradient(0deg,{{ uc_yellow_rgba_m }},{{ uc_yellow_rgba_m }}){% endif %};
+ }
+
+ #uc-hero-{{ section.id }}{min-height:{{ section.settings.hero_min_height_m }}px !important;padding:{{ section.settings.padding_top_m }}px {{ section.settings.side_padding_m }}px {{ section.settings.padding_bottom_m }}px !important;align-items:{{ section.settings.vertical_alignment_m }}}
+ #uc-hero-{{ section.id }} .uc-hero__content{text-align:{{ section.settings.content_alignment_m }}}
+ #uc-hero-{{ section.id }} .uc-hero__title{font-size:{{ section.settings.heading_size_m }}px !important;margin-bottom:{{ section.settings.heading_gap_m }}px}
+ #uc-hero-{{ section.id }} .uc-hero__subheading{font-size:{{ section.settings.subheading_size_m }}px !important;margin-bottom:{{ section.settings.subheading_gap_m }}px;letter-spacing:.04em}
+ #uc-hero-{{ section.id }} .uc-hero__form{grid-template-columns:{% if section.settings.mobile_form_layout == 'two_fields' %}repeat(2,minmax(0,1fr)){% else %}minmax(0,1fr){% endif %} !important;max-width:{{ section.settings.form_width_m }}px !important;gap:{{ section.settings.form_gap_m }}px !important;padding:{{ section.settings.form_padding_m }}px !important;margin:0 auto {{ section.settings.steps_spacing_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__field{height:{{ section.settings.control_height_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__submit{height:{{ section.settings.button_height_m }}px !important;{% if section.settings.mobile_form_layout == 'two_fields' %}grid-column:1/-1;{% endif %}}
+ #uc-hero-{{ section.id }} .uc-hero__field input,#uc-hero-{{ section.id }} .uc-hero__field select{font-size:{{ section.settings.field_font_size_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__submit{font-size:{{ section.settings.button_font_size_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__journey {
+   grid-template-columns:{% if section.settings.steps_mobile_layout == 'single' %}minmax(0,1fr){% else %}repeat(2,minmax(0,1fr)){% endif %} !important;
+   column-gap:{{ section.settings.steps_column_gap_m }}px !important;
+   row-gap:{{ section.settings.steps_row_gap_m }}px !important;
+   max-width:{{ section.settings.steps_width_m }}px !important;
+ }
+ #uc-hero-{{ section.id }} .uc-hero__step:not(:last-child) .uc-hero__icon-wrap::after {display:none !important}
+ #uc-hero-{{ section.id }} .uc-hero__icon-wrap, #uc-hero-{{ section.id }} .uc-hero__step-icon {
+   width:auto;height:{{ section.settings.steps_icon_size_m }}px !important;
+ }
+ #uc-hero-{{ section.id }} .uc-hero__step-icon{width:{{ section.settings.steps_icon_size_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__step-info{margin-top:{{ section.settings.steps_icon_title_gap_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__step-name{font-size:{{ section.settings.steps_title_size_m }}px !important}
+ #uc-hero-{{ section.id }} .uc-hero__step-description{font-size:{{ section.settings.steps_description_size_m }}px !important;max-width:100%}
+ {% unless section.settings.show_steps_mobile %}#uc-hero-{{ section.id }} .uc-hero__journey{display:none !important}{% endunless %}
+
+}
+@media(prefers-reduced-motion:reduce){#uc-hero-{{ section.id }} .uc-hero__submit{transition:none}}
+</style>
+<script>
+/* Only fetch the video after desktop is visible and the page finishes loading. */
+(function () {
+  var root = document.getElementById('uc-hero-{{ section.id }}');
+  if (!root) return;
+  var video = root.querySelector('.uc-hero__video');
+  if (!video) return;
+  var desktop = window.matchMedia('(min-width: 990px)');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var visible = false;
+  function pauseVideo() {
+    video.pause();
+    video.classList.remove('uc-video-playing');
+  }
+  function syncVideo() {
+    if (!desktop.matches || reduce.matches || !visible || document.hidden) {
+      pauseVideo();
+      return;
+    }
+    if (!video.getAttribute('src')) {
+      video.src = video.getAttribute('data-video-url');
+      video.load();
+    }
+    var result = video.play();
+    if (result && typeof result.catch === 'function') result.catch(pauseVideo);
+  }
+  video.addEventListener('playing', function () {
+    if (desktop.matches && !reduce.matches && visible && !document.hidden) video.classList.add('uc-video-playing');
+  });
+  video.addEventListener('error', pauseVideo);
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      syncVideo();
+    }, { threshold: 0.05 });
+    observer.observe(root);
+  } else { visible = true; }
+  function start() { syncVideo(); }
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
+  desktop.addEventListener('change', syncVideo);
+  reduce.addEventListener('change', syncVideo);
+  document.addEventListener('visibilitychange', syncVideo);
+})();
+</script>
+{% schema %}
+{
+  "name": "UC Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content & images"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main heading",
+      "default": "Need More Storage?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get a shipping container delivered now"
+    },
+    {
+      "type": "image_picker",
+      "id": "background",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Optional desktop hero video"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_desktop_video",
+      "label": "Play looping video on desktop",
+      "default": false
+    },
+    {
+      "type": "video",
+      "id": "desktop_video",
+      "label": "Desktop background video"
+    },
+    {
+      "type": "text",
+      "id": "fallback_image_url",
+      "label": "Fallback background image URL",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-hero-bg.png"
+    },
+    {
+      "type": "header",
+      "content": "Four-step content (editable)"
+    },
+    {
+      "type": "text",
+      "id": "step_1_title",
+      "label": "Step 1 title",
+      "default": "Get Your Free Quote"
+    },
+    {
+      "type": "textarea",
+      "id": "step_1_description",
+      "label": "Step 1 description",
+      "default": "Enter your ZIP code to get a quote in seconds. Choose the container that best fits your needs."
+    },
+    {
+      "type": "text",
+      "id": "step_2_title",
+      "label": "Step 2 title",
+      "default": "Place Your Order"
+    },
+    {
+      "type": "textarea",
+      "id": "step_2_description",
+      "label": "Step 2 description",
+      "default": "Place your order online or speak with one of our container experts for assistance."
+    },
+    {
+      "type": "text",
+      "id": "step_3_title",
+      "label": "Step 3 title",
+      "default": "We Deliver"
+    },
+    {
+      "type": "textarea",
+      "id": "step_3_description",
+      "label": "Step 3 description",
+      "default": "A local trucking company will pick up your container from the nearest depot and heads your way."
+    },
+    {
+      "type": "text",
+      "id": "step_4_title",
+      "label": "Step 4 title",
+      "default": "Ready to Use"
+    },
+    {
+      "type": "textarea",
+      "id": "step_4_description",
+      "label": "Step 4 description",
+      "default": "Your container gets delivered. Ready for you to inspect the container, sign the delivery receipt, and start using the container."
+    },
+    {
+      "type": "header",
+      "content": "Quote form"
+    },
+    {
+      "type": "text",
+      "id": "zip_placeholder",
+      "label": "ZIP field placeholder",
+      "default": "Enter your zip code"
+    },
+    {
+      "type": "text",
+      "id": "delivery_options",
+      "label": "Delivery options, comma separated",
+      "default": "Delivery, Pickup"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Get Instant Quote"
+    },
+    {
+      "type": "url",
+      "id": "form_action",
+      "label": "Quote page URL"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background fallback",
+      "default": "#263544"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "STORAGE? highlight",
+      "default": "#ffc400"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Subheading and steps text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "form_bg",
+      "label": "Quote form background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "field_bg",
+      "label": "Input backgrounds",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "field_text",
+      "label": "Input text",
+      "default": "#252d37"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#ffc400"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#171c24"
+    },
+    {
+      "type": "color",
+      "id": "button_hover",
+      "label": "Button hover background",
+      "default": "#f1b300"
+    },
+    {
+      "type": "header",
+      "content": "Photo overlays - not glow"
+    },
+    {
+      "type": "checkbox",
+      "id": "yellow_overlay_enabled",
+      "label": "Enable yellow photo tint",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "yellow_overlay_color",
+      "label": "Yellow tint color",
+      "default": "#e0b23f"
+    },
+    {
+      "type": "range",
+      "id": "yellow_overlay_opacity",
+      "label": "Yellow tint - desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "yellow_overlay_opacity_m",
+      "label": "Yellow tint - mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Darkening - desktop",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity_m",
+      "label": "Darkening - mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "bg_position",
+      "label": "Background image vertical position",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    {
+      "type": "header",
+      "content": "Desktop — layout & spacing"
+    },
+    {
+      "type": "range",
+      "id": "hero_min_height",
+      "label": "Minimum hero height",
+      "min": 300,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 570
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 95
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 55
+    },
+    {
+      "type": "range",
+      "id": "side_padding",
+      "label": "Side padding - desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content max width",
+      "min": 700,
+      "max": 1500,
+      "step": 20,
+      "unit": "px",
+      "default": 1180
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Text alignment - desktop",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_gap",
+      "label": "Space below heading",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "subheading_gap",
+      "label": "Space below subheading",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "steps_spacing",
+      "label": "Gap form to steps desktop",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Desktop — text"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading font size",
+      "min": 25,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 67
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading font size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 19
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        },
+        {
+          "value": "900",
+          "label": "Black"
+        }
+      ],
+      "default": "800"
+    },
+    {
+      "type": "select",
+      "id": "heading_case",
+      "label": "Heading letter case",
+      "options": [
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "none",
+          "label": "As typed"
+        },
+        {
+          "value": "capitalize",
+          "label": "Title case"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Desktop — quote form & button"
+    },
+    {
+      "type": "range",
+      "id": "form_width",
+      "label": "Quote form max width",
+      "min": 400,
+      "max": 1400,
+      "step": 10,
+      "unit": "px",
+      "default": 950
+    },
+    {
+      "type": "range",
+      "id": "form_gap",
+      "label": "Space between fields",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "form_padding",
+      "label": "Quote form inner padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "form_radius",
+      "label": "Quote form corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "control_height",
+      "label": "Fields and button height",
+      "min": 35,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Quote button height - desktop",
+      "min": 36,
+      "max": 90,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "field_font_size",
+      "label": "Input font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 10,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Fields and button corner radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Desktop — steps"
+    },
+    {
+      "type": "range",
+      "id": "steps_width",
+      "label": "Steps max width desktop",
+      "min": 400,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1120
+    },
+    {
+      "type": "range",
+      "id": "steps_icon_size",
+      "label": "Icon size desktop",
+      "min": 40,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 88
+    },
+    {
+      "type": "range",
+      "id": "steps_column_gap",
+      "label": "Space between steps desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "steps_title_size",
+      "label": "Step heading size desktop",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "steps_description_size",
+      "label": "Step description size desktop",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "steps_icon_title_gap",
+      "label": "Icon to heading gap desktop",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "steps_title_description_gap",
+      "label": "Heading to description desktop",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "steps_description_width",
+      "label": "Description max width desktop",
+      "min": 140,
+      "max": 360,
+      "step": 5,
+      "unit": "px",
+      "default": 240
+    },
+    {
+      "type": "color",
+      "id": "steps_text_color",
+      "label": "Step headings and descriptions",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "steps_icon_color",
+      "label": "Step icons",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "steps_line_color",
+      "label": "Dashed line color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mobile — layout & spacing"
+    },
+    {
+      "type": "range",
+      "id": "hero_min_height_m",
+      "label": "Minimum hero height mobile",
+      "min": 0,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_m",
+      "label": "Top padding mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_m",
+      "label": "Bottom padding mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "side_padding_m",
+      "label": "Side padding - mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment_m",
+      "label": "Vertical alignment mobile",
+      "options": [
+        {
+          "value": "start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment_m",
+      "label": "Text alignment - mobile",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_gap_m",
+      "label": "Space below heading mobile",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "subheading_gap_m",
+      "label": "Space below subheading mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "steps_spacing_m",
+      "label": "Gap form to steps mobile",
+      "min": 0,
+      "max": 160,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Mobile — text"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_m",
+      "label": "Heading font size mobile",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_m",
+      "label": "Subheading font size mobile",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Mobile — quote form & button"
+    },
+    {
+      "type": "select",
+      "id": "mobile_form_layout",
+      "label": "Mobile quote form layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "Vertical: ZIP, Delivery, Button"
+        },
+        {
+          "value": "two_fields",
+          "label": "ZIP + Delivery side by side, button below"
+        }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "range",
+      "id": "form_width_m",
+      "label": "Quote form max width mobile",
+      "min": 240,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 470
+    },
+    {
+      "type": "range",
+      "id": "form_gap_m",
+      "label": "Space between fields mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "form_padding_m",
+      "label": "Form inner padding mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "control_height_m",
+      "label": "Fields and button height mobile",
+      "min": 35,
+      "max": 90,
+      "step": 1,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "button_height_m",
+      "label": "Quote button height - mobile",
+      "min": 35,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "field_font_size_m",
+      "label": "Input font size mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_m",
+      "label": "Button font size mobile",
+      "min": 10,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Mobile — steps"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_steps_mobile",
+      "label": "Show steps on mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "steps_mobile_layout",
+      "label": "Mobile step layout",
+      "options": [
+        {
+          "value": "two",
+          "label": "2 columns"
+        },
+        {
+          "value": "single",
+          "label": "1 column"
+        }
+      ],
+      "default": "two"
+    },
+    {
+      "type": "range",
+      "id": "steps_row_gap_m",
+      "label": "Space between rows mobile",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "steps_column_gap_m",
+      "label": "Space between columns mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "steps_icon_size_m",
+      "label": "Icon size mobile",
+      "min": 40,
+      "max": 110,
+      "step": 2,
+      "unit": "px",
+      "default": 62
+    },
+    {
+      "type": "range",
+      "id": "steps_icon_title_gap_m",
+      "label": "Icon to heading gap mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "steps_title_size_m",
+      "label": "Step heading size mobile",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "steps_description_size_m",
+      "label": "Step description size mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "steps_width_m",
+      "label": "Steps max width mobile",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 450
+    }
+  ],
+  "presets": [
+    {
+      "name": "UC Hero"
+    }
+  ]
+}
+{% endschema %}

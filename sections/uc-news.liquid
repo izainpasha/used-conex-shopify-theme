@@ -1,0 +1,546 @@
+{%- comment -%} Used Conex — Container News (blog cards) {%- endcomment -%}
+{%- render 'uc-section-style', section: section -%}
+
+<section class="uc-section uc-font">
+  <div class="uc-wrap">
+    <h2 class="uc-section-title">{{ section.settings.heading }}</h2>
+    <div class="uc-news__grid">
+      {%- if section.settings.blog != blank -%}
+        {%- assign posts = blogs[section.settings.blog].articles | slice: 0, 3 -%}
+        {%- for article in posts -%}
+          <article class="uc-news__card">
+            {%- if article.image -%}
+              {{ article.image | image_url: width: 920 | image_tag: class: 'uc-news__card-bg', alt: article.title, loading: 'lazy' }}
+            {%- elsif section.settings.card_bg != blank -%}
+              {%- render 'uc-img', image: section.settings.card_bg, class: 'uc-news__card-bg', decorative: true, widths: '360,540,720,920', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw' -%}
+            {%- elsif section.settings.fallback_image_url != blank -%}
+              {%- render 'uc-img', src: section.settings.fallback_image_url, class: 'uc-news__card-bg', decorative: true, widths: '360,540,720,920', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw' -%}
+            {%- endif -%}
+            <span class="uc-news__tag">{{ section.settings.tag_label }}</span>
+            <span class="uc-news__likes" aria-hidden="true">
+              <svg viewBox="0 0 18.8333 16.351" fill="none"><path d="M5.47917 0.666667C2.82135 0.666667 0.666667 2.82136 0.666667 5.47917C0.666667 10.2917 6.35417 14.6667 9.41667 15.6843C12.4792 14.6667 18.1667 10.2917 18.1667 5.47917C18.1667 2.82136 16.012 0.666667 13.3542 0.666667C11.7267 0.666667 10.2873 1.47473 9.41667 2.71154C8.97283 2.07952 8.38327 1.56372 7.69789 1.20778C7.0125 0.851837 6.25146 0.666231 5.47917 0.666667Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              0
+            </span>
+            <h3 class="uc-news__title">{{ article.title }}</h3>
+            <div class="uc-news__rule"></div>
+            <p class="uc-news__excerpt">{{ article.excerpt_or_content | strip_html | truncatewords: 28 }}</p>
+            <a class="uc-news__more" href="{{ article.url }}">{{ section.settings.more_label }}</a>
+          </article>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          <article class="uc-news__card" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 920 | image_tag: class: 'uc-news__card-bg', alt: block.settings.title, loading: 'lazy' }}
+            {%- elsif section.settings.card_bg != blank -%}
+              {%- render 'uc-img', image: section.settings.card_bg, class: 'uc-news__card-bg', decorative: true, widths: '360,540,720,920', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw' -%}
+            {%- elsif section.settings.fallback_image_url != blank -%}
+              {%- render 'uc-img', src: section.settings.fallback_image_url, class: 'uc-news__card-bg', decorative: true, widths: '360,540,720,920', sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw' -%}
+            {%- endif -%}
+            <span class="uc-news__tag">{{ block.settings.tag | default: 'Blog' }}</span>
+            <span class="uc-news__likes" aria-hidden="true">
+              <svg viewBox="0 0 18.8333 16.351" fill="none"><path d="M5.47917 0.666667C2.82135 0.666667 0.666667 2.82136 0.666667 5.47917C0.666667 10.2917 6.35417 14.6667 9.41667 15.6843C12.4792 14.6667 18.1667 10.2917 18.1667 5.47917C18.1667 2.82136 16.012 0.666667 13.3542 0.666667C11.7267 0.666667 10.2873 1.47473 9.41667 2.71154C8.97283 2.07952 8.38327 1.56372 7.69789 1.20778C7.0125 0.851837 6.25146 0.666231 5.47917 0.666667Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {{ block.settings.likes | default: 0 }}
+            </span>
+            <h3 class="uc-news__title">{{ block.settings.title }}</h3>
+            <div class="uc-news__rule"></div>
+            <p class="uc-news__excerpt">{{ block.settings.excerpt }}</p>
+            <a class="uc-news__more" href="{{ block.settings.link | default: '#' }}">{{ section.settings.more_label }}</a>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UC News",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Container News"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog source",
+      "info": "If set, shows the 3 latest articles"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_bg",
+      "label": "Default card background"
+    },
+    {
+      "type": "text",
+      "id": "fallback_image_url",
+      "label": "Fallback card background URL",
+      "info": "Used only if no image is selected above",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-news-card-bg.jpg"
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "tag_label",
+      "label": "Card tag",
+      "default": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "more_label",
+      "label": "Read more label",
+      "default": "Read more"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Manual post",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "default": "Blog"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Best Foundations for Shipping Containers: Types & Costs"
+        },
+        {
+          "type": "textarea",
+          "id": "excerpt",
+          "label": "Excerpt"
+        },
+        {
+          "type": "number",
+          "id": "likes",
+          "label": "Likes"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "UC News",
+      "blocks": [
+        {
+          "type": "post"
+        },
+        {
+          "type": "post"
+        },
+        {
+          "type": "post"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

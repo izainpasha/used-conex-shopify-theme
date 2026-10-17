@@ -1,0 +1,108 @@
+{%- comment -%}
+  Used Conex — responsive image.
+  Renders a Shopify Files CDN URL (or an image picker object) with a srcset so
+  the browser downloads only the width it needs. The CDN already negotiates
+  WebP/AVIF from the Accept header, so no format work is needed here.
+
+  Accepts:
+    image        - optional image object (image picker); wins over src
+    src          - CDN URL string
+    alt          - fallback alt text
+    alt_override - merchant-entered alt; wins over everything
+    decorative   - true → alt="" (icons, arrows, background textures)
+    widths       - comma list of srcset widths (default 360…1920)
+    sizes        - sizes attribute (default 100vw)
+    class, width, height, style, attrs (raw extra attributes)
+    priority     - true → eager + fetchpriority=high (LCP / hero only)
+    loading      - 'lazy' (default) | 'eager'
+
+  Alt priority: alt_override → image.alt → uc-alt-map (by filename) → alt.
+{%- endcomment -%}
+{%- liquid
+  assign uc_widths = widths | default: '360,540,720,960,1280,1600,1920'
+  assign uc_sizes = sizes | default: '100vw'
+  assign uc_loading = loading | default: 'lazy'
+  if priority
+    assign uc_loading = 'eager'
+  endif
+
+  if image != blank
+    assign uc_src = image | image_url
+  else
+    assign uc_src = src | strip
+  endif
+
+  assign uc_file = uc_src | split: '?' | first | split: '/' | last | downcase
+  assign uc_alt = ''
+  unless decorative
+    capture uc_mapped
+      render 'uc-alt-map', file: uc_file
+    endcapture
+    assign uc_mapped = uc_mapped | strip
+    if alt_override != blank
+      assign uc_alt = alt_override
+    elsif image != blank and image.alt != blank
+      assign uc_alt = image.alt
+    elsif uc_mapped == '-'
+      assign uc_alt = ''
+    elsif uc_mapped != blank
+      assign uc_alt = uc_mapped
+    else
+      assign uc_alt = alt
+    endif
+  endunless
+
+  assign uc_static = false
+  if uc_file contains '.svg' or uc_file contains '.gif'
+    assign uc_static = true
+  endif
+-%}
+{%- if uc_src != blank -%}
+  {%- if image != blank and uc_static == false -%}
+    {%- assign uc_max = uc_widths | split: ',' | last | plus: 0 -%}
+    {%- assign uc_priority = 'auto' -%}
+    {%- assign uc_decoding = 'async' -%}
+    {%- if priority -%}{%- assign uc_priority = 'high' -%}{%- assign uc_decoding = 'auto' -%}{%- endif -%}
+    {{- image | image_url: width: uc_max | image_tag:
+        widths: uc_widths,
+        sizes: uc_sizes,
+        alt: uc_alt,
+        class: class,
+        style: style,
+        loading: uc_loading,
+        fetchpriority: uc_priority,
+        decoding: uc_decoding
+    -}}
+  {%- else -%}
+    {%- liquid
+      assign uc_sep = '?'
+      if uc_src contains '?'
+        assign uc_sep = '&'
+      endif
+      assign uc_list = uc_widths | split: ','
+      assign uc_srcset = ''
+      for w in uc_list
+        assign uc_w = w | strip
+        assign uc_srcset = uc_srcset | append: uc_src | append: uc_sep | append: 'width=' | append: uc_w | append: ' ' | append: uc_w | append: 'w'
+        unless forloop.last
+          assign uc_srcset = uc_srcset | append: ', '
+        endunless
+      endfor
+      assign uc_default_w = uc_list | last | strip
+      if uc_list.size > 2
+        assign uc_mid = uc_list.size | minus: 2
+        assign uc_default_w = uc_list[uc_mid] | strip
+      endif
+    -%}
+    <img
+      {%- if class != blank %} class="{{ class }}"{% endif %}
+      {%- if uc_static %} src="{{ uc_src }}"{% else %} src="{{ uc_src }}{{ uc_sep }}width={{ uc_default_w }}" srcset="{{ uc_srcset }}" sizes="{{ uc_sizes }}"{% endif %}
+      alt="{{ uc_alt | strip_html | escape }}"
+      {%- if width != blank %} width="{{ width }}"{% endif %}
+      {%- if height != blank %} height="{{ height }}"{% endif %}
+      {%- if style != blank %} style="{{ style }}"{% endif %}
+      loading="{{ uc_loading }}"
+      {%- if priority %} fetchpriority="high"{% else %} decoding="async"{% endif %}
+      {%- if attrs != blank %} {{ attrs }}{% endif %}>
+  {%- endif -%}
+{%- endif -%}

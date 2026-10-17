@@ -1,0 +1,40 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "uc-product-main",
+      "settings": {
+        "quote_label": "Request a Quote",
+        "blurb": "Pricing depends on your delivery ZIP code. Request a quote and our team will get back to you with an all-in price.",
+        "phone_prefix": "Or call us at",
+        "phone": "1-800-230-7764"
+      }
+    },
+    "specs": {
+      "type": "uc-product-specs",
+      "settings": {
+        "heading": "Container Details",
+        "condition_heading": "Condition",
+        "specs_heading": "Specifications",
+        "note": "Dimensions are approximate and may vary slightly between units."
+      }
+    },
+    "cta": {
+      "type": "uc-buy-quote-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "specs",
+    "cta"
+  ]
+}

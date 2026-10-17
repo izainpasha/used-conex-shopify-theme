@@ -1,0 +1,43 @@
+{%- comment -%}
+  Used Conex — site-wide design settings (Theme settings → Used Conex design).
+  Feeds the theme's own CSS variables and base rules. Empty settings output
+  nothing, so the site keeps its built design until an option is changed.
+  Section-level "Section style" settings override these for one section.
+{%- endcomment -%}
+
+{%- liquid
+  assign g = settings
+  assign btns = ':is(.uc-btn, a[class*="__btn"], button[class*="__btn"], [class*="__submit"], a[class*="__cta"], button[class*="__cta"], .uc-checkout__pay, .uc-lv__cart, .uc-lv__zipbtn, .uc-btnlink)'
+-%}
+
+{%- capture css -%}
+  {%- capture vars -%}
+    {%- if g.uc_accent != blank -%}--uc-yellow: {{ g.uc_accent }};{%- endif -%}
+    {%- if g.uc_accent_hover != blank -%}--uc-yellow-alt: {{ g.uc_accent_hover }};{%- endif -%}
+    {%- if g.uc_dark != blank -%}--uc-dark: {{ g.uc_dark }};{%- endif -%}
+    {%- if g.uc_darker != blank -%}--uc-darker: {{ g.uc_darker }};{%- endif -%}
+    {%- if g.uc_body_text != blank -%}--uc-body: {{ g.uc_body_text }};{%- endif -%}
+    {%- if g.uc_container != blank -%}--uc-container: {{ g.uc_container }}px;{%- endif -%}
+    {%- if g.uc_gutter != blank -%}--uc-gutter: {{ g.uc_gutter }}px;{%- endif -%}
+  {%- endcapture -%}
+  {%- if vars != blank -%}:root { {{ vars }} }{%- endif -%}
+  {%- if g.uc_gutter_m != blank -%}@media (max-width: 749px) { :root { --uc-gutter: {{ g.uc_gutter_m }}px; } }{%- endif -%}
+
+  {%- if g.uc_custom_fonts -%}
+    {{ g.uc_heading_font | font_face: font_display: 'swap' }}
+    {{ g.uc_body_font | font_face: font_display: 'swap' }}
+    {%- assign bold = g.uc_body_font | font_modify: 'weight', 'bold' -%}
+    {{ bold | font_face: font_display: 'swap' }}
+    .uc-font, .uc-font :is(p, li, a, button, input, select, textarea, label, span) { font-family: {{ g.uc_body_font.family }}, {{ g.uc_body_font.fallback_families }}; }
+    .uc-font :is(h1, h2, h3, h4, h5, h6, .uc-section-title) { font-family: {{ g.uc_heading_font.family }}, {{ g.uc_heading_font.fallback_families }}; }
+  {%- endif -%}
+  {%- if g.uc_heading_case != 'default' -%}.uc-font :is(h1, h2, .uc-section-title) { text-transform: {{ g.uc_heading_case }}; }{%- endif -%}
+
+  {%- if g.uc_btn_radius != blank -%}{{ btns }} { border-radius: {{ g.uc_btn_radius }}px; }{%- endif -%}
+  {%- if g.uc_btn_case != 'default' -%}{{ btns }} { text-transform: {{ g.uc_btn_case }}; }{%- endif -%}
+  {%- if g.uc_btn_text != blank -%}{{ btns }} { color: {{ g.uc_btn_text }}; }{%- endif -%}
+  {%- if g.uc_img_radius != blank -%}.uc-font img:not(.uc-payment-icon, .uc-header__logo img, .uc-footer__brand-logo) { border-radius: {{ g.uc_img_radius }}px; }{%- endif -%}
+{%- endcapture -%}
+
+{%- assign css = css | strip -%}
+{%- if css != blank -%}<style id="uc-global-style">{{ css }}</style>{%- endif -%}

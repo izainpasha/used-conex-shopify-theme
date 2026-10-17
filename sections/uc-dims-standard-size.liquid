@@ -1,0 +1,507 @@
+{%- comment -%} Used Conex — What is the size of a standard storage container (20ft/40ft comparison) {%- endcomment -%}{%- render 'uc-section-style', section: section -%}
+
+
+<section class="uc-dims-size uc-font">
+  <div class="uc-wrap">
+    <div class="uc-dims-size__head">
+      <h2 class="uc-dims-size__title">{{ section.settings.heading }}</h2>
+      <p class="uc-dims-size__intro">{{ section.settings.intro }}</p>
+    </div>
+  </div>
+
+  <div class="uc-dims-size__band">
+    <div class="uc-dims-size__row">
+      <div class="uc-dims-size__col">
+        <span class="uc-dims-size__label">{{ section.settings.left_label }}</span>
+        {%- if section.settings.left_image != blank -%}
+          {{ section.settings.left_image | image_url: width: 1000 | image_tag: class: 'uc-dims-size__img', alt: section.settings.left_label, loading: 'lazy' }}
+        {%- elsif section.settings.left_fallback_image_url != blank -%}
+          {%- render 'uc-img', src: section.settings.left_fallback_image_url, class: 'uc-dims-size__img', alt: section.settings.left_label, widths: '360,540,720,1000', sizes: '(min-width: 990px) 50vw, 100vw' -%}
+        {%- endif -%}
+      </div>
+      <div class="uc-dims-size__mid">
+        {%- render 'uc-img', src: section.settings.arrow_image_url, class: 'uc-dims-size__arrow', decorative: true, width: 304, height: 8 -%}
+        <span class="uc-dims-size__mid-label">{{ section.settings.mid_label }}</span>
+        {%- render 'uc-img', src: section.settings.arrow_image_url, class: 'uc-dims-size__arrow', decorative: true, width: 304, height: 8 -%}
+      </div>
+      <div class="uc-dims-size__col uc-dims-size__col--right">
+        <span class="uc-dims-size__label">{{ section.settings.right_label }}</span>
+        {%- if section.settings.right_image != blank -%}
+          {{ section.settings.right_image | image_url: width: 1200 | image_tag: class: 'uc-dims-size__img', alt: section.settings.right_label, loading: 'lazy' }}
+        {%- elsif section.settings.right_fallback_image_url != blank -%}
+          {%- render 'uc-img', src: section.settings.right_fallback_image_url, class: 'uc-dims-size__img', alt: section.settings.right_label, widths: '360,540,720,960,1200', sizes: '(min-width: 990px) 50vw, 100vw' -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="uc-wrap">
+    <div class="uc-dims-size__text">{{ section.settings.body }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UC Dims Standard Size",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What is the size of a standard storage container?"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "Shipping container dimensions are generally standardized for cargo and international shipping, but there are a few things to know within those sizes before deciding what you need. The purpose for your rental or purchase matters, as do your needs for that shipping container. Standard conex boxes typically come in:"
+    },
+    {
+      "type": "text",
+      "id": "left_label",
+      "label": "Left label",
+      "default": "20 Foot"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left container image"
+    },
+    {
+      "type": "text",
+      "id": "left_fallback_image_url",
+      "label": "Fallback left image URL",
+      "info": "Used only if no image uploaded",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-container-20ft.png"
+    },
+    {
+      "type": "text",
+      "id": "mid_label",
+      "label": "Middle label",
+      "default": "8 Feet Wide"
+    },
+    {
+      "type": "text",
+      "id": "arrow_image_url",
+      "label": "Width arrow image URL",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-arrow.svg"
+    },
+    {
+      "type": "text",
+      "id": "right_label",
+      "label": "Right label",
+      "default": "40 Foot"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right container image"
+    },
+    {
+      "type": "text",
+      "id": "right_fallback_image_url",
+      "label": "Fallback right image URL",
+      "info": "Used only if no image uploaded",
+      "default": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-dims-container-40ft.png"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>The standard sizes of ISO shipping containers are also 20 feet or 40 feet long, and each container is 8 feet wide. No matter the length, the width remains the same. That’s because these containers are most often used for cargo transport. A variety of sizes would lead to issues loading, stacking, and unloading, which could lead to inefficiencies in the process.</p><p>With standardized sizes, there’s no need to estimate size and space needed for a cargo transport and the shipping process becomes less complex to manage.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "UC Dims Standard Size"
+    }
+  ]
+}
+{% endschema %}

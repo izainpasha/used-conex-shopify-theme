@@ -1,0 +1,53 @@
+{%- comment -%}
+  Used Conex — cleans imported WordPress article markup at render time.
+  Search engines read the HTML itself, so this is fixed on the server rather
+  than only by the client-side tidy in uc-storefront.js:
+  - a heading that only wraps an image becomes a plain paragraph
+  - a heading with no text at all is dropped
+  - content images with an empty alt get the article title
+  - content images load lazily and decode off the main thread (the hero
+    image above the body is the LCP, never these)
+  Params: content (article.content), title (article.title)
+{%- endcomment -%}
+{%- assign uc_html = content -%}
+{%- assign uc_levels = 'h2,h3,h4,h5,h6' | split: ',' -%}
+{%- for uc_tag in uc_levels -%}
+  {%- assign uc_open = '<' | append: uc_tag -%}
+  {%- unless uc_html contains uc_open -%}{%- continue -%}{%- endunless -%}
+  {%- assign uc_close = '</' | append: uc_tag | append: '>' -%}
+  {%- assign uc_chunks = uc_html | split: uc_open -%}
+  {%- capture uc_rebuilt -%}
+    {{- uc_chunks.first -}}
+    {%- for uc_chunk in uc_chunks offset: 1 -%}
+      {%- assign uc_head = uc_chunk | split: uc_close | first -%}
+      {%- assign uc_attrs = uc_head | split: '>' | first | default: '' -%}
+      {%- assign uc_inner = uc_head | remove_first: uc_attrs | remove_first: '>' -%}
+      {%- assign uc_text = uc_inner | strip_html | replace: '&nbsp;', '' | strip -%}
+      {%- if uc_text == blank -%}
+        {%- assign uc_rest = uc_chunk | remove_first: uc_head | remove_first: uc_close -%}
+        {%- if uc_inner contains '<img' -%}<p class="uc-article__media">{{ uc_inner }}</p>{%- endif -%}
+        {{- uc_rest -}}
+      {%- else -%}
+        {{- uc_open -}}{{- uc_chunk -}}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign uc_html = uc_rebuilt -%}
+{%- endfor -%}
+{%- comment -%} WordPress used H6 for small bold text rather than structure; keep the look, drop the heading. {%- endcomment -%}
+{%- assign uc_html = uc_html | replace: '<h6', '<p data-was="h6"' | replace: '</h6>', '</p>' -%}
+{%- comment -%} No H2 in the post: lift every level by one so the top one becomes H2. {%- endcomment -%}
+{%- unless uc_html contains '<h2' -%}
+  {%- if uc_html contains '<h3' -%}
+    {%- assign uc_html = uc_html | replace: '<h3', '<h2' | replace: '</h3>', '</h2>' | replace: '<h4', '<h3' | replace: '</h4>', '</h3>' | replace: '<h5', '<h4' | replace: '</h5>', '</h4>' | replace: '<h6', '<h5' | replace: '</h6>', '</h5>' -%}
+  {%- endif -%}
+{%- endunless -%}
+{%- comment -%} H2 then H4 with no H3 between: lift H4 and below by one. {%- endcomment -%}
+{%- if uc_html contains '<h2' and uc_html contains '<h4' -%}
+  {%- unless uc_html contains '<h3' -%}
+    {%- assign uc_html = uc_html | replace: '<h4', '<h3' | replace: '</h4>', '</h3>' | replace: '<h5', '<h4' | replace: '</h5>', '</h4>' | replace: '<h6', '<h5' | replace: '</h6>', '</h5>' -%}
+  {%- endunless -%}
+{%- endif -%}
+{%- assign uc_alt = title | escape | prepend: 'alt="' | append: '"' -%}
+{%- assign uc_html = uc_html | replace: '<img ', '<img loading="lazy" decoding="async" ' -%}
+{{- uc_html | replace: 'alt=""', uc_alt -}}

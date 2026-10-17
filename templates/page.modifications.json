@@ -1,0 +1,137 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "uc-grade-hero",
+      "settings": {
+        "heading": "Shipping Container Modification",
+        "text": "",
+        "fallback_image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-12.jpg?v=1788981683"
+      }
+    },
+    "intro": {
+      "type": "uc-modification-intro",
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "<p><strong>A modified shipping container</strong> can be adapted to a wide range of roles, from innovative shipping and storage to construction, custom homes, workspaces, retail spaces, conversions, pop-up shops — or whatever comes to mind. Storage containers may be one of the most versatile structures available in the building industry — offering a durable, weatherproof, and cost-effective alternative to building from scratch.</p>"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "<p><strong>Used Conex specializes</strong> in storage container customization through expert planning, design, and modifications that turn containers into multi-functional and multi-purpose units for all your business and personal requirements. We offer a wide range of customization options with access to top-brand materials, equipment, and accessories that give you freedom from concept to impressive finish.</p>"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "<p><strong>Used Conex is your one stop shop</strong> for every shipping container need. We offer modifications at affordable rates and we deliver nationwide! To make your dream affordable we also offer financing on all our modifications which helps with the cost!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "heading": "From Custom Homes to Workspaces and Much More...",
+        "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-26.png?v=1788981682",
+        "image_alt": "Customized shipping container workspace"
+      }
+    },
+    "types": {
+      "type": "uc-modification-types",
+      "blocks": {
+        "t1": {
+          "type": "type",
+          "settings": {
+            "label": "Shipping Container Plumbing",
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-01.png?v=1788981682"
+          }
+        },
+        "t2": {
+          "type": "type",
+          "settings": {
+            "label": "Shipping Container Flooring",
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-30.png?v=1788981682"
+          }
+        },
+        "t3": {
+          "type": "type",
+          "settings": {
+            "label": "Storage Container Interior Finish",
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-19.png?v=1788981682"
+          }
+        },
+        "t4": {
+          "type": "type",
+          "settings": {
+            "label": "Shipping Container Windows",
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-20.png?v=1788981682"
+          }
+        },
+        "t5": {
+          "type": "type",
+          "settings": {
+            "label": "Storage Container Electrical",
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-11.png?v=1788981683"
+          }
+        },
+        "t6": {
+          "type": "type",
+          "settings": {
+            "label": "Shipping Container Lighting, Outlets, & Communication Lines",
+            "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-08.png?v=1788981682"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6"
+      ],
+      "settings": {
+        "heading": "Popular Shipping Container Customizations"
+      }
+    },
+    "cta": {
+      "type": "uc-modification-cta",
+      "settings": {
+        "heading": "To get a quote please contact our office at",
+        "phone": "1-800-230-7764.",
+        "body": "<p>Like almost any structure, new and used shipping containers can be outfitted with modern technology, utilities and equipment to achieve a variety of functions.</p><p>There’s very little you can’t do with a shipping container, and the things you can are being enjoyed by businesses, organizations and people all over the world.</p><p>Shipping containers can allow you to scale business operations and worksite features at a low cost. They can serve as pop-up stores, mobile offices, and can even be converted into eco-friendly luxury homes, where their dimensions can be altered in ways that accommodate expansions and serve as build-outs to larger structures.</p><p>If you buy your shipping container from Used Conex, we will be able to help you with all your modification needs. We can perform standard modifications such as adding a man door or adding windows or some vents to your conex.</p><p>If you need anything more complex such as: Insulation, Flooring, Electrical & Lighting or Locking Mechanisms, we’d suggest you to consult with our experienced modification experts.</p>",
+        "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-04.png?v=1788981682",
+        "image_alt": "Red modified shipping container"
+      }
+    },
+    "creative": {
+      "type": "uc-modification-creative",
+      "settings": {
+        "heading": "Creative Uses Of Customized Shipping Containers",
+        "image_url": "https://cdn.shopify.com/s/files/1/1029/2284/6530/files/used-conex-figma-34.png?v=1788981683",
+        "image_alt": "Creative customized shipping container uses"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "types",
+    "cta",
+    "creative"
+  ]
+}

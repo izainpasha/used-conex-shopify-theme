@@ -1,0 +1,746 @@
+{%- comment -%}
+  Used Conex — custom header (pixel-matched to Figma)
+  Nav is driven by the linklist chosen in section settings (default: main-menu).
+{%- endcomment -%}{%- render 'uc-section-style', section: section -%}
+
+
+{%- if section.settings.logo_height != blank or section.settings.logo_height_m != blank -%}
+<style>
+  {%- if section.settings.logo_height != blank -%}#shopify-section-{{ section.id }} .uc-header__logo img { height: {{ section.settings.logo_height }}px; }{%- endif -%}
+  {%- if section.settings.logo_height_m != blank -%}@media (max-width: 749px) { #shopify-section-{{ section.id }} .uc-header__logo img { height: {{ section.settings.logo_height_m }}px; } }{%- endif -%}
+</style>
+{%- endif -%}
+
+<style>
+/* USED CONEX — MOBILE HEADER: LARGE LEFT-ALIGNED LOGO */
+@media screen and (max-width: 749px) {
+  #shopify-section-{{ section.id }} .uc-header__inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+    min-height: 64px !important;
+    height: auto !important;
+    padding: 8px 10px !important;
+    gap: 6px !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__logo {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__logo img {
+    display: block !important;
+    width: 100% !important;
+    max-width: 230px !important;
+    height: auto !important;
+    max-height: 46px !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+    margin: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__nav {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__phone,
+  #shopify-section-{{ section.id }} .uc-header__cart,
+  #shopify-section-{{ section.id }} .uc-header__burger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__phone span {
+    display: none !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__phone svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__cart img {
+    display: block !important;
+    width: 27px !important;
+    height: 27px !important;
+    object-fit: contain !important;
+  }
+
+  #shopify-section-{{ section.id }} .uc-header__burger svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+</style>
+
+<header class="uc-header uc-font" role="banner">
+  <div class="uc-header__inner uc-wrap">
+    <a href="{{ routes.root_url }}" class="uc-header__logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 616 | image_tag:
+          loading: 'eager',
+          height: section.settings.logo.height,
+          widths: '154, 308, 462, 616',
+          alt: shop.name
+        }}
+      {%- else -%}
+        <img src="https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-logo.png" alt="{{ shop.name }}" width="154" height="20" loading="eager">
+      {%- endif -%}
+    </a>
+
+    <nav class="uc-header__nav" aria-label="Primary">
+      {%- for link in section.settings.menu.links -%}
+        {%- if link.links != blank -%}
+          <div class="uc-header__dropdown">
+            <button type="button" class="uc-header__dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              {{ link.title }}
+              <svg class="uc-header__caret" viewBox="0 0 7.35116 5.67157" aria-hidden="true">
+                <path d="M2.26137 5.08579L0.589796 3.41421C-0.670134 2.15428 0.222199 0 2.00401 0H5.34715C7.12896 0 8.0213 2.15429 6.76137 3.41422L5.0898 5.08579C4.30875 5.86684 3.04242 5.86683 2.26137 5.08579Z" fill="#EBB808" fill-opacity="0.7"/>
+              </svg>
+            </button>
+            <ul class="uc-header__dropdown-menu">
+              {%- for child in link.links -%}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- else -%}
+          <a href="{{ link.url }}"{% if link.current %} aria-current="page" class="uc-nav--active"{% endif %}>{{ link.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </nav>
+
+    <div class="uc-header__actions">
+      {%- if section.settings.phone != blank -%}
+        <a class="uc-header__phone" href="tel:{{ section.settings.phone | replace: ' ', '' | replace: '-', '' }}">
+          <svg viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M4.905 3.75C4.95 4.4175 5.0625 5.07 5.2425 5.6925L4.3425 6.5925C4.035 5.6925 3.84 4.74 3.7725 3.75H4.905ZM12.3 12.765C12.9375 12.945 13.59 13.0575 14.25 13.1025V14.22C13.26 14.1525 12.3075 13.9575 11.4 13.6575L12.3 12.765ZM5.625 2.25H3C2.5875 2.25 2.25 2.5875 2.25 3C2.25 10.0425 7.9575 15.75 15 15.75C15.4125 15.75 15.75 15.4125 15.75 15V12.3825C15.75 11.97 15.4125 11.6325 15 11.6325C14.07 11.6325 13.1625 11.4825 12.3225 11.205C12.2482 11.1773 12.1692 11.1645 12.09 11.1675C11.895 11.1675 11.7075 11.2425 11.5575 11.385L9.9075 13.035C7.7816 11.9478 6.05225 10.2184 4.965 8.0925L6.615 6.4425C6.825 6.2325 6.885 5.94 6.8025 5.6775C6.51849 4.81342 6.37418 3.90956 6.375 3C6.375 2.5875 6.0375 2.25 5.625 2.25Z" fill="currentColor"/>
+          </svg>
+          <span>{{ section.settings.phone }}</span>
+        </a>
+      {%- endif -%}
+
+      <a class="uc-header__cart" href="{{ section.settings.cart_url | default: '/pages/request-a-quote' }}" aria-label="Your quote list">
+        {%- if section.settings.cart_icon != blank -%}
+          {{ section.settings.cart_icon | image_url: width: 120 | image_tag: alt: '', loading: 'eager' }}
+        {%- else -%}
+          <img src="https://cdn.shopify.com/s/files/1/1029/2284/6530/files/uc-icon-truck.png" alt="" loading="eager">
+        {%- endif -%}
+        <span class="uc-header__cart-count" data-uc-quote-count hidden>0</span>
+      </a>
+
+      <button class="uc-header__burger" type="button" aria-expanded="false" aria-controls="uc-mobile-nav" aria-label="Open menu" data-drawer-open>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+</header>
+
+  {%- comment -%} Mobile navigation drawer {%- endcomment -%}
+  <div class="uc-drawer-overlay" data-drawer-overlay hidden></div>
+
+  <nav class="uc-mobile-nav" id="uc-mobile-nav" aria-label="Mobile menu" aria-hidden="true" hidden>
+    <div class="uc-mobile-nav__head">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 400 | image_tag: class: 'uc-mobile-nav__logo', alt: shop.name, loading: 'lazy' }}
+      {%- else -%}
+        <span class="uc-mobile-nav__title">{{ shop.name }}</span>
+      {%- endif -%}
+      <button class="uc-mobile-nav__close" type="button" aria-label="Close menu" data-drawer-close>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="uc-mobile-nav__body">
+      <ul class="uc-mobile-nav__list">
+        {%- for link in section.settings.menu.links -%}
+          {%- if link.links != blank -%}
+            <li>
+              <details>
+                <summary>
+                  {{ link.title }}
+                  <svg class="uc-mobile-nav__chev" viewBox="0 0 13 7" fill="none" aria-hidden="true">
+                    <path d="M1 1l5.5 5L12 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </summary>
+                <ul class="uc-mobile-nav__sub">
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </details>
+            </li>
+          {%- else -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.phone != blank -%}
+        <a class="uc-mobile-nav__phone" href="tel:{{ section.settings.phone | replace: '-', '' | replace: ' ', '' }}">
+          {{ section.settings.phone }}
+        </a>
+      {%- endif -%}
+    </div>
+  </nav>
+
+<script>
+(function () {
+  var drawer  = document.getElementById('uc-mobile-nav');
+  var overlay = document.querySelector('[data-drawer-overlay]');
+  var openBtn = document.querySelector('[data-drawer-open]');
+  if (!drawer || !overlay || !openBtn) return;
+
+  var lastFocus = null;
+
+  function focusables() {
+    return drawer.querySelectorAll('a[href], button:not([disabled]), summary, [tabindex]:not([tabindex="-1"])');
+  }
+
+  function open() {
+    lastFocus = document.activeElement;
+    /* Reserve the scrollbar's width before locking, so hiding it does not
+       shift the page sideways. */
+    var sbw = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty('--uc-sbw', sbw + 'px');
+    drawer.hidden = false;
+    overlay.hidden = false;
+    /* next frame so the transition runs from the hidden state */
+    requestAnimationFrame(function () {
+      drawer.classList.add('is-open');
+      overlay.classList.add('is-open');
+    });
+    drawer.setAttribute('aria-hidden', 'false');
+    openBtn.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('uc-drawer-open');
+    var f = focusables();
+    if (f.length) f[0].focus();
+  }
+
+  function close() {
+    drawer.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('uc-drawer-open');
+    /* wait for the slide-out before removing from the a11y tree */
+    var done = function () {
+      drawer.hidden = true;
+      overlay.hidden = true;
+      drawer.removeEventListener('transitionend', done);
+    };
+    drawer.addEventListener('transitionend', done);
+    setTimeout(done, 400);
+    document.documentElement.style.removeProperty('--uc-sbw');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  openBtn.addEventListener('click', open);
+  overlay.addEventListener('click', close);
+  drawer.querySelectorAll('[data-drawer-close]').forEach(function (b) {
+    b.addEventListener('click', close);
+  });
+
+  /* Navigating away should not leave the drawer open on back-nav. */
+  drawer.querySelectorAll('a[href]').forEach(function (a) {
+    a.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (drawer.hidden) return;
+    if (e.key === 'Escape') { close(); return; }
+    if (e.key !== 'Tab') return;
+    var f = focusables();
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* Returning to desktop width must not strand a hidden-but-open drawer. */
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', function (m) {
+    if (m.matches && !drawer.hidden) close();
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "number",
+      "id": "logo_height",
+      "label": "Logo height (px, desktop)",
+      "info": "Built at 40"
+    },
+    {
+      "type": "number",
+      "id": "logo_height_m",
+      "label": "Logo height (px, mobile)",
+      "info": "Built at 32"
+    },
+    {
+      "type": "image_picker",
+      "id": "cart_icon",
+      "label": "Quote list icon",
+      "info": "Leave empty for the truck icon."
+    },
+    {
+      "type": "url",
+      "id": "cart_url",
+      "label": "Quote list link",
+      "info": "Leave empty for /pages/request-a-quote."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "1-800-230-7764"
+    },
+    {
+      "type": "header",
+      "content": "Section style — colors"
+    },
+    {
+      "type": "paragraph",
+      "content": "Everything under Section style is optional. Leave a field empty to keep the design as built."
+    },
+    {
+      "type": "color_background",
+      "id": "st_bg",
+      "label": "Background (color or gradient)"
+    },
+    {
+      "type": "image_picker",
+      "id": "st_bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "st_overlay",
+      "label": "Background image darkening",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "st_heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "st_text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
+      "content": "Section style — typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_custom_fonts",
+      "label": "Use custom fonts in this section",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "st_heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "font_picker",
+      "id": "st_body_font",
+      "label": "Text and button font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size",
+      "label": "Main heading size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size",
+      "label": "Sub heading size (px, desktop)"
+    },
+    {
+      "type": "select",
+      "id": "st_heading_weight",
+      "label": "Heading weight",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "st_heading_case",
+      "label": "Heading letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_heading_spacing",
+      "label": "Heading letter spacing (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size",
+      "label": "Text size (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_line_height",
+      "label": "Text line height (%)",
+      "info": "e.g. 150 = 1.5 line height"
+    },
+    {
+      "type": "select",
+      "id": "st_align",
+      "label": "Text alignment (desktop)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — spacing and width"
+    },
+    {
+      "type": "number",
+      "id": "st_pt",
+      "label": "Padding top (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb",
+      "label": "Padding bottom (px, desktop)"
+    },
+    {
+      "type": "number",
+      "id": "st_mt",
+      "label": "Space above section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_mb",
+      "label": "Space below section (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_width",
+      "label": "Content max width (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter",
+      "label": "Side padding (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — mobile"
+    },
+    {
+      "type": "number",
+      "id": "st_pt_m",
+      "label": "Padding top (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_pb_m",
+      "label": "Padding bottom (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_gutter_m",
+      "label": "Side padding (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_heading_size_m",
+      "label": "Main heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_subheading_size_m",
+      "label": "Sub heading size (px, mobile)"
+    },
+    {
+      "type": "number",
+      "id": "st_text_size_m",
+      "label": "Text size (px, mobile)"
+    },
+    {
+      "type": "select",
+      "id": "st_align_m",
+      "label": "Text alignment (mobile)",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "st_btn_full_m",
+      "label": "Full-width buttons on mobile",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "st_img_height_m",
+      "label": "Image height (px, mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — buttons"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg",
+      "label": "Button background"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color",
+      "label": "Button text"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_bg_hover",
+      "label": "Button background on hover"
+    },
+    {
+      "type": "color",
+      "id": "st_btn_color_hover",
+      "label": "Button text on hover"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_radius",
+      "label": "Button corner radius (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_size",
+      "label": "Button text size (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_height",
+      "label": "Button height (px)"
+    },
+    {
+      "type": "number",
+      "id": "st_btn_pad_x",
+      "label": "Button side padding (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_btn_case",
+      "label": "Button letter case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "none",
+          "label": "Normal"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section style — images"
+    },
+    {
+      "type": "number",
+      "id": "st_img_radius",
+      "label": "Image and video corner radius (px)"
+    },
+    {
+      "type": "select",
+      "id": "st_img_fit",
+      "label": "Image fit",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As designed"
+        },
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "st_img_height",
+      "label": "Image height (px, desktop)"
+    },
+    {
+      "type": "header",
+      "content": "Section style — visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "st_hide_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    }
+  ],
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  }
+}
+{% endschema %}
